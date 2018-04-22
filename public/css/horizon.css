@@ -1,0 +1,30 @@
+/*------------------------------------------------------------------
+Horizon Reveal
+Version: 1;
+Author: ThemeMountain
+Copyright: ThemeMountain
+-------------------------------------------------------------------*/
+
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.horizon{
+	opacity: 0;
+	visibility: hidden;
+}
+.tmh-perspective{
+	perspective: 800px;
+	overflow: visible !important;
+}
+.tmh-perspective-parallax{
+	perspective: 1600px;
+	overflow: visible !important;
+}
+.tmh-parallax-item{
+	opacity: 1;
+	visibility: visible !important;
+}

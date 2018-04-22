@@ -1,0 +1,432 @@
+/*------------------------------------------------------------------
+Summit Lightbox
+Version: 1.1.0;
+Author: ThemeMountain
+Copyright: ThemeMountain
+
+[Table of contents]
+
+1. Wrappers
+2. Media
+3. Preloader
+4. Captions
+5. Navigation
+6. Font Icons
+-------------------------------------------------------------------*/
+
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*------------------------------------------------------------------
+[1. Wrappers]
+*/
+
+.modal-open{
+	overflow: hidden;
+}
+#tml-lightbox, 
+#tml-content-wrapper,
+#tml-content{
+	position: absolute;
+}
+.tm-lightbox{
+	width: 100%;
+	height: 100%;
+	background: #000;
+	background: rgba(255,255,255,.9);
+	opacity: 0;
+	top:0;
+	left:0;
+	position: fixed;
+	z-index: 1000;
+	-webkit-backface-visibility: hidden;
+}
+#tm-lightbox.tml-modal-mode{
+	background: rgba(0,0,0,0.2);
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#tml-content{
+	width: 100%;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	/*-webkit-box-shadow: 0 0 1rem rgba(0,0,0, 0.3);
+		-moz-box-shadow: 0 0 1rem rgba(0,0,0, 0.3);
+			box-shadow: 0 0 1rem rgba(0,0,0, 0.3);*/
+}
+.tml-modal-mode .modal-dialog{
+	background: #fff;
+	box-shadow: 0 0 1rem rgba( 0,0,0,.5 );
+}
+.tml-modal-mode.height-auto .modal-dialog{
+	height: auto !important;
+}
+.tml-modal-mode.rounded .modal-dialog{
+	border-radius: 0.3rem;
+}
+.tml-modal-mode .modal-dialog .modal-dialog-inner{
+	padding: 3rem;
+}
+#tm-lightbox.tml-modal-mode {
+	background: rgba(255,255,255,0.2);
+}
+.tml-modal-mode.rounded .modal-dialog div,
+.tml-modal-mode.rounded .modal-dialog .modal-header{
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.tml-modal-mode .modal-dialog .modal-header{
+	padding: 1rem 3rem;
+	background-color: #f4f4f4;
+}
+.tml-modal-mode .modal-dialog .modal-dialog-inner .modal-header,
+.tml-modal-mode .modal-dialog .modal-dialog-inner .full-width{
+	margin: 0 -3rem 3rem -3rem;
+}
+.tml-modal-mode .modal-dialog .modal-dialog-inner .modal-header{
+	margin-top: -3rem;
+}
+.tml-modal-mode .modal-dialog .modal-header-title{
+	margin-bottom: 0;
+}
+.tml-modal-mode .slide-in-top{
+	-webkit-transform: translateY(-2rem);
+			transform: translateY(-2rem);
+}
+.tml-modal-mode .slide-in-bottom{
+	-webkit-transform: translateY(2rem);
+			transform: translateY(2rem);
+}
+.tml-modal-mode .scale-in{
+	-webkit-transform: scale(0.9);
+			transform: translateY(0.9);
+}
+.tml-modal-mode .scale-out{
+	-webkit-transform: scale(1.1);
+			transform: translateY(1.1);
+}
+.tml-modal-mode .slide-in-top,
+.tml-modal-mode .slide-in-bottom,
+.tml-modal-mode .scale-in{
+	-webkit-duration: 500ms;
+			duration: 500ms;
+}
+#tml-content-wrapper.zoomed{
+	top: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	left: 0 !important;
+}
+#tml-content.scrollable-content:not(.modal-dialog){
+	background: #fff;
+	overflow-y: scroll;
+  	-webkit-overflow-scrolling: touch;
+}
+#tml-content.tml-error{
+	width: 100%;
+	background: none;
+	font-size: 1.4rem;
+	font-weight: bold;
+	text-align: center;
+	top: 50%;
+	left: 0;
+	box-shadow: none;
+}
+@media only screen and (max-width: 768px) {
+	.tml-modal-mode .modal-dialog .modal-dialog-inner{
+		padding: 1rem;
+	}
+	.tml-modal-mode .modal-dialog .modal-dialog-inner .modal-header,
+	.tml-modal-mode .modal-dialog .modal-dialog-inner .full-width{
+		margin: 0 -1rem 3rem -1rem;
+	}
+	.tml-modal-mode .modal-dialog .modal-dialog-inner .modal-header{
+		margin-top: -1rem;
+	}
+}
+@media only screen and (max-width: 479px) {
+	#tml-content-wrapper{
+		left: 10% !important;
+		right: 10% !important;
+	}
+	.tml-modal-mode #tml-content-wrapper{
+		left: 5% !important;
+		right: 5% !important;
+	}
+}
+
+/*------------------------------------------------------------------
+[2. Media]
+*/
+#tml-content video, 
+#tml-content iframe,
+#tml-content object,
+#tml-content embed {
+	width:100% !important;
+	height:100% !important;
+}
+
+/*------------------------------------------------------------------
+[3. Preloader]
+*/
+
+/* Remove if full framework is used */
+.tm-loader {
+	width: 5rem;
+	height: 5rem;
+	margin: -2.5rem 0 0 -2.5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+.tm-loader:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+.tm-loader #circle{
+	background: none;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+ 	transform-origin: center center;
+	animation: rotate 2s linear infinite;
+}
+.stroke{
+	stroke-dasharray: 1, 200;
+	stroke-dashoffset: 0;
+	animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+	stroke-linecap: round;
+	stroke-width: 0.2rem;
+}
+/* fallback */
+.ie-browser:not(.webkit) .tm-loader #circle{
+	border: 3px solid rgba(0,0,0,0);
+	border-bottom-color: #ddd;
+	animation: rotate 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -35px;
+	}
+	100% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -124px;
+	}
+}
+@keyframes color {
+	100%,
+	0% {
+		stroke: #ddd;
+		border-bottom-color: #ddd;
+	}
+	40% {
+		stroke: #666;
+		border-bottom-color: #666;
+	}
+	66% {
+		stroke: #ddd;
+		border-bottom-color: #ddd;
+	}
+	80%,
+	90% {
+		stroke: #666;
+		border-bottom-color: #666;
+	}
+}
+
+/*------------------------------------------------------------------
+[4. Captions]
+*/
+#tml-caption{
+	width: 100%;
+	font-size: 1.2rem;
+	font-style: italic;
+	text-align: center;
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-text-size-adjust: none;
+	   -moz-text-size-adjust: none;
+	    -ms-text-size-adjust: none;
+	position: absolute;
+	bottom: 0;
+}
+#tml-caption span{
+	width: 100%;
+	background-color: rgba(255,255,255,0.5);
+	display: block;
+	padding: 1rem 1.5rem;
+	border-top: 0.1rem solid #eeeeee;
+}
+
+/*------------------------------------------------------------------
+[5. Navigation]
+*/
+.tml-nav{
+	width: 4.4rem;
+	height: 4.4rem;
+	font-size: 2rem;
+	text-align: center;
+	text-transform: capitalize;
+	line-height: 4.4rem;
+	opacity: 0.4;
+	position: absolute;
+	z-index: 10;
+}
+.tml-nav:hover{
+	opacity: 1;
+}
+#tml-next{
+	top: 50%;
+	right: 3rem;
+	margin-top: -2.1rem;
+}
+#tml-next:before { 
+	content: '\e644'; 
+} 
+#tml-prev{
+	top: 50%;
+	left: 3rem;
+	margin-top: -2.1rem;
+}
+#tml-prev:before { 
+	content: '\e643'; 
+} 
+#tml-exit{
+	top: 1.5rem;
+	right: 3rem;
+}
+.tml-modal-mode #tml-exit{
+	top: 0;
+	right: 0;
+}
+#tml-tool-bar{
+	margin: 0;
+	display: inline-block;
+	position: absolute;
+	top: 1.5rem;
+	left: 3rem;
+}
+#tml-tool-bar .tml-nav{
+	font-size: 1.5rem;
+}
+#tml-tool-bar .tml-nav,
+#tml-tool-bar #tml-share-wrapper,
+#tml-tool-bar .tml-social-list{
+	float: left;
+	position: relative;
+}
+#tml-tool-bar .tml-social-list.list-vertical,
+#tml-tool-bar .tml-social-list.list-vertical .tml-nav{
+	float: none;
+	text-align: left;
+}
+#tml-tool-bar .tml-social-list{
+	margin: 0;
+	text-align: left;
+	opacity: 0;
+	visibility: hidden;
+	position: relative;
+	z-index: 101;
+	-webkit-transition-property: -webkit-transform, opacity, visibility;
+	-moz-transition-property: -moz-transform, opacity, visibility;
+	-o-transition-property: -o-transform, opacity, visibility;
+	transition-property: transform, opacity, visibility;
+	-webkit-transition-duration: 400ms;
+	-moz-transition-duration: 400ms;
+	-o-transition-duration: 400ms;
+	transition-duration: 400ms;
+}
+#tml-tool-bar .tml-social-list,
+#tml-tool-bar .tml-social-list li{
+	overflow: hidden;
+}
+#tml-tool-bar .tml-social-list li a{
+	margin-right: 1rem;
+}
+#tml-tool-bar .tml-social-list.active{
+	opacity: 1;
+	visibility: visible;
+}
+#tml-tool-bar .tml-social-list .tml-nav{
+	width: auto;
+	min-width: 4.4rem;
+	font-size: 1.1rem;
+}
+#tml-tool-bar #tml-zoom:before{
+	content: '\e6cd';
+}
+#tml-tool-bar #tml-share:before{
+	content: '\e70b';
+}
+#tml-exit:before{
+	content: '\e66f';
+}
+.tml-nav{
+
+	/* Properties */
+	-webkit-transition-property: color, opacity;
+	-moz-transition-property: color, opacity;
+	-o-transition-property: color, opacity;
+	-ms-transition-property: color, opacity;
+	transition-property: color, opacity;
+	
+	/* Duration */
+	-webkit-transition-duration: 300ms;
+	-moz-transition-duration: 300ms;
+	-o-transition-duration: 300ms;
+	-ms-transition-duration: 300ms;
+	transition-duration: 300ms;
+}
+
+/*------------------------------------------------------------------
+[6. Font Icons]
+*/
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/entypo.eot');
+	src:url('../fonts/entypo.eot') format('embedded-opentype'),
+		url('../fonts/entypo.woff') format('woff'),
+		url('../fonts/entypo.ttf') format('truetype'),
+		url('../fonts/entypo.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="tml-nav"]:before, 
+[class*="tml-nav"]:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	display: inline-block;
+
+	/* Better Font Rendering */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

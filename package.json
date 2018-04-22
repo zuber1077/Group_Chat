@@ -2,7 +2,7 @@
   "name": "group_chat_app",
   "version": "1.0.0",
   "description": "a group chat build with nodejs, .Mongodb .express and socket.io for my networking Program Design Project",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,10 +18,18 @@
   "homepage": "https://github.com/zuber1077/Group_Chat#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
     "dependable": "^1.1.0",
     "ejs": "^2.5.9",
     "express": "^4.16.3",
     "express-promise-router": "^3.0.2",
-    "lodash": "^4.17.5"
+    "express-session": "^1.15.6",
+    "express-validator": "^5.1.2",
+    "lodash": "^4.17.5",
+    "mongoose": "^5.0.15",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   }
 }

@@ -1,0 +1,196 @@
+/*------------------------------------------------------------------
+Snowbridge Parallax
+Version: 1.0.4;
+Author: ThemeMountain
+Copyright: ThemeMountain
+
+[Table of contents]
+
+1. Wrappers
+2. Media
+3. Preloader
+-------------------------------------------------------------------*/
+
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*------------------------------------------------------------------
+[1. Wrappers]
+*/
+.parallax{
+	height: 55rem;
+	background: #000;
+	position: relative;
+	overflow: hidden;
+	will-change: contents;
+}
+.parallax.fullscreen{
+	width: 100%;
+	height: 100%;
+	height: 100vh;
+}
+.parallax .horizon{
+	opacity: 0;
+	visibility: hidden;
+}
+.tm-parallax,
+.tmp-content, 
+.tmp-content-inner{
+	width: 100%;
+	height: 100%;
+}
+.tmp-content{
+	max-width: 114rem;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
+	text-align: center;
+}
+.tm-parallax {
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	visibility: visible;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+.tm-parallax:not(.out-of-view){
+	will-change: transform, opacity;
+}
+.tmp-content{
+	display: table;
+}
+.tmp-content-inner{
+	height: 100%;
+	vertical-align: middle;
+	display: table-cell;
+	float: none;
+	position: relative;
+	z-index: 1;
+}
+.tmp-content-inner.left{
+	text-align: left;
+}
+.tmp-content-inner.right{
+	text-align: right;
+}
+.tmp-content-inner.v-align-top{
+	padding-top: 7rem;
+	vertical-align: top;
+}
+.tmp-content-inner.v-align-bottom{
+	padding-bottom: 7rem;
+	vertical-align: bottom;
+}
+.tmp-caption{
+	display: inline-block !important;
+}
+.tmp-mobile{
+	height: 'auto';
+}
+
+/*------------------------------------------------------------------
+[2. Media]
+*/
+.tm-parallax img{
+	width: 100%;
+	max-width: none;
+	position: absolute;
+	opacity: 1;
+	-webkit-backface-visibility: hidden;
+}
+
+/*------------------------------------------------------------------
+[3. Preloader]
+*/
+
+/* Remove if full framework is used */
+.tm-loader {
+	width: 5rem;
+	height: 5rem;
+	margin: -2.5rem 0 0 -2.5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+.tm-loader:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+.tm-loader #circle{
+	background: none;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+ 	transform-origin: center center;
+	animation: rotate 2s linear infinite;
+}
+.stroke{
+	stroke-dasharray: 1, 200;
+	stroke-dashoffset: 0;
+	animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+	stroke-linecap: round;
+	stroke-width: 0.2rem;
+}
+/* fallback */
+.ie-browser:not(.webkit) .tm-loader #circle{
+	border: 3px solid rgba(0,0,0,0);
+	border-bottom-color: #ddd;
+	animation: rotate 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -35px;
+	}
+	100% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -124px;
+	}
+}
+@keyframes color {
+	100%,
+	0% {
+		stroke: #ddd;
+		border-bottom-color: #ddd;
+	}
+	40% {
+		stroke: #666;
+		border-bottom-color: #666;
+	}
+	66% {
+		stroke: #ddd;
+		border-bottom-color: #ddd;
+	}
+	80%,
+	90% {
+		stroke: #666;
+		border-bottom-color: #666;
+	}
+}
