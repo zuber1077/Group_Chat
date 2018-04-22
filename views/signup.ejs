@@ -165,9 +165,20 @@
 										</a>
 									</div>
 								</div>
+
+								
+
 								<div class="column width-5 offset-1">
 									<div class="signup-box box rounded xlarge mb-0 bkg-white shadow">
 										<h3>Register an Account</h3>
+											<% if(hasErrors)  { %>
+											<div class="box dismissable rounded small warning">
+												<a href="#" class="dismissable"></a>
+												<% _.forEach(messages,function(error){ %>
+													<%= error %><br>
+												<% }) %>
+											</div>
+										<% } %>
 										<p class="mb-20">Already have an account? <a href="login" class="fade-location">Click Here</a></p>
 										<div class="register-form-container">
 											<form class="register-form" action="/signup" method="post">
@@ -181,7 +192,7 @@
 													<div class="column width-12">
 														<div class="field-wrapper">
 															<label  for="username" class="color-charcoal">username:</label>
-															<input type="text" name="username" class="form-element rounded medium" placeholder="zuber" required>
+															<input type="text" name="username" class="form-element rounded medium" placeholder="zuber" >
 														</div>
 													</div>
 												</div>
@@ -189,13 +200,13 @@
 													<div class="column width-12">
 														<div class="field-wrapper">
 															<label  for="email"class="color-charcoal">Email:</label>
-															<input type="email" name="email" class="form-element rounded medium" placeholder="zuber1077@yahoo.com" required>
+															<input type="email" name="email" class="form-element rounded medium" placeholder="zuber1077@yahoo.com" >
 														</div>
 													</div>
 													<div class="column width-12">
 														<div class="field-wrapper">
 															<label for="password"class="color-charcoal">Password:</label>
-															<input type="password" name="password" class="form-element rounded medium" placeholder="•••••••• (8 or more characters)" required>
+															<input type="password" name="password" class="form-element rounded medium" placeholder="•••••••• (8 or more characters)" >
 														</div>
 													</div>
 													<div class="column width-12 mt-10 center">

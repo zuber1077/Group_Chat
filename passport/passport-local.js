@@ -26,7 +26,7 @@ passport.use('local.signup',new LocalStrategy({
             return done(err);
         }
         if(user){ //
-            return done(null,false,req.flash('error','user with email already exist')); //using flush
+            return done(null,false,req.flash('error','User with email already exist')); //using flush
         }
         const newUser = new User();//
         newUser.username = req.body.username; //match form name
