@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');//allow us get data from html form
 const ejs = require('ejs');
 const http = require('http');
 const cookieParser = require('cookie-parser');
@@ -7,7 +7,7 @@ const validator = require('express-validator');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-const flash = require('connect-flash');
+const flash = require('connect-flash'); //allow us to display flush messages
 const passport = require('passport');
 
 
@@ -39,6 +39,9 @@ container.resolve(function(users){
 
     //configuration or express midlle wear 
     function ConfigureExpress(app) {
+
+        require('./passport/passport-local');
+
         app.use(express.static('public'));//render make use of every static file inside public img,c..
         app.use(cookieParser()); //save cookies in the browser 
         app.set('view engine','ejs');
