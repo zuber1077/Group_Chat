@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs'); //enqrept z password 
 
 const userSchema = mongoose.Schema({
-    username: {type: String, unique: true},
+    username: {type: String, unique: true, default: ''},
     fullname: {type: String, unique: true, default: ''},
     // lastname: {type: String, unique: true, default: ''},
     email: {type: String, unique: true},

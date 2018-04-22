@@ -2,7 +2,7 @@
 
 const passport = require('passport');
 const User = require('../models/user');
-const localStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 
 //inside user be store userid,name.. /done then save it in z session 
 passport.serializeUser((user,done)=>{
@@ -15,10 +15,10 @@ passport.deserializeUser((id,done)=>{
     });
 });
 
-passport.use('local.signup',new localStrategy({
+passport.use('local.signup',new LocalStrategy({
     usernameField: 'email', //default user signup
     passwordField: 'password',//
-    passReqToCallback: true, //all user data pass in to call back  //if it false noting data will return
+    passReqToCallback: true //all user data pass in to call back  //if it false noting data will return
 },(req,email,password,done)=>{//
 
     User.findOne({'email': email},(err,user)=>{ //to check if z email is exist then display message to users

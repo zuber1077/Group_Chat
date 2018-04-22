@@ -5,6 +5,7 @@ const container = dependable.container();
 
 const dependencies = [//this array
   ['_','lodash'],
+  ['passport','passport'],
 ];
 
 //adding module as an aray
@@ -12,7 +13,7 @@ const dependencies = [//this array
 dependencies.forEach(function(val) {
     container.register(val[0], function(){ //only call '_'
         return require(val[1]);
-    });
+    })
 });
 
 //any function that we have in those file we can make use of them out side those file by likely calling module.export

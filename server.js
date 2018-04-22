@@ -9,7 +9,7 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const flash = require('connect-flash'); //allow us to display flush messages
 const passport = require('passport');
-
+// const { MongoClient } = require("mongodb");
 
 const container = require("./container");
 
@@ -17,8 +17,19 @@ const container = require("./container");
 container.resolve(function(users){
 
     mongoose.Promise = global.Promise;
-    mongoose.connect('mongodb://localhost/group_chat_app');
-
+    mongoose.Promise = Promise;
+    mongoose.connect('mongodb://127.0.0.1/groupchat', function(error, db) {
+        if(!error){
+             console.log("We are connected");
+        }
+        else
+           console.dir(error);
+    });
+// );
+    mongoose.connection.on("error", err => {
+      console.error(`MongoDB connection error: ${err}`);
+      process.exit(1);
+    });
     //setup confguration for express
     const app = SetupExpress();
 
@@ -31,8 +42,10 @@ container.resolve(function(users){
         ConfigureExpress(app);
 
         //setup express promise router
-        const router = require('express-promise-router')();
+        const router = require("express-promise-router")();
         users.SetRouting(router);
+       
+
 
         app.use(router);
     }
@@ -51,8 +64,9 @@ container.resolve(function(users){
         app.use(validator()); //validate on z server side for storing data 
 
         app.use(session({ //save session
-            secret: "password1", 
-            resave: false, saveUninitialized: false, 
+            secret: "myownsecretkey", 
+            resave: false, 
+            saveUninitialized: false, 
             store: new MongoStore({ mongooseConnection: mongoose.connection})  //data can be save in db reuse later
             
             }));
@@ -61,5 +75,5 @@ container.resolve(function(users){
         app.use(passport.initialize());
         app.use(passport.session());
     }
-
 });
+ 
