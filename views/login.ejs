@@ -10,7 +10,7 @@
 	
 	<!-- Title &amp; Favicon -->
 	<title>GPchat | Login</title>
-	<link rel="shortcut icon" type="image/x-icon" href="images/theme-mountain-favicon.ico">
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="images/theme-mountain-favicon.ico"> -->
 
 	<!-- Font -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'>
@@ -46,6 +46,16 @@
 								<div class="signup-box box rounded xlarge bkg-white shadow">
 									<h3 class="center">Sign in to continue</h3>
 									<p class="mb-20 center">Need a client account? <a href="/" class="fade-location">Click Here</a></p>
+
+										<% if(hasErrors)  { %>
+											<div class="box dismissable rounded small warning">
+												<a href="#" class="dismissable"></a>
+												<% _.forEach(messages,function(error){ %>
+													<%= error %><br>
+												<% }) %>
+											</div>
+										<% } %>
+
 									<!-- <a href="#" class="button rounded medium center full-width bkg-facebook bkg-hover-facebook color-white color-hover-white mb-10"><span class="icon-facebook left"></span><span>Sign in with Facebook</span></a>
 									<a href="#" class="button rounded medium center full-width bkg-twitter bkg-hover-twitter color-white color-hover-white mb-10"><span class="icon-twitter left"></span><span>Sign in with Twitter</span></a> -->
 									<div class="divider center mt-40 mb-50"><span class="bkg-white text-large">Or use a GPchat account</span></div>
