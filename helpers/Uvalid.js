@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = function () {
     return {
         SignUpValidation: (req,res,next)=>{
@@ -20,7 +19,7 @@ module.exports = function () {
                     });
                     //add err message to flash 
                     req.flash('error',messages);
-                    res.redirect('/signup'); //then redirect back 
+                    res.redirect('/'); //then redirect back 
                 })
                 .catch((err)=>{ //return next
                     return next();

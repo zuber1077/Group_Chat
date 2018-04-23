@@ -3,7 +3,7 @@ const path = require('path'); //tell dependable to go any folder we pesefied her
 
 const container = dependable.container();
 
-const dependencies = [//this array
+const dependencies = [//this arrayz
   ['_','lodash'],
   ['passport','passport'],
 ];
