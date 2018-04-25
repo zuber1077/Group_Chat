@@ -2,7 +2,7 @@
 
 const passport = require('passport');
 const User = require('../models/user');
-const FacebookStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const secret = require('../secret/secretFile');
 
 //inside user be store userid,name.. /done then save it in z session 
@@ -16,16 +16,15 @@ passport.deserializeUser((id,done)=>{
     });
 });
 
-passport.use(new FacebookStrategy({
-        clientID: secret.facebook.clientID,
-        clientSecret: secret.facebook.clientSecret,
-        profileFields: ['email','displayName','photos'], //profile users
+passport.use(new GoogleStrategy({
+        clientID: secret.google.clientID,
+        clientSecret: secret.google.clientSecret,
+        callbackURL: 'http://localhost:3000/auth/google/callback',
         // callbackURL: 'https://localhost:3000/auth/facebook/callback',
-        callbackURL: 'http://localhost:3000/auth/facebook/callback',
         passReqCallback: true //allow us to pass z data to call back when users try to login //tp check the user exist in db
-},(req, token,  refreshToken, profile, done)=>{//pass paremeter
+},(req, accessToken,  refreshToken, profile, done)=>{//pass paremeter
 
-    User.findOne({facebook: profile.id},(err,user)=>{ //to check if z paticler fb id exist then display message to users
+    User.findOne({google: profile.id},(err,user)=>{ //to check if z paticler fb id exist then display message to users
         if(err){ //network err 
             return done(err);
         }
@@ -33,17 +32,19 @@ passport.use(new FacebookStrategy({
             return done(null,user); //user object 
         }else{
             const newUser = new User();
-            newUser.facebook = profile.id;
+            newUser.google = profile.id;
             newUser.fullname = profile.displayName;
             newUser.username = profile.displayName;
-            newUser.email    = profile._json.email;
-            newUser.userImage = "https://graph.facebook.com/" + profile.id + "/picture?type=large";
-            newUser.fbTokens.push({token:token});
-            
+            newUser.email    = profile.emails[0].value;
+            newUser.userImage = profile._json.image.url;
+
             newUser.save((err)=>{
-                return done(null,user);
-            });
+                if(err){
+                    return done(err)
+                }
+                return done(null,newUser);
+            })
         }
-    });
+    })
 
 }));

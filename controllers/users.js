@@ -6,7 +6,10 @@ module.exports = function(_,passport,Uvalid){
         // router.get('/signup',this.getSignup);
         router.get("/login", this.loginPage);
         router.get("/home", this.homePage);
-        
+        router.get('/auth/facebook', this.getFacebookLogin); 
+        router.get('/auth/facebook/callback', this.facebookLogin); //call back URL
+        router.get('/auth/google', this.getGoogleLogin);
+        router.get('/auth/google/callback', this.googleLogin);
 
         router.post("/login",Uvalid.LoginValidation, this.postlogin)
         router.post("/", Uvalid.SignUpValidation, this.postSignup); //data validate before seedn db
@@ -29,7 +32,7 @@ module.exports = function(_,passport,Uvalid){
         failureFlash: true
       }),
 
-
+      
       indexPage: function(req, res) { //which is Signup
         const errors = req.flash("error");
         return res.render("index", {
@@ -44,6 +47,30 @@ module.exports = function(_,passport,Uvalid){
         failureRedirect: "/",
         failureFlash: true
       }), 
+
+      /* FacebookLogin  */
+
+      getFacebookLogin: passport.authenticate('facebook',{
+        scope: 'email'
+      }),
+
+      facebookLogin: passport.authenticate('facebook',{
+        successRedirect: '/home',
+        failureRedirect: '/',
+        failureFlash: true
+      }),
+
+      /* GoogleLogin  */
+
+      getGoogleLogin: passport.authenticate('google',{
+        scope: ['https://www.googleapis.com/auth/plus.login','https://www.googleapis.com/auth/plus.profile.emails.read']
+      }),
+
+      googleLogin: passport.authenticate('google',{
+        successRedirect: '/home',
+        failureRedirect: '/',
+        failureFlash: true
+      }),
 
       homePage: function(req, res) {
         return res.render("home");

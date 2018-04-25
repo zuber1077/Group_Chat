@@ -1,2 +1,5 @@
 /node_modules
 /secret
+cert.pem
+Key.pem
+Keytmp.pem

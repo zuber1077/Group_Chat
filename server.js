@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');//allow us get data from html form
 const ejs = require('ejs');
+// const https = require('https');
 const http = require('http');
 const cookieParser = require('cookie-parser'); 
 const validator = require('express-validator');
@@ -9,6 +10,14 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const flash = require('connect-flash'); //allow us to display flush messages
 const passport = require('passport');
+// const fs = require("fs");
+// var path = require("path");
+// const option = {
+//   cert: fs.readFileSync(path.resolve(__dirname, "cert.pem")),
+//   key: fs.readFileSync(path.resolve(__dirname, "key.pem"))
+// };
+
+
 // const { MongoClient } = require("mongodb");
 
 const container = require("./container");
@@ -39,6 +48,14 @@ container.resolve(function(users,_){
         server.listen(process.env.PORT || 3000, function() {
           console.log("Listening on port 3000");
         });
+        // const server = https.createServer(app);
+        // app.listen(process.env.PORT || 3000,function () {
+        //     console.log("Listening on port 3000");
+        // });
+        // var server = https.createServer(app).listen(3000,function () {
+        //     console.log("l");
+            
+        // });
         ConfigureExpress(app);
 
         //setup express promise router
@@ -55,6 +72,7 @@ container.resolve(function(users,_){
 
         require('./passport/passport-local');
         require('./passport/passport-facebook');
+        require('./passport/passport-google');
 
         app.use(express.static('public'));//render make use of every static file inside public img,c..
         app.use(cookieParser()); //save cookies in the browser 
