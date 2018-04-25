@@ -6,6 +6,7 @@ const container = dependable.container();
 const dependencies = [//this arrayz
   ['_','lodash'],
   ['passport','passport'],
+  ['formidable','formidable'],
 ];
 
 //adding module as an aray
