@@ -7,6 +7,16 @@ const dependencies = [//this arrayz
   ['_','lodash'],
   ['passport','passport'],
   ['formidable','formidable'],
+  ['async','async'],
+  ['gpName','./models/gpName'],
+  
+  ['aws','./helpers/AWSUpload'],
+  ['gfs','gridfs-stream'],
+  ['find','multer-gridfs-storage'],
+  ['mu','multer-gridfs-storage'],
+  ['mu2','multer'],
+  ['crypto','crypto']
+
 ];
 
 //adding module as an aray

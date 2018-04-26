@@ -3,3 +3,5 @@
 cert.pem
 Key.pem
 Keytmp.pem
+/public/uploads
+/public/images/blog
