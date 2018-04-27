@@ -6,74 +6,75 @@ const fs = require('fs'); //paticlar function allow to rename z file or be saved
 // const Grid = require('gridfs-stream');
 // const crypto = require('crepto');
 
-module.exports = function(formidable, gpName, aws) {
+module.exports = function(formidable, gpNames, aws) {
   return {
     SetRouting: function(router) {
       router.get("/dashboard", this.adminPage); //i am using this keyword i have this function inside z same controller
-      router.get('/files', this.filesPage);
-      router.get('/files/:filename', this.filesPage);
-      router.get('/image/:filename', this.filesPage);
+     // router.get('/files', this.filesPage);
+      //router.get('/files/:filename', this.filesPage);
+     // router.get('/image/:filename', this.filesPage);
       //router.get('/files/:filename', this.filePage);
     router.post("/uploadFile", uploadFile.any(), this.uploadFile); //for images ,file
+    //router.post("/uploadFile", uploadFile.single('name','country','upload'), this.uploadFile); //for images ,file
      //router.post("/uploadFile", aws.Upload.any(), this.uploadFile); //for images ,file
      // router.post("/dashboard",  this.adminPostPage);
     },
 
-    filesPage: function (req,res) {
-      gfs.files.find().toArray((err, files)=>{
-        if(!files || files.length === 0){
-          return res.status(404).json({
-            err: 'No files exist'
-          });
-        }
-        return res.json(files);
-      });
-    },
+    // filesPage: function (req,res) {
+    //   gfs.files.find().toArray((err, files)=>{
+    //     if(!files || files.length === 0){
+    //       return res.status(404).json({
+    //         err: 'No files exist'
+    //       });
+    //     }
+    //     return res.json(files);
+    //   });
+    // },
 
-    filesPage: function (req,res) {
-      gfs.files.findOne({filename: req.params.filename}, function (err, file) {
-          if(!file || file.length === 0){
-          return res.status(404).json({
-            err: 'No files exist'
-          });
-        }
+    // filesPage: function (req,res) {
+    //   gfs.files.findOne({filename: req.params.filename}, function (err, file) {
+    //       if(!file || file.length === 0){
+    //       return res.status(404).json({
+    //         err: 'No files exist'
+    //       });
+    //     }
         //File Exists
 
-        return res.json(file);
-      });
+    //     return res.json(file);
+    //   });
 
-    },
-
-    filesPage: function (req,res) {
-      gfs.files.findOne({filename: req.params.filename}, function (err, file) {
-          if(!file || file.length === 0){
-          return res.status(404).json({
-            err: 'No files exist'
-          });
-        }
-          //check if image
-          if(file.contentType === 'image/jpeg' || file.contentType === 'img/png'){
-            //  Read putput to browser
-            const readstream = gfs.createReadStream(file.filename);
-            readstream.pipe(res);
-          }else{
-            res.status(404).json({
-              err: "Not an Image"
-            });
-          }
-      });
-
-    },
-    // adminPostPage: function (req,res) {
-    //     const newGroup = new gpName();
-    //     newGroup.name = req.body.name;
-    //     newGroup.country = req.body.country;
-    //     newGroup.image = req.body.upload;
-    //     newGroup.save((err) => {
-    //         res.render('admin/dashboard')
-    //     })
-        
     // },
+
+    // filesPage: function (req,res) {
+    //   gfs.files.findOne({filename: req.params.filename}, function (err, file) {
+    //       if(!file || file.length === 0){
+    //       return res.status(404).json({
+    //         err: 'No files exist'
+    //       });
+    //     }
+    //       //check if image
+    //       if(file.contentType === 'image/jpeg' || file.contentType === 'img/png'){
+    //         //  Read putput to browser
+    //         const readstream = gfs.createReadStream(file.filename);
+    //         readstream.pipe(res);
+    //       }else{
+    //         res.status(404).json({
+    //           err: "Not an Image"
+    //         });
+    //       }
+    //   });
+
+    // },
+    uploadFile: function (req,res) {
+        const newGroup = new gpNames();
+        newGroup.name = req.body.name;
+        newGroup.country = req.body.country;
+        newGroup.filename = req.body.upload;
+        newGroup.save((err) => {
+            res.render('admin/dashboard')
+        })
+        
+    },
 
     // filePage: function (req,res) {
         
@@ -81,12 +82,10 @@ module.exports = function(formidable, gpName, aws) {
 
 
     adminPage: function(req, res) {
-      res.render("admin/dashboard");
-
-      
+      res.render("admin/dashboard"); 
     },
 
-  //   homePage: function (req,res) {
+  //   uploadFile: function (req,res) {
   //     gfs.files.find().toArray((err, files) => {
   //         if(!files || files.length === 0){
   //         res.render('home', {files: false});
@@ -107,16 +106,16 @@ module.exports = function(formidable, gpName, aws) {
   //     });
   //  },
 
-    uploadFile: function(req, res) {
+  //   uploadFile: function(req, res) {
 
-       const newGroup = new gpName();
-       newGroup.name = req.body.name;
-       newGroup.country = req.body.country;
-       newGroup.image = req.body.upload;
-       newGroup.save(err => {
-         res.render("admin/dashboard");
-       });
-      //formidable event to allow z images ,file to be added local folder
+  //      const newGroup = new gpName();
+  //      newGroup.name = req.body.name;
+  //      newGroup.country = req.body.country;
+  //      newGroup.image = req.body.upload;
+  //      newGroup.save(err => {
+  //        res.render("admin/dashboard");
+  //      });
+  //    // formidable event to allow z images ,file to be added local folder
   //     const form = new formidable.IncomingForm();
   //     form.uploadDir = path.join(__dirname, "../public/uploads"); //z path z file to save in | stored
 
@@ -143,7 +142,7 @@ module.exports = function(formidable, gpName, aws) {
   //     form.parse(req);
     }
   };
-};
+//};
 
 // const storage = multer.diskStorage({
 //     diskStorage: './public/uploads',
@@ -206,9 +205,9 @@ const storage = new GridFsStorage({
         }
         const filename = buf.toString("hex") + path.extname(file.originalname);
         const fileInfo = {
-          name: "name",
-          image: "upload",
-          country: "country",
+          // name: "name",
+          // image: "upload",
+          // country: "country",
           filename: filename,
           bucketName: "group"
         };

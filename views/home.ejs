@@ -26,26 +26,7 @@
 	<!--[if lt IE 9]>
     	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-<!-- <style>
-    .logo {
-        background-color: #f5f7f9 !important;
-    }
 
-    .logo-inner {
-        background-color: #f5f7f9 !important;
-    }
-
-    .mb-20 {
-        background-color: #f5f7f9 !important;
-    }
-    .shop {
-        background-color: #f5f7f9 !important;
-    }
-
-    .maegin{
-        margin-top: 20px;
-    }
-</style> -->
 </head>
 <body class="shop catalogue-products">
 
@@ -60,9 +41,8 @@
 						</a>
 					</div>
 				</div>
-			
 				<div class="side-navigation-footer">
-					<p class="copyright no-margin-bottom">&copy; 2017 ThemeMountain.</p>
+					<p class="copyright no-margin-bottom">&copy; 2018 GPchat Alright Resiver.</p>
 				</div>
 			</div>
 		</div>
@@ -83,13 +63,49 @@
 									<a href="index.html"><img src="images/logo.png" alt="Faulkner Logo" /></a>
 								</div>
 							</div>
-							
 						</div>
 					</div>
 				</div>
 			</header>
-            <!-- Header End -->
-            <!-- Filter Menu -->
+			<!-- Header End -->
+
+			<!-- Content -->
+			<div class="content clearfix">
+
+				<!-- Intro Title Section 1 -->
+				<div class="section-block intro-title-1 small">
+					<div class="row">
+						<div class="column width-12">
+							<div class="title-container">
+								<div class="title-container-inner">
+									<div class="row flex">
+										<div class="column width-6 v-align-middle">
+											<div>
+												<h1 class="mb-0">JOIN TO JOIN</h1>
+												<p class="lead mb-0 mb-mobile-20">Stay in the loop with the GPchats</p>
+											</div>
+										</div>
+										<div class="column width-6 v-align-middle">
+											<div>
+												<ul class="breadcrumb mb-0 pull-right clear-float-on-mobile">
+													<li>
+														<a href="index.html">SignUp</a>
+													</li>
+													<li>
+														Home
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Intro Title Section 1 End -->
+
+				<!-- Filter Menu -->
 				<div class="section-block pt-0 pb-0 grid-filter-dropdown" data-target-grid="#product-grid">
 					<div class="freeze pt-10 bkg-white" data-extra-space-top="80" data-extra-space-bottom="0">
 						<div class="row">
@@ -104,16 +120,16 @@
 										<div class="column width-4 right left-on-mobile">
 											<span class="dropdown-label mb-0 mb-mobile-30">Filter: </span>
 											<div class="dropdown medium inline-block" data-update-selection>
-												<a href="#" class="button rounded center border-grey-light color-grey bkg-hover-theme color-hover-white"><span>All Products</span><span class="icon-down-open-mini pull-right"></span></a>
+												<a href="#" class="button rounded center border-grey-light color-grey bkg-hover-theme color-hover-white"><span>Sort Groups</span><span class="icon-down-open-mini pull-right"></span></a>
+												<% _.forEach(data, function(val) {  %>
 												<ul class="dropdown-list">
-													<li><a class="active" href="#" data-filter="*">All Products</a></li>
-													<li><a href="#" data-filter=".cameras">Cameras</a></li>
-													<li><a href="#" data-filter=".headphones">Headphones</a></li>
-													<li><a href="#" data-filter=".keyboards">Keyboards</a></li>
-													<li><a href="#" data-filter=".phones">Phones</a></li>
-													<li><a href="#" data-filter=".shoes">Shoes</a></li>
-													<li><a href="#" data-filter=".speakers">Speakers</a></li>
+													
+													<li><a class="active" href="#" data-filter="*">All Groups</a></li>
+													<% _.forEach(val, function(val2) {  %>
+													<li><a href="/group/<%= val2.country %>" data-filter=".<%= val2.country %>"><%= val2.country %></a></li>
+													<% }) %>
 												</ul>
+												<% }) %>
 											</div>
 										</div>
 									</div>
@@ -124,75 +140,61 @@
 				</div>
 				<!-- Filter Menu End -->
 
-			<!-- Content -->
-			<div class="content clearfix">
-
-				<!-- Intro Title Section 2 -->
-				<div class="section-block intro-title-1 small bkg-grey-ultralight">
+				<!-- Product Grid -->
+				<% _.forEach(data, function(val) {  %>
+				<div id="product-grid" class="section-block grid-container products fade-in-progressively pt-30 pb-0" data-layout-mode="masonry" data-grid-ratio="1.5" data-animate-resize data-animate-resize-duration="0">
+					
 					<div class="row">
-						<div class="column width-10 offset-1">
-                            
-							<div class="title-container">
-								<div class="title-container-inner">
-									<div class="row flex">
-                                        
-										<div class="column width-6 v-align-middle">
-											<div>
-												<h1 class="mb-0">JOIN TO JOIN</h1>
-												<p class="lead mb-0 mb-mobile-20">Stay in the loop with GPchat</p>
-											</div>
+						
+						<div class="column width-12">
+							
+							<div class="row grid content-grid-4">
+								<% _.forEach(val, function(val2) {  %>
+								<div class="grid-item product grid-sizer <%= val2.country %>">
+									<div class="thumbnail rounded product-thumbnail border-grey-light img-scale-in" data-hover-easing="easeInOut" data-hover-speed="700" data-hover-bkg-color="#ffffff" data-hover-bkg-opacity="0.9">
+										<span class="onsale"><%= val2.country %></span>
+										<a class="overlay-link" href="single-product-device.html">
+											<img src="images/groups/grid/large-margins/product-1.jpg" alt=""/>
+											<span class="overlay-info">
+												<span>
+													<span>
+														<%= val2.country %>
+													</span>
+												</span>
+											</span>
+										</a>
+										<div class="product-actions center">
+											<a href="#" class="button add-to-cart-button rounded small">Add to Favorite →</a>
 										</div>
-										<div class="column width-6 v-align-middle">
-											<div>
-												<ul class="breadcrumb mb-0 pull-right clear-float-on-mobile">
-													<li>
-														<a href="index.html">Home</a>
-													</li>
-													<li>
-														Group
-													</li>
-												</ul>
-											</div>
+									</div>
+									<div class="product-details center">
+										<h3 class="product-title text-truncate">
+											<a href="#">
+												<%= val2.name %>
+											</a>
+										</h3>
+										<div class="product-actions-mobile">
+											<a href="#" class="button add-to-cart-button rounded small">Add to Favorite →</a>
 										</div>
 									</div>
 								</div>
+								<% }) %>
 							</div>
+							
 						</div>
-					</div>
-				</div>
-                <!-- Intro Title Section 2 End -->
-                
-
-				<div class="section-block clearfix pt-0 pb-0 bkg-grey-ultralight">
-					<div class="row">
-
-						<!-- Content Inner -->
-						<div class="column width-10 offset-1 content-inner blog-regular list">
-							<% _.forEach(data, function(val) {  %>
-							<article class="post post-1-1">
-								<div class="post-content with-background">
-									<h2 class="post-title"><a href="blog-single-post-sidebar-right.html"><%= val.name %></a></h2>
-									<div class="post-info">
-										<!-- <span class="post-date">25 Aug 2015</span>, in <span class="post-category"><a href="#">Hardware</a></span>, <span class="post-tags">--><span><a href="#" class="post-tag label small rounded bkg-charcoal color-green-light bkg-hover-charcoal bkg-hover-white"><%= val.country %></a></span></span> 
-									</div>
-									<a href="#" class="read-more">Get In →</a>
-									
-									
-								</div>
-							</article>
-							<% }) %>
-
-
-						</div>
-						<!-- Content Inner End -->
+						
 
 					</div>
+					<% }) %>
+
 				</div>
 				
+				<!-- Product Grid End -->
+
 				<!-- Pagination Section 3 -->
-				<div class="section-block pagination-3 bkg-grey-ultralight">
+				<div class="section-block pagination-3">
 					<div class="row">
-						<div class="column width-10 offset-1">
+						<div class="column width-12">
 							<ul>
 								<li><a class="pagination-previous icon-left-open" href="/"><span class="icon-left-open-mini"></span></a></li>
 								<li><a class="current" href="#">1</a></li>
@@ -209,7 +211,6 @@
 			</div>
 			<!-- Content End -->
 
-			
 
 		</div>
 	</div>

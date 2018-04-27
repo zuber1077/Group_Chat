@@ -8,14 +8,15 @@ const dependencies = [//this arrayz
   ['passport','passport'],
   ['formidable','formidable'],
   ['async','async'],
-  ['gpName','./models/gpName'],
+  ['gpNames','./models/gpName'],
   
   ['aws','./helpers/AWSUpload'],
   ['gfs','gridfs-stream'],
   ['find','multer-gridfs-storage'],
   ['mu','multer-gridfs-storage'],
   ['mu2','multer'],
-  ['crypto','crypto']
+  ['crypto','crypto'],
+  //['admin','./controllers/admin']
 
 ];
 

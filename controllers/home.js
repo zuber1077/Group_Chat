@@ -7,7 +7,7 @@
 // const GridFsStorage = require("multer-gridfs-storage");
 // const Grid = require("gridfs-stream");
 
-module.exports = function (async, gpName, _, gfs, find, mu, mu2, crypto) {
+module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto) {
     return {
         SetRouting: function (router) {
             router.get("/home", this.homePage);  
@@ -34,18 +34,40 @@ module.exports = function (async, gpName, _, gfs, find, mu, mu2, crypto) {
 
             async.parallel([
                 function (callback) {
-                    gpName.find({},(err,result)=>{
+                    gpNames.find({},(err,result)=>{
                         callback(err, result)
                     })
                 }
+
+                // function(callback) {
+                //     gpNames.aggregate({
+                //       $group: {
+                //           _id: "$country"
+                //       }  
+                //     },(err, newResult) =>{
+                //         callback(err, newResult);
+                //     });
+                // }
             ],(err, result)=>{
                 const res1 = result[0];
+                //const res2 = result[1];
                 //console.log(res1);
-                
-                 res.render("home", {title: 'GPchat - Home', data: res1});
+                const dataChunk = [];
+                const chunkSize = 4;
+                for (let i = 0; i < res1.length; i += chunkSize){
+                    dataChunk.push(res1.slice(i, i+chunkSize));
+                }
+                //console.log(dataChunk);
+
+               // const countrySort = _.sortBy(res2, '_id');
+               // country: countrySort
+
+                 res.render("home", {title: 'GPchat - Home', data: dataChunk});
             })
 
             
       }
     }
 }
+
+
