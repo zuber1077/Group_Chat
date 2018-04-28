@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash'); //allow us to display flush messages
 const passport = require('passport');
 const socketIO = require('socket.io');
+const { Users } = require('./helpers/UsersClass');
 // const fs = require("fs");
 // var path = require("path");
 // const option = {
@@ -61,7 +62,7 @@ container.resolve(function(users, _, admin, home, group){
             
         // });
         ConfigureExpress(app);
-        require("./socket/groupchat")(io);
+        require("./socket/groupchat")(io, Users);
         //setup express promise router
         const router = require("express-promise-router")();
         users.SetRouting(router);

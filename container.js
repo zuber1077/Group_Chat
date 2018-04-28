@@ -9,7 +9,8 @@ const dependencies = [//this arrayz
   ['formidable','formidable'],
   ['async','async'],
   ['gpNames','./models/gpName'],
-  
+//   ['user','./controllers/users'],
+  ['User', './models/user'],
   ['aws','./helpers/AWSUpload'],
   ['gfs','gridfs-stream'],
   ['find','multer-gridfs-storage'],

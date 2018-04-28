@@ -65,34 +65,59 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="conversation-block height-700 custom-scroll">
-                        <div class="conversation-item">
+                        <div id="messages" class="conversation-item">
+                            <!-- <div>
                             <div class="s1">
                                 <a class="avatar" href="javascript:void(0);">
                                     <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
                                 </a>
                             </div>
                             <div class="s2">
-                                <strong>Chris Scott Junior</strong>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <strong>username</strong>
+                                <p>message</p>
                             </div>
+                            </div> -->
                         </div>
-                        <div class="conversation-item you">
+
+                        <script id="message-template" type="text/template">
+                             <div class="conversation-item">
                             <div class="s1">
                                 <a class="avatar" href="javascript:void(0);">
-                                    <img src="../assets/common/img/temp/avatars/4.jpg" alt="Alternative text to the image">
+                                    <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
                                 </a>
                             </div>
                             <div class="s2">
-                                <strong>Donald Trump</strong>
-                                <p>Ok. Thanks!</p>
+                                <strong>{{ sender }}</strong>
+                                <p>{{ text }}</p>
                             </div>
+                            </div>
+                        </script>
+
+                        <!-- <script id="message-template" type="text/template">
+                             <div class="conversation-item you">
+                            <div class="s1">
+                                <a class="avatar" href="javascript:void(0);">
+                                    <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
+                                </a>
+                            </div>
+                            <div class="s2">
+                                <strong>{{ sender }}</strong>
+                                <p>{{ text }}</p>
+                            </div>
+                            </div>
+                        </script> -->
+
+                        <div class="conversation-item you">
+                            
                         </div>
                     </div>
-                    <form action="" id="message-form" method="POST">
+                    
+                    <form action="" id="message-form" method="POST" value="<%= groupName %>">
+                    <input type="hidden" action="" id="sender" name="sender" method="POST" value="<%= user.username || user.fullname %>">
                     <div class="form-group padding-top-20 margin-bottom-0">
                         <input type="hidden" name="" id="groupName" value="<%= groupName %>">
                         <textarea id="msg" class="form-control adjustable-textarea" placeholder="Type and press enter" style="overflow-x: hidden; word-wrap: break-word; resize: none; overflow-y: visible;"></textarea>
-                        <button class="btn btn-primary width-200 margin-top-10">
+                        <button id="send-message" class="btn btn-primary width-200 margin-top-10">
                             <i class="fa fa-send margin-right-5"></i>
                             Send
                         </button>
@@ -161,5 +186,6 @@
 <div class="main-backdrop"><!-- --></div>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/group/groupchat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
 </body>
 </html>
