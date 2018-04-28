@@ -13,14 +13,14 @@ module.exports = function(io, Users){
             Socket.join(params.room);
 
             users.AddUserData(Socket.id, params.name, params.room);
-            console.log(users);
+            //console.log(users);
+            io.to(params.room).emit('usersList', users.GetUsersList(params.room));
 
             callback();
          });
 
         Socket.on('createMessage', (message, callback) => {
             console.log(message);
-
             io.to(message.room).emit('newMessage', { //passing an object with key text value //message.text
                 text: message.text,
                 room: message.room,
@@ -30,5 +30,14 @@ module.exports = function(io, Users){
             //clear message text
             callback();
         });
+
+        Socket.on('disconnect', () => {
+            var user = users.RemoveUser(Socket.id);
+
+            if(user){
+                io.to(user.room).emit('usersList', users.GetUsersList(user.room));
+
+            }
+        })
     });
 }

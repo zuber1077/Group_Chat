@@ -1,5 +1,4 @@
 
-
 //client event listemer
 $(document).ready(function () {
     var socket = io();
@@ -22,8 +21,21 @@ $(document).ready(function () {
         socket.emit('join', params, function() {
             console.log('User join this g');
         });
+    });
+
+    socket.on('usersList', function (users) {
+        //console.log(users); 
+        var ul = $('<ul role="menu" class=""dropdown-menu dropdown-menu-right"></ul>');
+
+        for(var i = 0; i < users.length; i++){
+            ul.append('<a id="val" data-toggle="modal" data-target="#myModal" class="dropdown-item">' + '<i class="dropdown-icon icmn-satellite-dish2"></i>' + users[i] + "</a>");
+        }
+
+        $('#numValue').text('('+users.length+')');
+        $('#users').html(ul);
 
     });
+
 
     socket.on('newMessage', function (data) {
         console.log(data);
