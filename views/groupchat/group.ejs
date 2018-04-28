@@ -59,7 +59,7 @@
                     </ul>
                 </div>
             </div>
-            <h6 class="messaging-title"><%= name %></h6>
+            <h6 class="messaging-title"><%= groupName %></h6>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -88,8 +88,10 @@
                             </div>
                         </div>
                     </div>
+                    <form action="" id="message-form" method="POST">
                     <div class="form-group padding-top-20 margin-bottom-0">
-                        <textarea class="form-control adjustable-textarea" placeholder="Type and press enter" style="overflow-x: hidden; word-wrap: break-word; resize: none; overflow-y: visible;"></textarea>
+                        <input type="hidden" name="" id="groupName" value="<%= groupName %>">
+                        <textarea id="msg" class="form-control adjustable-textarea" placeholder="Type and press enter" style="overflow-x: hidden; word-wrap: break-word; resize: none; overflow-y: visible;"></textarea>
                         <button class="btn btn-primary width-200 margin-top-10">
                             <i class="fa fa-send margin-right-5"></i>
                             Send
@@ -98,6 +100,7 @@
                             Attach File
                         </button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -156,6 +159,7 @@
 </section>
 
 <div class="main-backdrop"><!-- --></div>
-
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/group/groupchat.js"></script>
 </body>
 </html>

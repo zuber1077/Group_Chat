@@ -8,7 +8,7 @@ module.exports = function () {
 
 		groupPage: function (req,res) {
 			const name = req.params.name;
-			res.render('groupchat/group' ,{title: 'GPchat - Group ', name: name});
+			res.render('groupchat/group' ,{title: 'GPchat - Group ', groupName: name});
 		}
 	}
 }

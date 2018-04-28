@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const flash = require('connect-flash'); //allow us to display flush messages
 const passport = require('passport');
+const socketIO = require('socket.io');
 // const fs = require("fs");
 // var path = require("path");
 // const option = {
@@ -45,9 +46,12 @@ container.resolve(function(users, _, admin, home, group){
     function SetupExpress() {
         const app = express();
         const server = http.createServer(app);
+        const io = socketIO(server);
         server.listen(process.env.PORT || 3000, function() {
           console.log("Listening on port 3000");
         });
+
+        
         // const server = https.createServer(app);
         // app.listen(process.env.PORT || 3000,function () {
         //     console.log("Listening on port 3000");
@@ -57,7 +61,7 @@ container.resolve(function(users, _, admin, home, group){
             
         // });
         ConfigureExpress(app);
-
+        require("./socket/groupchat")(io);
         //setup express promise router
         const router = require("express-promise-router")();
         users.SetRouting(router);
