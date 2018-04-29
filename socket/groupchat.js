@@ -6,7 +6,7 @@ module.exports = function(io, Users){
 
     //listen 4 connection event //if user connect be able to see 
     io.on('connection', (Socket) => {
-        console.log('User Connec form boss');
+       // console.log('User Connec form boss');
 
         Socket.on('join', (params, callback) => {
             //join paticular channal //join takes z room name //

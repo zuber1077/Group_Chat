@@ -48,8 +48,8 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto) {
                 //         callback(err, newResult);
                 //     });
                 // }
-            ],(err, result)=>{
-                const res1 = result[0];
+            ],(err, results)=>{
+                const res1 = results[0];
                 //const res2 = result[1];
                 //console.log(res1);
                 const dataChunk = [];
@@ -62,7 +62,7 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto) {
                // const countrySort = _.sortBy(res2, '_id');
                // country: countrySort
 
-                 res.render("home", {title: 'GPchat - Home', data: dataChunk});
+                 res.render("home", {title: 'GPchat - Home', user:req.user, data: dataChunk});
             })
 
             

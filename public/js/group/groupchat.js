@@ -31,6 +31,13 @@ $(document).ready(function () {
             ul.append('<a id="val" data-toggle="modal" data-target="#myModal" class="dropdown-item">' + '<i class="dropdown-icon icmn-satellite-dish2"></i>' + users[i] + "</a>");
         }
 
+        $(document).on('click', '#val', function () {
+            $('#name').text('@'+$(this).text()); //display on modal
+            $("#receiverName").val(+$(this).text()); //name be added to input field
+            $("#nameLink").attr("href", "/profile/" + $(this).text()); //href to specfic user profile
+        });
+
+
         $('#numValue').text('('+users.length+')');
         $('#users').html(ul);
 

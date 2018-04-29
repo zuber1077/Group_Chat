@@ -4,13 +4,25 @@ const bcrypt = require('bcrypt-nodejs'); //enqrept z password
 const userSchema = mongoose.Schema({
     username: {type: String, unique: true, default: ''},
     fullname: {type: String, unique: true, default: ''},
-    // lastname: {type: String, unique: true, default: ''},
     email: {type: String, unique: true},
     password: {type: String, default: ''},
     userImage: {type: String, default: 'default.png'},
     facebook: {type: String, default: ''},
     fbTokens: Array, //add password take care
-    google: {type: String, default: '' }
+    google: {type: String, default: '' },
+    //contain user.name resiver of friend requist 
+    sentRequest: [{
+        username: {type: String, default: ''}
+    }],
+    request: [{ //contain userId sender z message and username
+        userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        username: {type: String, default: ''}
+    }],
+    friendsList: [{
+        friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        friendName: {type: String, default: ''}
+    }],
+    totalRequest: {type: Number, default: 0}
 });
 //enqrept password 
 userSchema.methods.encryptPassword = function (password) {
