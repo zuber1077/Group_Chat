@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     //listen connect event
     socket.on('connect', function () {
-        console.log('yes user conn');
+        //console.log('yes user conn');
 
         var params = {
             room: room,
@@ -19,11 +19,11 @@ $(document).ready(function () {
 
         // 1st parameter z name of z event, 2nd object contain data, option call back //get notified
         socket.emit('join', params, function() {
-            console.log('User join this g');
+            //console.log('User join this g');
         });
     });
 
-    socket.on('usersList', function (users) {
+    socket.on('usersList', function(users) {
         //console.log(users); 
         var ul = $('<ul role="menu" class=""dropdown-menu dropdown-menu-right"></ul>');
 
@@ -31,9 +31,9 @@ $(document).ready(function () {
             ul.append('<a id="val" data-toggle="modal" data-target="#myModal" class="dropdown-item">' + '<i class="dropdown-icon icmn-satellite-dish2"></i>' + users[i] + "</a>");
         }
 
-        $(document).on('click', '#val', function () {
+        $(document).on('click', '#val', function() {
             $('#name').text('@'+$(this).text()); //display on modal
-            $("#receiverName").val(+$(this).text()); //name be added to input field
+            $("#receiverName").val($(this).text()); //name be added to input field
             $("#nameLink").attr("href", "/profile/" + $(this).text()); //href to specfic user profile
         });
 
@@ -56,19 +56,34 @@ $(document).ready(function () {
 
     });
 
-    $('#message-form').on('submit', function (e) {
-        e.preventDefault();
+    $("#message-form").on("submit", function(e) {
+      e.preventDefault();
 
-        var msg = $('#msg').val();
+      var msg = $("#msg").val();
 
-        socket.emit('createMessage', {
-            text: msg,
-            room: room,
-            sender: sender
-        }, function () {
-            $('#msg').val('');
-        });
-    })
+      socket.emit(
+        "createMessage",
+        {
+          text: msg,
+          room: room,
+          sender: sender
+        },
+        function() {
+          $("#msg").val("");
+        }
+      );
 
+      $.ajax({
+        url: "/group/" + room,
+        type: "POST",
+        data: {
+          message: msg,
+          groupName: room
+        },
+        success: function() {
+          $("#msg").val("");
+        }
+      })
+    });
 
 });

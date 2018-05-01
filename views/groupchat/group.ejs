@@ -103,7 +103,7 @@
                                         <h3 class="modal-title" id="name"></h3>
                                     </div>
                                     <div class="modal-body btn-group">
-                                        <form action="" method="POST" id="add_friend">
+                                        <form action="" method="post" id="add_friend">
                                             <input type="hidden" name="receiverName" id="receiverName" value="">
                                             <input type="hidden" name="sender-name" id="sender-name" value="<%= user.username %>">
                                             <button type="submit" id="friend-add" class="btn add btn width-150 swal-btn-success-2">
@@ -193,16 +193,17 @@
                         </div>
                     </div>
                     
-                    <form action="" id="message-form" method="POST" value="<%= groupName %>">
-                    <input type="hidden" action="" id="sender" name="sender" method="POST" value="<%= user.username%>">
+                    <form action="" id="message-form" method="POST" >
+                    <input type="hidden" name="groupName" id="groupName" value="<%= groupName %>">
+                    <input type="hidden" name="sender" id="sender" value="<%= user.username %>">
                     <div class="form-group padding-top-20 margin-bottom-0">
                         <input type="hidden" name="" id="groupName" value="<%= groupName %>">
-                        <textarea id="msg" class="form-control adjustable-textarea" placeholder="Type and press enter" style="overflow-x: hidden; word-wrap: break-word; resize: none; overflow-y: visible;"></textarea>
+                        <textarea name="message" id="msg" class="form-control adjustable-textarea" placeholder="Type and press enter" style="overflow-x: hidden; word-wrap: break-word; resize: none; overflow-y: visible;"></textarea>
                         <button id="send-message" class="btn btn-primary width-200 margin-top-10">
                             <i class="fa fa-send margin-right-5"></i>
                             Send
                         </button>
-                        <button class="btn btn-link margin-top-10">
+                        <button type="file" class="btn btn-link margin-top-10">
                             Attach File
                         </button>
                     </div>
@@ -228,49 +229,49 @@
 
 <!-- Page Scripts -->
 <script>
-    $(function() {
+    // $(function() {
 
-        ///////////////////////////////////////////////////
-        // SIDEBAR CURRENT STATE
+    //     ///////////////////////////////////////////////////
+    //     // SIDEBAR CURRENT STATE
 
-        $('.messaging-list-item').on('click', function(){
-            $('.messaging-list-item').removeClass('current');
-            $(this).addClass('current');
-        });
+    //     $('.messaging-list-item').on('click', function(){
+    //         $('.messaging-list-item').removeClass('current');
+    //         $(this).addClass('current');
+    //     });
 
-        ///////////////////////////////////////////////////////////
-        // CUSTOM SCROLL
-        if (!cleanUI.hasTouch) {
-            $('.custom-scroll').each(function() {
-                $(this).jScrollPane({
-                    autoReinitialise: true,
-                    autoReinitialiseDelay: 100
-                });
-                var api = $(this).data('jsp'),
-                        throttleTimeout;
-                $(window).bind('resize', function() {
-                    if (!throttleTimeout) {
-                        throttleTimeout = setTimeout(function() {
-                            api.reinitialise();
-                            throttleTimeout = null;
-                        }, 50);
-                    }
-                });
-            });
-        }
+    //     ///////////////////////////////////////////////////////////
+    //     // CUSTOM SCROLL
+    //     if (!cleanUI.hasTouch) {
+    //         $('.custom-scroll').each(function() {
+    //             $(this).jScrollPane({
+    //                 autoReinitialise: true,
+    //                 autoReinitialiseDelay: 100
+    //             });
+    //             var api = $(this).data('jsp'),
+    //                     throttleTimeout;
+    //             $(window).bind('resize', function() {
+    //                 if (!throttleTimeout) {
+    //                     throttleTimeout = setTimeout(function() {
+    //                         api.reinitialise();
+    //                         throttleTimeout = null;
+    //                     }, 50);
+    //                 }
+    //             });
+    //         });
+    //     }
 
-        ///////////////////////////////////////////////////////////
-        // MEDIA PLAYER
-        if (!(typeof angular === 'undefined')) {
-            $('.mediatec-cleanaudioplayer').cleanaudioplayer();
-            $('.mediatec-cleanvideoplayer').cleanvideoplayer();
-        }
+    //     ///////////////////////////////////////////////////////////
+    //     // MEDIA PLAYER
+    //     if (!(typeof angular === 'undefined')) {
+    //         $('.mediatec-cleanaudioplayer').cleanaudioplayer();
+    //         $('.mediatec-cleanvideoplayer').cleanvideoplayer();
+    //     }
 
-        ///////////////////////////////////////////////////////////
-        // ADJUSTABLE TEXTAREA
-        autosize($('.adjustable-textarea'));
+    //     ///////////////////////////////////////////////////////////
+    //     // ADJUSTABLE TEXTAREA
+    //     autosize($('.adjustable-textarea'));
 
-    });
+    // });
 </script>
 
 

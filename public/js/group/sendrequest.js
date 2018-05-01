@@ -18,6 +18,7 @@ $(document).ready(function() {
 
     socket.on('newFriendRequest', function(friend) {
         console.log(friend);
+        
     });
 
 
@@ -42,6 +43,6 @@ $(document).ready(function() {
             })
         }
     })
-   });
+   })
 
 });
