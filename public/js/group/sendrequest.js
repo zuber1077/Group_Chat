@@ -17,8 +17,9 @@ $(document).ready(function() {
     });
 
     socket.on('newFriendRequest', function(friend) {
-        console.log(friend);
-        
+        //console.log(friend);
+        //to load for notification automatically
+        $('#reload').load(location.href + ' #reload'); //load data from server
     });
 
 

@@ -163,19 +163,26 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-left" style="min-width: 100px;" aria-labelledby="contactsDropdown">
                             <h6 class="dropdown-header">Friend Request:</h6>
+                            <% if(data.request.length > 0) { %>
+                            <% _.forEach(data.request, function(val) { %>
+                            <div class="row">
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">
                                 <img src="" class="rounded-circle"
                                     style="width: 50px; height: 50px;">
                                 <div class="text-left user-item" style="display: inline-block; margin-left: 10px; width: 100px;">
-                                    FirstName
+                                    <%= val.username %>
                                 </div>
                                 <span class="text-right">
-                                    <input type="button" class="btn btn-primary btn-sm" value="Accept">
-                                    <input type="button" class="btn btn-default btn-sm" value="Reject">
+                                    <input type="submit" name="accept" id="accept_friend" class="btn btn-primary btn-sm" value="Accept">
+                                    <input type="submit" name="cancel" class="btn btn-default btn-sm" value="Reject">
                                 </span>
                             </a>
-                            
+                            </div>
+                            <% }) %>
+                            <% } else { %>
+                                <p class="text-center">No Friend Request</p>
+                            <% } %>    
                         </div>
                     </li>
             
