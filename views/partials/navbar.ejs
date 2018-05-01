@@ -147,11 +147,11 @@
                 </div>
             </div>
             <div class="menu-info-block">
-            <div class="left" id="reload">
+            <div class="left">
                 <div class="header-buttons">
                     <div class="dropdown">
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle mr-lg-2" id="contactsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item dropdown" id="reload">
+                        <a href="#" class="nav-link dropdown-toggle mr-lg-2" id="contactsDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-fw fa-bell"></i>
                             <b class="caret"></b>
                             <% if(data.totalRequest > 0) { %>
@@ -167,17 +167,26 @@
                             <% _.forEach(data.request, function(val) { %>
                             <div class="row">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="#"></a>
                                 <img src="" class="rounded-circle"
                                     style="width: 50px; height: 50px;">
                                 <div class="text-left user-item" style="display: inline-block; margin-left: 10px; width: 100px;">
                                     <%= val.username %>
                                 </div>
                                 <span class="text-right">
-                                    <input type="submit" name="accept" id="accept_friend" class="btn btn-primary btn-sm" value="Accept">
-                                    <input type="submit" name="cancel" class="btn btn-default btn-sm" value="Reject">
+                                    <!-- accept -->
+                                    <div class="accept">
+                                    <input type="hidden" name="senderId" id="senderId" value="<%= val.userId._id %>">
+                                    <input type="hidden" name="senderName" id="senderName" value="<%= val.username %>">
+                                    <input type="submit" name="accept" id="accept_friend" class="btn btn-primary btn-sm" value="accept">
+                                    </div>
+                                    <!-- cancel -->
+                                    <span class="accept">
+                                    <input type="hidden" name="user_Id" id="user_Id" value="<%= val.userId._id %>">
+                                    <input  type="submit" name="cancel" id="cancel_friend" class="btn btn-default btn-sm" value="cancel">
+                                    </span>
                                 </span>
-                            </a>
+                         
                             </div>
                             <% }) %>
                             <% } else { %>
@@ -193,7 +202,7 @@
         <style>
             .dropdown-item .user-item {
   white-space: normal;
-  vertical-align: middle;
+  vertical-align: middle: 
 }
         </style>
 

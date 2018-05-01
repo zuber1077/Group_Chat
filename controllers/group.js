@@ -66,6 +66,54 @@ module.exports = function(Users, async) {
 			], (err,results) => {
 				res.redirect('/group/'+req.params.name); 
 			});
+
+			async.parallel([ //updating z friend list object aray //for reciver request
+				function (callback) {
+					//this function is for updated 4 z reciver of z friend request whrn it is accpted
+					if(req.body.senderId){
+						Users.update({ //check doc inside user collection 
+							'_id': req.user._id,
+							'friendsList.friendId': {$ne: req.body.senderId}
+						}, {
+							$push: {friendsList: {
+								friendId: req.body.senderId,
+								friendName: req.body.senderName
+							}},
+							//remove data from db //aray
+							$pull: {request: {
+								userId: req.body.senderId,
+								username: req.body.senderName
+							}},
+							//total request value increce by 1
+							$inc: {totalRequest: -1}
+						}, (err, count) => {
+							callback(err, count);
+						});
+					}
+				},
+				function (callback) {
+					//this function is for updated 4 sender of z friend request whrn it is accpted by z receiver
+					if(req.body.senderId){
+						Users.update({ //update user doc inside user collection //reciver f R
+							'_id': req.body.senderId,
+							'friendsList.friendId': {$ne: req.user._id}
+						}, { //push data to friend list 
+							$push: {friendsList: {
+								friendId: req.user._id,
+								friendName: req.user.username
+							}},
+							//remove data from db //aray
+							$pull: {sentRequest: {
+								username: req.user.username
+							}},
+						}, (err, count) => {
+							callback(err, count);
+						});
+					}
+				}
+			], (err, results) => {
+				res.redirect('/group/'+req.params.name);
+			});
 		}
 	}
 }

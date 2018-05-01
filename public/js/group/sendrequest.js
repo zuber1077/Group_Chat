@@ -39,11 +39,28 @@ $(document).ready(function() {
             socket.emit('friendRequest', { //emit new event friendRequest 
                 receiver: receiverName,
                 sender: sender
-            }, function () {
+            }, function() {
                 console.log("Request sent");
             })
         }
-    })
-   })
+    })    
+   });
+   $('#accept_friend').on('click', function() {
+        var senderId = $('#senderId').val() ;
+        var senderName = $('#senderName').val();
+        
+        $.ajax({
+            url: '/group/'+room,
+            type: 'POST',
+            data: {
+                senderId: senderId,
+                senderName: senderName
+            },
 
+            success: function() {
+                $(this).parent().eq(1).remove();
+            }
+        });
+        $('#reload').load(location.href + ' #reload'); //load data from server
+   });
 });
