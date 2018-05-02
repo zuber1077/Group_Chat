@@ -62,10 +62,14 @@
 <div class="page-content-inner">
 
     <!-- Messaging -->
+    <input type="hidden" name="" id="name-user" value="<%= user.username %>">
+    <input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
+    
     <section class="panel panel-with-sidebar sidebar-large panel-with-borders messaging">
         <div class="panel-sidebar">
             <div class="messaging-search">
                 <div class="search-block">
+                    <h5 class="messaging-list-title-name">Online Friend <span id="numOfFriends"></span></h5>
                     <div class="form-input-icon form-input-icon-right">
                         <i class="icmn-search"></i>
                         <input type="text" class="form-control form-control-sm" placeholder="Search...">
@@ -73,6 +77,8 @@
                     </div>
                 </div>
             </div>
+            <% if(data.friendsList.length > 0) { %>
+            <% _.forEach(data.friendsList, function(value) { %>
             <div class="messaging-list">
                 <div class="messaging-list-item">
                     <div class="s1">
@@ -81,12 +87,18 @@
                         </a>
                     </div>
                     <div class="s2">
+                        
+                            
+                        
                         <small class="messaging-time">8:34PM</small>
-                        <div class="messaging-list-title-name">Barak Obama</div>
+                        <div class="messaging-list-title-name friend" hidden>@<%= value.friendName %></div>
                         <div class="messaging-list-title-last color-default">Hello! Where you are now? I want to talk. Hello! Where you are now? I want to talk</div>
+                       
                     </div>
                 </div>
             </div>
+            <% }) %>
+            <% } %>
         </div>
         <div class="panel-heading">
             <div class="pull-right">
@@ -291,6 +303,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/group/groupchat.js"></script>
 <script src="/js/group/sendrequest.js"></script>
+<script src="/js/global.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
 </body>
 </html>

@@ -5,12 +5,10 @@
 	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
 
 	<!-- Open Graph -->
-	<meta property="og:title" content="Your Page Title Here" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="Your Page Description Here" />
 
 	<!-- Twitter Theme -->
-	<meta name="twitter:widgets:theme" content="light">
 	
 	<!-- Title &amp; Favicon -->
 	<title>GPchat | group chat</title>
@@ -109,6 +107,8 @@
 
 				<!-- Filter Menu -->
 				<div class="section-block pt-0 pb-0 grid-filter-dropdown" data-target-grid="#product-grid">
+					<input type="hidden" name="" id="name-user" value="<%= user.username %>">
+					<input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
 					<div class="freeze pt-10 bkg-white" data-extra-space-top="80" data-extra-space-bottom="0">
 						<div class="row">
 							<div class="column width-12">
@@ -231,5 +231,6 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/js/group/sendrequest.js"></script>
 	<script src="/js/home.js"></script>
+	<script src="/js/global.js"></script>
 </body>
 </html>
