@@ -110,7 +110,41 @@ module.exports = function(Users, async) {
 							callback(err, count);
 						});
 					}
+				},	
+
+				function (callback) {
+					if(req.body.user_Id){
+						Users.update({ 
+							'_id': req.user._id,
+							'request.userId': {$eq: req.body.user_Id}
+						}, { 
+							//remove data from db //aray
+							$pull: {request: {
+								userId: req.body.user_Id
+							}},
+							$inc: {totalRequest: -1}
+						}, (err, count) => {
+							callback(err, count);
+						});
+					}
+				},
+				function (callback) {
+			
+					if(req.body.user_Id){
+						Users.update({ 
+							'_id': req.body.user_Id,
+							'sentRequest.username': {$eq: req.user.username}
+						}, { 
+							//remove data from db //aray
+							$pull: {sentRequest: {
+								username: req.user.username
+							}}
+						}, (err, count) => {
+							callback(err, count);
+						});
+					}
 				}
+
 			], (err, results) => {
 				res.redirect('/group/'+req.params.name);
 			});

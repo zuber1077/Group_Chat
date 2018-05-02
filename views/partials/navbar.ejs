@@ -165,7 +165,7 @@
                             <h6 class="dropdown-header">Friend Request:</h6>
                             <% if(data.request.length > 0) { %>
                             <% _.forEach(data.request, function(val) { %>
-                            <div class="row">
+                            <div class="row dropdown-item">
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#"></a>
                                 <img src="" class="rounded-circle"
@@ -175,11 +175,11 @@
                                 </div>
                                 <span class="text-right">
                                     <!-- accept -->
-                                    <div class="accept">
+                                    <span class="accept">
                                     <input type="hidden" name="senderId" id="senderId" value="<%= val.userId._id %>">
                                     <input type="hidden" name="senderName" id="senderName" value="<%= val.username %>">
                                     <input type="submit" name="accept" id="accept_friend" class="btn btn-primary btn-sm" value="accept">
-                                    </div>
+                                    </span>
                                     <!-- cancel -->
                                     <span class="accept">
                                     <input type="hidden" name="user_Id" id="user_Id" value="<%= val.userId._id %>">

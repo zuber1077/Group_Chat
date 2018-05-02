@@ -20,6 +20,44 @@ $(document).ready(function() {
         //console.log(friend);
         //to load for notification automatically
         $('#reload').load(location.href + ' #reload'); //load data from server
+
+        //accept friend with out refreshing the page
+        $(document).on('click','#accept_friend', function() {
+            var senderId = $('#senderId').val() ;
+            var senderName = $('#senderName').val();
+        
+                $.ajax({
+                    url: '/group/'+room,
+                    type: 'POST',
+                    data: {
+                        senderId: senderId,
+                        senderName: senderName
+                    },
+
+                    success: function() {
+                        $(this).parent().eq(1).remove();
+                    }
+                });
+                $('#reload').load(location.href + ' #reload'); //load data from server
+        });
+
+        //cancel friend req with out refrshing z page
+        $(document).on('click','#cancel_friend', function() {
+            var user_Id = $('#user_Id').val(); //get the method from inout
+        
+                $.ajax({
+                    url: '/group/'+room,
+                    type: 'POST',
+                    data: {
+                        user_Id: user_Id
+                    },
+
+                    success: function() {
+                        $(this).parent().eq(1).remove();
+                    }
+                });
+                $('#reload').load(location.href + ' #reload'); //load data from server
+        });
     });
 
 
@@ -45,6 +83,7 @@ $(document).ready(function() {
         }
     })    
    });
+
    $('#accept_friend').on('click', function() {
         var senderId = $('#senderId').val() ;
         var senderName = $('#senderName').val();
@@ -55,6 +94,24 @@ $(document).ready(function() {
             data: {
                 senderId: senderId,
                 senderName: senderName
+            },
+
+            success: function() {
+                $(this).parent().eq(1).remove();
+            }
+        });
+        $('#reload').load(location.href + ' #reload'); //load data from server
+   });
+
+//canceling f R
+   $('#cancel_friend').on('click', function() {
+       var user_Id = $('#user_Id').val(); //get the method from inout
+        
+        $.ajax({
+            url: '/group/'+room,
+            type: 'POST',
+            data: {
+                user_Id: user_Id
             },
 
             success: function() {
