@@ -7,10 +7,11 @@
 // const GridFsStorage = require("multer-gridfs-storage");
 // const Grid = require("gridfs-stream");
 
-module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto) {
+module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto, Users) {
     return {
         SetRouting: function (router) {
-            router.get("/home", this.homePage);  
+            router.get("/home", this.homePage); 
+            router.post('/home', this.postHomePage); 
         },
 
         homePage: function(req, res) {
@@ -37,7 +38,7 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto) {
                     gpNames.find({},(err,result)=>{
                         callback(err, result)
                     })
-                }
+                },
 
                 // function(callback) {
                 //     gpNames.aggregate({
@@ -47,10 +48,19 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto) {
                 //     },(err, newResult) =>{
                 //         callback(err, newResult);
                 //     });
-                // }
+                // },
+
+                function (callback) {
+					Users.findOne({'username': req.user.username})
+					.populate('request.userId')
+					.exec((err,result) => {
+						callback(err, result);
+					})
+				}
             ],(err, results)=>{
                 const res1 = results[0];
-                //const res2 = result[1];
+                // const res2 = results[1];
+                const res2 = results[1];
                 //console.log(res1);
                 const dataChunk = [];
                 const chunkSize = 4;
@@ -59,13 +69,34 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto) {
                 }
                 //console.log(dataChunk);
 
-               // const countrySort = _.sortBy(res2, '_id');
-               // country: countrySort
+               const countrySort = _.sortBy(res2, '_id');
+              // country: countrySort
 
-                 res.render("home", {title: 'GPchat - Home', user:req.user, data: dataChunk});
+                 res.render("home", {title: 'GPchat - Home', user:req.user, chunks: dataChunk, data: res2});
             })
 
             
+      },
+    //post route for add to fov
+      postHomePage: function(req, res) {
+          async.parallel([
+            function(callback) {
+                gpNames.update({ //taken to data 
+                    '_id': req.body.id, //find by id from users
+                    'fans.username': {$ne: req.user.username}//check the user exist
+                }, {
+                    $push: {fans: {
+                        username: req.user.username,
+                        email: req.user.email
+                    }}
+                }, (err, count) => {
+                    console.log(count);
+                    callback(err, count);
+                });
+            }
+          ], (err, results) => {
+              res.redirect('/home');
+          });
       }
     }
 }

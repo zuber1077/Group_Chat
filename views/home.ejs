@@ -123,12 +123,12 @@
 											<span class="dropdown-label mb-0 mb-mobile-30">Filter: </span>
 											<div class="dropdown medium inline-block" data-update-selection>
 												<a href="#" class="button rounded center border-grey-light color-grey bkg-hover-theme color-hover-white"><span>Sort Groups</span><span class="icon-down-open-mini pull-right"></span></a>
-												<% _.forEach(data, function(val) {  %>
+												<% _.forEach(chunks, function(val) {  %>
 												<ul class="dropdown-list">
 													
 													<li><a class="active" href="#" data-filter="*">All Groups</a></li>
 													<% _.forEach(val, function(val2) {  %>
-													<li><a href="/group/<%= val2.country %>" data-filter=".<%= val2.country %>"><%= val2.country %></a></li>
+													<li><a href="/group/<%= val2.country %>" data-filter="<%= val2.country %>"><%= val2.country %></a></li>
 													<% }) %>
 												</ul>
 												<% }) %>
@@ -143,18 +143,20 @@
 				<!-- Filter Menu End -->
 
 				<!-- Product Grid -->
-				<% _.forEach(data, function(val) {  %>
-				<div id="product-grid" class="section-block grid-container products fade-in-progressively pt-30 pb-0" data-layout-mode="masonry" data-grid-ratio="1.5" data-animate-resize data-animate-resize-duration="0">
+				<% _.forEach(chunks, function(val) {  %> 
+				<div id="product-grid" class="section-block grid-container products  fade-in-progressively pt-30 pb-0" data-layout-mode="masonry" data-grid-ratio="1.5" data-animate-resize data-animate-resize-duration="0"> <!-- last -->
 					
-					<div class="row">
+					<div class="row"> <!-- row start -->
 						
-						<div class="column width-12">
-							
+						<div class="column width-12"> <!-- col 12 strty -->
+							<form action="/home" method="POST" id="favorite">
 							<div class="row grid content-grid-4">
-								<% _.forEach(val, function(val2) {  %>
+								
+									<% _.forEach(val, function(val2) {  %>
+									
 								<div class="grid-item product grid-sizer <%= val2.country %>">
 									<div class="thumbnail rounded product-thumbnail border-grey-light img-scale-in" data-hover-easing="easeInOut" data-hover-speed="700" data-hover-bkg-color="#ffffff" data-hover-bkg-opacity="0.9">
-										<span class="onsale"><%= val2.country %></span>
+										<span class="onsale"><%= val2.country %><strong> [<%= val2.fans.length %>]</strong></span>
 										<a class="overlay-link" href="/group/<%= val2.country %>">
 											<img src="images/groups/grid/large-margins/product-1.jpg" alt=""/>
 											<span class="overlay-info">
@@ -166,30 +168,36 @@
 											</span>
 										</a>
 										<div class="product-actions center">
-											<a href="#" class="button add-to-cart-button rounded small">Add to Favorite →</a>
+											<input type="hidden" name="id" id="id" value="<%= val2._id %>">
+											<input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name%>">
+											<button class="button add-to-cart-button rounded small">Add to Favorite →</button>
 										</div>
 									</div>
 									<div class="product-details center">
 										<h3 class="product-title text-truncate">
 											<a href="<%= val2.name %>">
-												<%= val2.name %>
+												<%= val2.name %> 
 											</a>
 										</h3>
 										<div class="product-actions-mobile">
-											<a href="#" class="button add-to-cart-button rounded small">Add to Favorite →</a>
+											<input type="hidden" name="id" id="id" value="<%= val2._id %>">
+											<input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name %>">
+											<button class="button add-to-cart-button rounded small">Add to Favorite →</button>
 										</div>
 									</div>
 								</div>
+								
 								<% }) %>
 							</div>
-							
-						</div>
+							</form>
+							</div> <!-- col 12 end -->
+						</div> <!-- row end -->
 						
 
-					</div>
+					</div> <!-- last -->
 					<% }) %>
 
-				</div>
+				</div> <!-- all -->
 				
 				<!-- Product Grid End -->
 
@@ -220,5 +228,8 @@
 	<!-- Js -->
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/timber.master.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/group/sendrequest.js"></script>
+	<script src="/js/home.js"></script>
 </body>
 </html>
