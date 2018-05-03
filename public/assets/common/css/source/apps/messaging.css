@@ -20,8 +20,16 @@
     padding: 3px;
     background: #ffffff;
     position: relative;
-    top: -5px;
+    top: -15px;
     left: -5px;
+}
+
+.online_friend {
+    font-size: 10px;
+    color: rgba(129, 191, 57, 0.95);
+    position: relative;
+    float: right;
+   	 margin-top: 7px;
 }
 
 .messaging .messaging-list .messaging-list-item .avatar img {

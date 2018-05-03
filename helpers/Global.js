@@ -10,6 +10,22 @@ class Global {
         return roomName;
     }
 
+    RemoveUser(id){
+        var user = this.GetUser(id);
+        if(user){
+            this.users = this.globalRoom.filter(user => user.id !== id);
+        }
+        return user;
+    }
+
+    GetUser(id){
+        var getUser = this.globalRoom.filter((userId)=> {
+            //get all user id
+            return userId.id === id;
+        })[0];
+        return getUser;
+    }
+
     GetRoomList(room){
         var roomName = this.globalRoom.filter((user) => user.room === room ); //all room in z array that muches z room name be added into new array 
         var namesArray = roomName.map((user) => {

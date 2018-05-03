@@ -9,7 +9,7 @@ class Users {
         this.users.push(users);
         return users;
     }
-
+     //to remover from friend online list 
     RemoveUser(id){
         var user = this.GetUser(id);
         if(user){
