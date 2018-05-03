@@ -12,6 +12,8 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto, Users)
         SetRouting: function (router) {
             router.get("/home", this.homePage); 
             router.post('/home', this.postHomePage); 
+
+            router.get('/logout', this.logout);
         },
 
         homePage: function(req, res) {
@@ -96,6 +98,13 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto, Users)
             }
           ], (err, results) => {
               res.redirect('/home');
+          });
+      },
+
+      logout: function (req,res) {
+          req.logout();
+          req.session.destroy((err,) =>{
+            res.redirect('/');
           });
       }
     }
