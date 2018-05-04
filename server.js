@@ -26,7 +26,7 @@ const {Global} = require('./helpers/Global');
 const container = require("./container");
 
 
-container.resolve(function(users, _, admin, home, group){
+container.resolve(function(users, _, admin, home, group, results){
 
     mongoose.Promise = global.Promise;
     mongoose.Promise = Promise;
@@ -73,6 +73,7 @@ container.resolve(function(users, _, admin, home, group){
         admin.SetRouting(router);
         home.SetRouting(router);
         group.SetRouting(router);
+        results.SetRouting(router);
         
         app.use(router);
     }

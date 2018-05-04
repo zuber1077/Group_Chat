@@ -35,7 +35,7 @@
     "gridfs-stream": "^1.1.1",
     "https": "^1.0.0",
     "lodash": "^4.17.5",
-    "mongoose": "^5.0.15",
+    "mongoose": "^5.0.17",
     "multer": "^1.3.0",
     "multer-gridfs-storage": "^3.0.1",
     "multer-s3": "^2.7.0",

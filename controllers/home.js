@@ -7,7 +7,7 @@
 // const GridFsStorage = require("multer-gridfs-storage");
 // const Grid = require("gridfs-stream");
 
-module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto, Users) {
+module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users) {
     return {
         SetRouting: function (router) {
             router.get("/home", this.homePage); 
@@ -17,26 +17,9 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto, Users)
         },
 
         homePage: function(req, res) {
-            // gfs.files.find().toArray((err, files) => {
-            //   if (!files || files.length === 0) {
-            //     res.render("home", { files: false });
-            //   } else {
-            //     files.map(file => {
-            //       if (file.contentType === "image/jpeg" || file.contentType === "image/png") {
-            //         file.isImage = true;
-            //       } else {
-            //         file.isImage = false;
-            //       }
-            //     });
-            //     // res.render("home", { files: files });
-            //   }
-              // File Exists
-
-              //return res.json(files);
-            // });
 
             async.parallel([
-                function (callback) {
+                function(callback) {
                     gpNames.find({},(err,result)=>{
                         callback(err, result)
                     })
@@ -59,22 +42,22 @@ module.exports = function (async, gpNames, _, gfs, find, mu, mu2, crypto, Users)
 						callback(err, result);
 					})
 				}
-            ],(err, results)=>{
+            ],(err, results) =>{
                 const res1 = results[0];
-                // const res2 = results[1];
                 const res2 = results[1];
+               // const res3 = results[2];
                 //console.log(res1);
                 const dataChunk = [];
                 const chunkSize = 4;
                 for (let i = 0; i < res1.length; i += chunkSize){
                     dataChunk.push(res1.slice(i, i+chunkSize));
                 }
-                //console.log(dataChunk);
+               // console.log(res2);
 
-               const countrySort = _.sortBy(res2, '_id');
-              // country: countrySort
+               //const countrySort = _.sortBy(res2, '_id');
+              // 
 
-                 res.render("home", {title: 'GPchat - Home', user:req.user, chunks: dataChunk, data: res2});
+                 res.render('home', {title: 'GPchat - Home', user:req.user, chunks: dataChunk, data: res2});
             })
 
             

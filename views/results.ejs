@@ -16,37 +16,7 @@
 
 	<!-- Font -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/vendors/jscrollpane/style/jquery.jscrollpane.css">
 	
-	<link rel="stylesheet" type="text/css" href="../assets/vendors/select2/dist/css/select2.min.css">
-	
-	
-	
-	<!-- Clean UI Styles -->
-	<link rel="stylesheet" type="text/css" href="../assets/common/css/source/main.css">
-	
-	<!-- Vendors Scripts -->
-	<!-- v1.0.0 -->
-	<script src="../assets/vendors/jquery/jquery.min.js"></script>
-	<script src="../assets/vendors/tether/dist/js/tether.min.js"></script>
-	<script src="../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../assets/vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-	<script src="../assets/vendors/jscrollpane/script/jquery.jscrollpane.min.js"></script>
-	<script src="../assets/vendors/spin.js/spin.js"></script>
-	<script src="../assets/vendors/ladda/dist/ladda.min.js"></script>
-	<script src="../assets/vendors/select2/dist/js/select2.full.min.js"></script>
-	<script src="../assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
-	<script src="../assets/vendors/jquery-typeahead/dist/jquery.typeahead.min.js"></script>
-	<script src="../assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-	<script src="../assets/vendors/autosize/dist/autosize.min.js"></script>
-	<!-- <script src="../assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script> -->
-	<script src="../assets/vendors/moment/min/moment.min.js"></script>
-	<script src="../assets/vendors/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-	
-	<!-- Clean UI Scripts -->
-	<script src="../assets/common/js/common.js"></script>
-	<script src="../assets/common/js/demo.temp.js"></script>
 	<!-- Css -->
 	<link rel="stylesheet" href="css/core.min.css" />
 	<link rel="stylesheet" href="css/skin.css" />
@@ -90,45 +60,13 @@
 									<a href="/home"><img src="images/logo-dark.png" alt="GPchat Logo" /></a>
 									<a href="/home"><img src="images/logo.png" alt="GPchat Logo" /></a>
 								</div>
-								
 							</div>
 						</div>
 					</div>
 				</div>
 			</header>
-			
 			<!-- Header End -->
-			<style>
-				.search-style {
-					width: 50%;
-					margin: 0 auto;
-					}
-
-				.new-search-bar {
-					padding-left: 20px;
-					border-top-left-radius: 25px;
-					border-bottom-left-radius: 25px;
-					height: 52px;
-					font-size: 17px;
-					border: 1px;
-					}
-					.input-btn {
-						background-color: #387ed1;
-   						background-image: linear-gradient(90deg,#42b0ff,#4262ff);
-						border-top-right-radius: 25px !important;
-						border-bottom-right-radius: 25px !important;
-						padding-left: 23px;
-						padding-right: 23px;
-						border: none;
-						height: 52px;
-						font-size: 15px;
-						font-weight: 400;
-						font-size: 20px;
-						letter-spacing: 0.3px;
-						text-shadow:none;
-						color:white !important;
-					}
-			</style>
+			
 
 			<!-- Content -->
 			<div class="content clearfix">
@@ -140,18 +78,6 @@
 							<div class="title-container">
 								<div class="title-container-inner">
 									<div class="row flex">
-										<div class="col-md-12">
-											<form action="/results" method="post">
-												<div class="form-group ad-30" style="margin-top:8px;">
-													<div class="input-group search-style">
-														<input class="form-control new-search-bar" name="country" id="search" placeholder="Search For Groups" type="text">
-														<span class="input-group-btn">
-															<button class="btn input-btn " type="" id="search-form">Search</button>
-														</span>
-													</div>
-												</div>
-											</form>
-										</div>
 										<div class="column width-6 v-align-middle">
 											<div>
 												<h1 class="mb-0">JOIN TO JOIN</h1>
@@ -195,23 +121,7 @@
 											</div>
 										</div>
 										
-										<div class="column width-4 right left-on-mobile">
-											<span class="dropdown-label mb-0 mb-mobile-30">Filter: </span>
-											<div class="dropdown medium inline-block" data-update-selection>
-												<a href="#" class="button rounded center border-grey-light color-grey bkg-hover-theme color-hover-white"><span>Sort Groups</span><span class="icon-down-open-mini pull-right"></span></a>
-												<% _.forEach(chunks, function(val) {  %>
-												<ul class="dropdown-list">
-													
-													<li><a class="active" href="#" data-filter="*">All Groups</a></li>
-													<% _.forEach(val, function(val2) {  %>
-													<li name="country" id="country" ><a href="/group/<%= val2.country %>" data-filter="<%= val2.country %>"><%= val2.country %></a></li>
-													<% }) %>
-													<!-- </ul> -->
-												<% }) %>
-												</ul>
-											</div>
-											<button style="margin: 0 0 0 0;" class="button small rounded bkg-theme bkg-hover-theme color-white color-hover-white">Apply</button>
-										</div>
+										<!--  -->
 									</div>
 								</div>
 							</div>
