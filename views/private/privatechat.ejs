@@ -41,7 +41,7 @@
     <!-- Profile -->
     <div class="row">
         <div class="col-xl-4">
-            <section class="panel profile-user" style="background-image: url(../assets/common/img/temp/photos/4.jpeg)">
+            <section class="panel profile-user" style="background-image: url()">
                 <div class="panel-body">
                     <div class="profile-user-title text-center">
                         <a class="avatar" href="javascript:void(0);">
@@ -194,73 +194,6 @@
         autosize($('.adjustable-textarea'));
 
         ///////////////////////////////////////////////////////////
-        // MEDIA PLAYER
-        if (!(typeof angular === 'undefined')) {
-            $('.mediatec-cleanaudioplayer').cleanaudioplayer();
-            $('.mediatec-cleanvideoplayer').cleanvideoplayer();
-        }
-
-        ///////////////////////////////////////////////////////////
-        // CALENDAR
-        $('.example-calendar-block').fullCalendar({
-            //aspectRatio: 2,
-            height: 450,
-            header: {
-                left: 'prev, next',
-                center: 'title',
-                right: 'month, agendaWeek, agendaDay'
-            },
-            buttonIcons: {
-                prev: 'none fa fa-arrow-left',
-                next: 'none fa fa-arrow-right',
-                prevYear: 'none fa fa-arrow-left',
-                nextYear: 'none fa fa-arrow-right'
-            },
-            Actionable: true,
-            eventLimit: true, // allow "more" link when too many events
-            viewRender: function(view, element) {
-                if (!cleanUI.hasTouch) {
-                    $('.fc-scroller').jScrollPane({
-                        autoReinitialise: true,
-                        autoReinitialiseDelay: 100
-                    });
-                }
-            },
-            eventClick: function(calEvent, jsEvent, view) {
-                if (!$(this).hasClass('event-clicked')) {
-                    $('.fc-event').removeClass('event-clicked');
-                    $(this).addClass('event-clicked');
-                }
-            },
-            defaultDate: '2016-05-12',
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: '2016-05-01',
-                    className: 'fc-event-success'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2016-05-09T16:00:00',
-                    className: 'fc-event-default'
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: '2016-05-16T16:00:00',
-                    className: 'fc-event-success'
-                },
-                {
-                    title: 'Conference',
-                    start: '2016-05-11',
-                    end: '2016-05-14',
-                    className: 'fc-event-danger'
-                }
-            ]
-        });
-
-        ///////////////////////////////////////////////////////////
         // SWAL ALERTS
         $('.swal-btn-success').click(function(e){
             e.preventDefault();
@@ -291,9 +224,10 @@
 
 <div class="main-backdrop"><!-- --></div>
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/group/groupchat.js"></script>
+<script src="/js/privatechat/privateMessage.js"></script>
 <script src="/js/group/sendrequest.js"></script>
 <script src="/js/global.js"></script>
+<script src="/js/deparam.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
 
 </body>
