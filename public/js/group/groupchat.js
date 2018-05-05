@@ -45,8 +45,8 @@ $(document).ready(function () {
 
 
     socket.on('newMessage', function (data) {
-        console.log(data);
-
+       // console.log(data);
+        //template for message desplaying
         var template = $('#message-template').html();
         var message = Mustache.render(template, {
             text: data.text,
@@ -62,28 +62,26 @@ $(document).ready(function () {
       var msg = $("#msg").val();
 
       socket.emit(
-        "createMessage",
-        {
+        "createMessage",{
           text: msg,
           room: room,
           sender: sender
         },
         function() {
           $("#msg").val("");
-        }
-      );
+        });
 
-      $.ajax({
-        url: "/group/" + room,
-        type: "POST",
-        data: {
-          message: msg,
-          groupName: room
-        },
-        success: function() {
-          $("#msg").val("");
-        }
-      })
+    //   $.ajax({
+    //     url: "/group/" + room,
+    //     type: "POST",
+    //     data: {
+    //       message: msg,
+    //       groupName: room
+    //     },
+    //     success: function() {
+    //       $("#msg").val("");
+    //     }
+    //   })
     });
 
 });

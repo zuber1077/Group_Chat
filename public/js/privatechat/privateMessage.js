@@ -11,6 +11,41 @@ $(document).ready(function () {
     swap(newParam, 0, 1);
     //console.log('2', newParam);
     var paramTwo = newParam[0]+'.'+newParam[1];
+
+    socket.on('connect', function () {
+        var params = {
+            room1: paramOne,
+            room2: paramTwo
+        }
+
+        socket.emit('join PM', params);
+    });
+     //template for desplaying message using Mustache
+    socket.on('new message', function(data) {
+        var template = $('#message-template').html();
+        var message = Mustache.render(template, {
+            text: data.text,
+            sender: data.sender
+        });
+        $('#messages').append(message);
+    });
+
+    $("#message_form").on("submit", function(e) {
+        e.preventDefault();
+
+        var msg = $("#msg").val();
+        var sender = $('#name-user').val();
+
+        if(msg.trim().length > 0){
+            socket.emit("private message", {
+                text: msg,
+                sender: sender,
+                room: paramOne
+            }, function() {
+                $("#msg").val('');// once user click on the button clear input field
+            });
+        }
+    });
 });
 
 function swap(input, value_1, value_2) {
