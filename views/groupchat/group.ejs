@@ -77,17 +77,20 @@
                     </div>
                 </div>
             </div>
-            <% if(data.friendsList.length > 0) { %>
-            <% _.forEach(data.friendsList, function(value) { %>
+            
             <div class="messaging-list">
                 <div class="messaging-list-item">
-                    <div class="s2">                        
-                        <div class="messaging-list-title-name friend" hidden>@<%= value.friendName %></div>
+                    <div class="s2">
+                        <% if(data.friendsList.length > 0) { %>
+                            <% _.forEach(data.friendsList, function(value) { %>
+                        <div class="friend" hidden>@<%= value.friendName %></div>
+                    <% }) %>
+                        <% } %>
                     </div>
                 </div>
+                
             </div>
-            <% }) %>
-            <% } %>
+        
         </div>
         <div class="panel-heading">
             <div class="pull-right">
@@ -95,7 +98,7 @@
                     <a href="javascript: void(0);" class="dropdown-toggle dropdown-inline-button" data-toggle="dropdown" aria-expanded="false">
                         <i class="dropdown-inline-button-icon icmn-users4"></i>
                         <span class="">
-                        <%= groupName %> Onlines</span>
+                        <%= groupName.replace(/-/g, " ") %> Onlines</span>
                         <span id="numValue" class="caret">(0)</span>
                     </a>
                     <ul id="users"  class="dropdown-menu dropdown-menu-right" aria-labelledby="" role="menu">
@@ -141,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            <h6 class="messaging-title"><%= groupName %></h6>
+            <!-- <h6 class="messaging-title"><%= groupName %></h6> -->
         </div>
         
 

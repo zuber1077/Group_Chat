@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><%= title %></title>
+
+<%- include ../partials/navbar.ejs %>
+<section class="page-content">
+<div class="page-content-inner">
+
+    <!-- Profile Header -->
+
+    <input type="hidden" name="" id="name-user" value="<%= user.username %>">
+    <input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
+    <nav class="top-submenu top-submenu-with-background">
+        <div class="profile-header">
+            <div class="profile-header-info">
+                <div class="row">
+                    <!-- <div class="col-xl-8 col-xl-offset-4">
+                        <div class="width-100 text-center pull-right hidden-md-down">
+                            <h2>154</h2>
+                            <p>Followers</p>
+                        </div>
+                        <div class="width-100 text-center pull-right hidden-md-down">
+                            <h2>17</h2>
+                            <p>Posts</p>
+                        </div>
+                        <div class="profile-header-title">
+                            <h2>Artour Scott <small>@</small></h2>
+                            <p>Founder / CEO</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Profile Header -->
+
+    <!-- Profile -->
+    <div class="row">
+        <div class="col-xl-4">
+            <section class="panel profile-user" style="background-image: url(../assets/common/img/temp/photos/4.jpeg)">
+                <div class="panel-body">
+                    <div class="profile-user-title text-center">
+                        <a class="avatar" href="javascript:void(0);">
+                            <img src="../assets/common/img/temp/avatars/1.jpg" alt="Alternative text to the image">
+                        </a>
+                        <br />
+                        <h3 style="color: #fff"><%= user.username %></h3>
+                        <div class="btn-group btn-group-justified" aria-label="" role="group">
+                            <!-- <div class="btn-group">
+                                <button type="button" class="btn width-150 swal-btn-success">Follow</button>
+                            </div> -->
+                            <div class="btn-group">
+                                <button type="button" class="btn width-150 swal-btn-success-2">Add to Friend</button>
+                            </div>
+                        </div>
+                        <br />
+                        <p>Last activity: 13 May 2016 7:26PM</p>
+                        <p>
+                            <span class="donut donut-success"></span>
+                            Online
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <div class="widget widget-three messaging">
+                 <div class="panel-sidebar">
+            <div class="messaging-search">
+                <div class="search-block">
+                    <h5 class="messaging-list-title-name">Online Friend <span id="numOfFriends"></span></h5>
+                    <div class="form-input-icon form-input-icon-right">
+                        <i class="icmn-search"></i>
+                        <input type="text" class="form-control form-control-sm" placeholder="Search...">
+                        <button type="submit" class="search-block-submit "></button>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="messaging-list">
+                <div class="messaging-list-item">
+                    <div class="s2">
+                         <% if(data.friendsList.length > 0) { %>
+                        <% _.forEach(data.friendsList, function(value) { %>
+                        <div class="friend" hidden>@<%= value.friendName %></div>
+                        <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+                
+            </div>
+        
+        </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <section class="panel profile-user-content">
+                <div class="panel-body">
+                    <div class="nav-tabs-horizontal">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <!-- <li class="nav-item">
+                                <a class="nav-link active" href="javascript: void(0);" data-toggle="tab" data-target="#posts" role="tab">
+                                    <i class="icmn-menu3"></i>
+                                    Wall
+                                </a>
+                            </li> -->
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="javascript: void(0);" data-toggle="tab" data-target="#messaging" role="tab">
+                                    <i class="icmn-bubbles5"></i>
+                                    Messages
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content padding-vertical-20">
+                            <!--  -->
+                            <div class="tab-pane active" id="messaging" role="tabpanel">
+                                <div class="conversation-block">
+                                    <!-- <div class="conversation-item">
+                                        <div class="s1">
+                                            <a class="avatar" href="javascript:void(0);">
+                                                <img src="../assets/common/img/temp/avatars/3.jpg" alt="Alternative text to the image" />
+                                            </a>
+                                        </div>
+                                        <div class="s2">
+                                            <strong>zuber AB</strong>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                        </div>
+                                    </div> -->
+                            <script id="message-template" type="text/template">
+                                <div class="conversation-item">
+                                <div class="s1">
+                                    <a class="avatar" href="javascript:void(0);">
+                                        <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
+                                    </a>
+                                </div>
+                                <div class="s2">
+                                    <strong>{{ sender }}</strong>
+                                    <p>{{ text }}</p>
+                                </div>
+                                </div>
+                             </script>
+
+
+                       
+                        <!-- <script id="message-template" type="text/template">
+                             <div class="conversation-item you">
+                            <div class="s1">
+                                <a class="avatar" href="javascript:void(0);">
+                                    <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
+                                </a>
+                            </div>
+                            <div class="s2">
+                                <strong>{{ sender }}</strong>
+                                <p>{{ text }}</p>
+                            </div>
+                            </div>
+                            </script> -->
+
+                                  <div class="conversation-item you">
+                                    </div>
+                                </div>
+                                <form action="" id="message_form" method="POST" >
+                                <div class="form-group padding-top-20 margin-bottom-0">
+                                    <input type="hidden" name="" id="groupName" value="">
+                                    <textarea name="message" id="msg" class="form-control adjustable-textarea" placeholder="Type and press enter" style="overflow-x: hidden; word-wrap: break-word; resize: none; overflow-y: visible;"></textarea>
+                                    <button id="send-message" class="btn btn-primary width-200 margin-top-10">
+                                        <i class="fa fa-send margin-right-5"></i>
+                                        Send
+                                    </button>
+                                    <button type="file" class="btn btn-link margin-top-10">
+                                        Attach File
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- End Profile -->
+
+</div>
+
+<!-- Page Scripts -->
+<script>
+    $(function() {
+
+        ///////////////////////////////////////////////////////////
+        // ADJUSTABLE TEXTAREA
+        autosize($('.adjustable-textarea'));
+
+        ///////////////////////////////////////////////////////////
+        // MEDIA PLAYER
+        if (!(typeof angular === 'undefined')) {
+            $('.mediatec-cleanaudioplayer').cleanaudioplayer();
+            $('.mediatec-cleanvideoplayer').cleanvideoplayer();
+        }
+
+        ///////////////////////////////////////////////////////////
+        // CALENDAR
+        $('.example-calendar-block').fullCalendar({
+            //aspectRatio: 2,
+            height: 450,
+            header: {
+                left: 'prev, next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },
+            buttonIcons: {
+                prev: 'none fa fa-arrow-left',
+                next: 'none fa fa-arrow-right',
+                prevYear: 'none fa fa-arrow-left',
+                nextYear: 'none fa fa-arrow-right'
+            },
+            Actionable: true,
+            eventLimit: true, // allow "more" link when too many events
+            viewRender: function(view, element) {
+                if (!cleanUI.hasTouch) {
+                    $('.fc-scroller').jScrollPane({
+                        autoReinitialise: true,
+                        autoReinitialiseDelay: 100
+                    });
+                }
+            },
+            eventClick: function(calEvent, jsEvent, view) {
+                if (!$(this).hasClass('event-clicked')) {
+                    $('.fc-event').removeClass('event-clicked');
+                    $(this).addClass('event-clicked');
+                }
+            },
+            defaultDate: '2016-05-12',
+            events: [
+                {
+                    title: 'All Day Event',
+                    start: '2016-05-01',
+                    className: 'fc-event-success'
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: '2016-05-09T16:00:00',
+                    className: 'fc-event-default'
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: '2016-05-16T16:00:00',
+                    className: 'fc-event-success'
+                },
+                {
+                    title: 'Conference',
+                    start: '2016-05-11',
+                    end: '2016-05-14',
+                    className: 'fc-event-danger'
+                }
+            ]
+        });
+
+        ///////////////////////////////////////////////////////////
+        // SWAL ALERTS
+        $('.swal-btn-success').click(function(e){
+            e.preventDefault();
+            swal({
+                title: "Following",
+                text: "Now you are following zuber",
+                type: "success",
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Ok"
+            });
+        });
+
+        $('.swal-btn-success-2').click(function(e){
+            e.preventDefault();
+            swal({
+                title: "Friends request",
+                text: "Friends request was succesfully sent to zuber",
+                type: "success",
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Ok"
+            });
+        });
+
+    });
+</script>
+<!-- End Page Scripts -->
+</section>
+
+<div class="main-backdrop"><!-- --></div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/group/groupchat.js"></script>
+<script src="/js/group/sendrequest.js"></script>
+<script src="/js/global.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+
+</body>
+</html>

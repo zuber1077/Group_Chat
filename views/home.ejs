@@ -114,7 +114,7 @@
 					}
 					.input-btn {
 						background-color: #387ed1;
-   						background-image: linear-gradient(90deg,#42b0ff,#4262ff);
+   						background-image: linear-gradient(90deg,#212325,#4262ff);
 						border-top-right-radius: 25px !important;
 						border-bottom-right-radius: 25px !important;
 						padding-left: 23px;
@@ -236,7 +236,7 @@
 								<div class="grid-item product grid-sizer <%= val2.country %>">
 									<div class="thumbnail rounded product-thumbnail border-grey-light img-scale-in" data-hover-easing="easeInOut" data-hover-speed="700" data-hover-bkg-color="#ffffff" data-hover-bkg-opacity="0.9">
 										<span class="onsale"><%= val2.country %><strong> [<%= val2.fans.length %>]</strong></span>
-										<a class="overlay-link" href="/group/<%= val2.country %>">
+							<a class="overlay-link" href="/group/<%= val2.name.replace(/ /g, "-") %>">
 											<img src="images/groups/grid/large-margins/product-1.jpg" alt=""/>
 											<span class="overlay-info">
 												<span>
