@@ -5,8 +5,12 @@ $(document).ready(function () {
 
     var paramOne = $.deparam(window.location.pathname);
     //console.log(paramOne);
-
     var newParam = paramOne.split('.');
+
+    //desplay reciver name
+    var username = newParam[0];
+    $('#receiver_name').text('@'+username);
+    
     //console.log('1', newParam);
     swap(newParam, 0, 1);
     //console.log('2', newParam);
@@ -46,6 +50,24 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('#send-message').on('click', function() {
+        var message = $('#msg').val();
+
+
+        $.ajax({
+            url: '/chat/'+paramOne,
+            type: 'POST',
+            data: { //m as key Name // m as value 1
+                message: message
+            },
+
+            success: function () {
+                $('#msg').val(''); //Empity text message
+            }
+        });
+    });
+
 });
 
 function swap(input, value_1, value_2) {
