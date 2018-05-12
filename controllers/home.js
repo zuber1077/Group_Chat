@@ -7,7 +7,7 @@
 // const GridFsStorage = require("multer-gridfs-storage");
 // const Grid = require("gridfs-stream");
 
-module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users, Message) {
+module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users, Message, FriendResult) {
     return {
         SetRouting: function (router) {
             router.get("/home", this.homePage); 
@@ -111,22 +111,24 @@ module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users, 
                 });
             },
 
-            function (callback) {
-					if(req.body.chatId){
-						Message.update({
-							'_id': req.body.chatId
-						},
-						{
-							"isRead": true
-						}, (err, done) => {
-							console.log(done);
-							callback(err, done);
-						})	
-					}
-				}
+            // function (callback) {
+			// 		if(req.body.chatId){
+			// 			Message.update({
+			// 				'_id': req.body.chatId
+			// 			},
+			// 			{
+			// 				"isRead": true
+			// 			}, (err, done) => {
+			// 				console.log(done);
+			// 				callback(err, done);
+			// 			})	
+			// 		}
+			// 	}
           ], (err, results) => {
               res.redirect('/home');
           });
+
+          FriendResult.PostRequest(req, res, '/home');
       },
 
       logout: function (req,res) {
