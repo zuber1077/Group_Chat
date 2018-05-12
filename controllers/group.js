@@ -49,12 +49,21 @@ module.exports = function(Users, async, Message, FriendResult, Group) {
 						}
 					)
 				},
+				//get all doc inside groupMessage collection
+				function(callback) {
+					Group.find({})
+						.populate('sender')
+						.exec((err, result) => {
+							callback(err, result);
+						});
+				}
 
 			], (err, results) => {
 				const result1 = results[0];
 				const result2 = results[1];
+				const result3 = results[2];
 				
-				res.render('groupchat/group' ,{title: 'GPchat - Group ', user:req.user, groupName: name, data: result1, chat: result2});
+				res.render('groupchat/group' ,{title: 'GPchat - Group ', user:req.user, groupName: name, data: result1, chat: result2, groupMsg: result3});
 			});
 		},
 
@@ -72,7 +81,7 @@ module.exports = function(Users, async, Message, FriendResult, Group) {
 						group.createdAt = new Date();
 
 						group.save((err, msg) => {
-							console.log(msg);
+							//console.log(msg);
 							callback(err, msg);
 						})
 					}

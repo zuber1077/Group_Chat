@@ -157,17 +157,22 @@
                 <div class="col-lg-12">
                     <div class="conversation-block height-700 custom-scroll">
                         <div id="messages" class="conversation-item">
-                            <!-- <div>
+                            <% _.forEach(groupMsg, function(val) { %>
+                                <!-- if statment for match groupName -->
+                                <% if(groupName === val.name) { %>
+                            <div class="conversation-item">
                             <div class="s1">
                                 <a class="avatar" href="javascript:void(0);">
                                     <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
                                 </a>
                             </div>
                             <div class="s2">
-                                <strong>username</strong>
-                                <p>message</p>
+                                <strong><%= val.sender.username %></strong>
+                                <p><%= val.body %></p>
                             </div>
-                            </div> -->
+                            </div>
+                                <% } %>
+                            <% }) %>
                         </div>
 
                         <script id="message-template" type="text/template">
