@@ -35,12 +35,14 @@ Copyright: ThemeMountain
 27. E-Commerce
 28. Component Styling
 29. Resolution Media Queries
+29. search group
 
 -------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------
 [1. Typography]
 */
+
 
 body{
 	font-family: 'Hind Madurai', 'Helvetica Neue', sans-serif;
@@ -4774,3 +4776,35 @@ only screen and (				min-resolution: 2dppx) {
 		background-image: url(../images/generic/box-3@2x.jpg);
 	}
 }
+
+/* search group */
+
+.search-style {
+					width: 50%;
+					margin: 0 auto;
+					}
+
+				.new-search-bar {
+					padding-left: 20px;
+					border-top-left-radius: 25px;
+					border-bottom-left-radius: 25px;
+					height: 52px;
+					font-size: 17px;
+					border: 1px;
+					}
+					.input-btn {
+						background-color: #387ed1;
+   						background-image: linear-gradient(90deg,#6773f1,#395afc);
+						border-top-right-radius: 25px !important;
+						border-bottom-right-radius: 25px !important;
+						padding-left: 23px;
+						padding-right: 23px;
+						border: none;
+						height: 52px;
+						font-size: 15px;
+						font-weight: 400;
+						font-size: 20px;
+						letter-spacing: 0.3px;
+						text-shadow:none;
+						color:white !important;
+					}

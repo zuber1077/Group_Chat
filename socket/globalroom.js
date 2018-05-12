@@ -1,6 +1,6 @@
 
 
-module.exports = function (io, Global, _) {
+module.exports = function(io, Global, _) {
     const clients = new Global();
 
     io.on('connection', (socket) => {

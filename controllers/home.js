@@ -18,9 +18,9 @@ module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users) 
 
         homePage: function(req, res) {
 
-            async.parallel([
+            async.parallel([ //allow each function that be added to run in parallel
                 function(callback) {
-                    gpNames.find({},(err,result)=>{
+                    gpNames.find({},(err,result)=>{ //stored insise result
                         callback(err, result)
                     })
                 },
@@ -54,7 +54,7 @@ module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users) 
                 }
                // console.log(res2);
 
-               //const countrySort = _.sortBy(res2, '_id');
+              // const countrySort = _.sortBy(res2, '_id');
               // 
 
                  res.render('home', {title: 'GPchat - Home', user:req.user, chunks: dataChunk, data: res2});

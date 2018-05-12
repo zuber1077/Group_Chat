@@ -1,6 +1,6 @@
 
 
-$(document).ready(function () {
+$(document).ready(function() {
     var socket = io();
 
     var paramOne = $.deparam(window.location.pathname);
@@ -16,13 +16,17 @@ $(document).ready(function () {
     //console.log('2', newParam);
     var paramTwo = newParam[0]+'.'+newParam[1];
 
-    socket.on('connect', function () {
+    socket.on('connect', function() {
         var params = {
             room1: paramOne,
             room2: paramTwo
         }
 
         socket.emit('join PM', params);
+
+        socket.on('message display', function () {
+            $('#reload').load(location.href + ' #reload'); //load data from server
+        });
     });
      //template for desplaying message using Mustache
     socket.on('new message', function(data) {
@@ -34,19 +38,19 @@ $(document).ready(function () {
         $('#messages').append(message);
     });
 
-    $("#message_form").on("submit", function(e) {
+    $('#message_form').on('submit', function(e) {
         e.preventDefault();
 
-        var msg = $("#msg").val();
+        var msg = $('#msg').val();
         var sender = $('#name-user').val();
 
         if(msg.trim().length > 0){
-            socket.emit("private message", {
+            socket.emit('private message', {
                 text: msg,
                 sender: sender,
                 room: paramOne
             }, function() {
-                $("#msg").val('');// once user click on the button clear input field
+                $('#msg').val('');// once user click on the button clear input field
             });
         }
     });
@@ -62,12 +66,11 @@ $(document).ready(function () {
                 message: message
             },
 
-            success: function () {
+            success: function() {
                 $('#msg').val(''); //Empity text message
             }
-        });
+        })
     });
-
 });
 
 function swap(input, value_1, value_2) {

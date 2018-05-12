@@ -57,12 +57,12 @@ $(document).ready(function () {
     });
 
     $("#message-form").on("submit", function(e) {
-      e.preventDefault();
+      e.preventDefault(); //to nor reload the form once the form submited
 
-      var msg = $("#msg").val();
+      var msg = $("#msg").val(); //get data from an input field
 
       socket.emit(
-        "createMessage",{
+        "createMessage",{ 
           text: msg,
           room: room,
           sender: sender
@@ -71,17 +71,17 @@ $(document).ready(function () {
           $("#msg").val("");
         });
 
-    //   $.ajax({
-    //     url: "/group/" + room,
-    //     type: "POST",
-    //     data: {
-    //       message: msg,
-    //       groupName: room
-    //     },
-    //     success: function() {
-    //       $("#msg").val("");
-    //     }
-    //   })
+      $.ajax({
+        url: "/group/"+room,
+        type: "POST",
+        data: {
+          message: msg,
+          groupName: room
+        },
+        success: function() {
+          $("#msg").val("");
+        }
+      })
     });
 
 });

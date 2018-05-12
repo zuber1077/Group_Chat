@@ -1,3 +1,4 @@
+//register as dependecise //what ever use pass us parameter
 const dependable = require('dependable');
 const path = require('path'); //tell dependable to go any folder we pesefied here /to look for 
 
@@ -12,6 +13,7 @@ const dependencies = [//this arrayz
  // ['User', './models/user'],
 //   ['user','./controllers/users'],
   ['Users', './models/user'],
+  ['Message', './models/message'],
   ['aws','./helpers/AWSUpload'],
   ['gfs','gridfs-stream'],
   ['find','multer-gridfs-storage'],

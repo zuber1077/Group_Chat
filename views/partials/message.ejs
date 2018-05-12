@@ -1,8 +1,21 @@
+<% var numberOfTrue = 0 %>
+
+<% for(var i=0; i < chat.length; i++) { 
+    if(chat[i].body.isRead === false){
+        numberOfTrue = numberOfTrue + 1
+    }
+ }  %>
+
+
 <li class="list-inline-item dropdown notification-list">
     <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
         aria-expanded="false">
         <i class="fa fa-envelope"></i>
-        <span class="badge badge-danger noti-icon-badge">5</span>
+        <% if(numberOfTrue !== 0) { %>
+        <span class="badge badge-danger noti-icon-badge"><%= numberOfTrue %></span>
+        <% }else{ %>
+        <span class="badge badge-danger noti-icon-badge"></span>
+        <% } %>
     </a>
     <div class="dropdown-menu dropdown-menu-left dropdown-arrow dropdown-menu-sm">
         <!-- item-->
@@ -12,15 +25,37 @@
         </div>
 
         <!-- item-->
-        <a href="javascript:void(0);" class="dropdown-item notify-item">
+        <% if(chat.length > 0) { %>
+            <% _forEach(chat, function(val) { %>
+                <% if(user.username !== val.body.senderName) { %>
+        <a href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>" class="dropdown-item notify-item">
             <div class="notify-icon">
                 <img src="https://placehold.it/300x300.io" alt="" class="img-fluid rounded-circle" /> </div>
             <p class="notify-details">
-                <b>zuber</b>
-                <small class="text-muted">text</small>
+                <% if(user.username !== val.body.receiverName) { %>
+                <b><%= val.body.receiverName %></b>
+                <% }else { %>
+                    <b><%= val.body.senderName %></b>
+                    <% } %>
+                <small class="text-muted"><%= val.body.messaage %></small>
             </p>
         </a>
-
+<% }else if(user.username === val.body.senderName){ %>
+            <a href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>" class="dropdown-item notify-item">
+            <div class="notify-icon">
+                <img src="https://placehold.it/300x300.io" alt="" class="img-fluid rounded-circle" /> </div>
+            <p class="notify-details">
+                <% if(user.username !== val.body.receiverName) { %>
+                <b><%= val.body.receiverName %></b>
+                <% }else { %>
+                    <b><%= val.body.senderName %></b>
+                    <% } %>
+                <small class="text-muted"><%= val.body.messaage %></small>
+            </p>
+        </a>
+<% } %>
+        <% }) %>
+        <% } %>
     </div>
 </li>
 

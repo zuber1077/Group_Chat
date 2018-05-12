@@ -13,6 +13,8 @@ module.exports = function (io) {
                 sender: message.sender
             });
 
+            io.emit('message display', {});
+
             callback();
         });
     });

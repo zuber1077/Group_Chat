@@ -30,7 +30,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat){
 
     mongoose.Promise = global.Promise;
     mongoose.Promise = Promise;
-    mongoose.connect('mongodb://127.0.0.1/groupchat', function(error, db) {
+    mongoose.connect('mongodb://127.0.0.1/groupchat',{useMongoClient: true}, function(error, db) {
         if(!error){
              console.log("We are connected");
         }

@@ -16,7 +16,7 @@ $(document).ready(function() {
             gpName: gpName
           },
           success: function() {
-            console.log(gpName);
+            //console.log(gpName);
           }
         })
     });
