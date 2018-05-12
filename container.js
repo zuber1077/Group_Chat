@@ -14,6 +14,7 @@ const dependencies = [//this arrayz
 //   ['user','./controllers/users'],
   ['Users', './models/user'],
   ['Message', './models/message'],
+  ['Group', './models/groupmessage.js'],
   ['aws','./helpers/AWSUpload'],
   ['gfs','gridfs-stream'],
   ['find','multer-gridfs-storage'],

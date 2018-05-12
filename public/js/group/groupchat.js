@@ -71,6 +71,7 @@ $(document).ready(function () {
           $("#msg").val("");
         });
 
+        //ajax for saving message into db
       $.ajax({
         url: "/group/"+room,
         type: "POST",
