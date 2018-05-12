@@ -44,12 +44,27 @@ module.exports = function(async, Users, Message) {
 							callback(err, newResult);
 						}
 					)
+				},
+				//display message from db 
+				function (callback) {
+					Message.find({'$or':[{'senderName':req.user.username}, {'receiverName':req.user.username}]})
+						.populate('sender')
+						.populate('receiver')
+						.exec((err, result3) => {
+							//console.log(result3);
+							callback(err, result3)
+						})
 				}
 
 			], (err, results) => {
 				const result1 = results[0];
 				const result2 = results[1];
-                res.render('private/privatechat' ,{title: 'GPchat - private chat', user:req.user, data: result1, chat: result2});
+				const result3 = results[2];
+
+				const params = req.params.name.split('.');
+				const nameParams = params[0];
+
+                res.render('private/privatechat' ,{title: 'GPchat - private chat', user:req.user, data: result1, chat: result2, chats:result3, name:nameParams});
 			});
 		},
 		

@@ -118,17 +118,36 @@
                             <!--  -->
                             <div class="tab-pane active" id="messaging" role="tabpanel">
                                 <div id="messages" class="conversation-block">
-                                    <!-- <div class="conversation-item">
+                                    <!-- display saved message from db -->
+                                    <% if(chats.length > 0) { %>
+                                    <% _.forEach(chats, function(val) { %>
+                                        <% if(name === val.receiver.username.toLowerCase()) { %>
+                                    <div class="conversation-item">
                                         <div class="s1">
                                             <a class="avatar" href="javascript:void(0);">
-                                                <img src="../assets/common/img/temp/avatars/3.jpg" alt="Alternative text to the image" />
+                                                <img src="" alt="" />
                                             </a>
                                         </div>
                                         <div class="s2">
-                                            <strong>zuber AB</strong>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                            <strong><%= val.senderName %></strong>
+                                            <p><%= val.messaage %></p>
                                         </div>
-                                    </div> -->
+                                    </div>
+                                    <% } else if(name === val.sender.username.toLowerCase()) { %>
+                                        <div class="conversation-item">
+                                        <div class="s1">
+                                            <a class="avatar" href="javascript:void(0);">
+                                                <img src="../assets/common/img/temp/avatars/5.jpg" alt="text to the image" />
+                                            </a>
+                                        </div>
+                                        <div class="s2">
+                                            <strong><%= val.senderName %></strong>
+                                            <p><%= val.messaage %></p>
+                                        </div>
+                                    </div>
+                                     <% } %>   
+                                    <% }) %>
+                                    <% } %>
                             <script id="message-template" type="text/template">
                                 <div class="conversation-item">
                                 <div class="s1">
