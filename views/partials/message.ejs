@@ -21,14 +21,14 @@
         <!-- item-->
         <div class="dropdown-item noti-title">
             <h5>
-                <span class="badge badge-danger float-right">745</span>Messages</h5>
+                <span class="badge badge-danger float-right"><%= numberOfTrue %></span>Messages</h5>
         </div>
 
         <!-- item-->
         <% if(chat.length > 0) { %>
-            <% _forEach(chat, function(val) { %>
+            <% _.forEach(chat, function(val) { %>
                 <% if(user.username !== val.body.senderName) { %>
-        <a href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>" class="dropdown-item notify-item">
+        <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>" class="dropdown-item notify-item">
             <div class="notify-icon">
                 <img src="https://placehold.it/300x300.io" alt="" class="img-fluid rounded-circle" /> </div>
             <p class="notify-details">
@@ -37,11 +37,14 @@
                 <% }else { %>
                     <b><%= val.body.senderName %></b>
                     <% } %>
-                <small class="text-muted"><%= val.body.messaage %></small>
-            </p>
+                    <input type="hidden" name="chatId" id="chatId" value="<%= val.body._id %>">
+                    </p>
+                <small class="text-muted"><%= val.body.message %></small>
+            
+            
         </a>
 <% }else if(user.username === val.body.senderName){ %>
-            <a href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>" class="dropdown-item notify-item">
+            <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>" class="dropdown-item notify-item">
             <div class="notify-icon">
                 <img src="https://placehold.it/300x300.io" alt="" class="img-fluid rounded-circle" /> </div>
             <p class="notify-details">
@@ -50,8 +53,10 @@
                 <% }else { %>
                     <b><%= val.body.senderName %></b>
                     <% } %>
-                <small class="text-muted"><%= val.body.messaage %></small>
-            </p>
+                <input type="hidden" name="chatId" id="chatId" value="<%= val.body._id %>">
+                </p>
+                <small class="text-muted"><%= val.body.message %></small>
+            
         </a>
 <% } %>
         <% }) %>
