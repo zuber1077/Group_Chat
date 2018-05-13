@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
+
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content="" />
+
+	<!-- Twitter Theme -->
+	
+	<!-- Title &amp; Favicon -->
+	<title><% title %></title>
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="images/theme-mountain-favicon.ico"> -->
+
+	<!-- Font -->
+		<!-- Font -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/vendors/jscrollpane/style/jquery.jscrollpane.css">
+	
+	<link rel="stylesheet" type="text/css" href="../assets/vendors/select2/dist/css/select2.min.css">
+	
+	
+	
+	<!-- Clean UI Styles -->
+	<link rel="stylesheet" type="text/css" href="../assets/common/css/source/main.css">
+	
+	<!-- Vendors Scripts -->
+	<!-- v1.0.0 -->
+	<script src="../assets/vendors/jquery/jquery.min.js"></script>
+	<script src="../assets/vendors/tether/dist/js/tether.min.js"></script>
+	<script src="../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../assets/vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+	<script src="../assets/vendors/jscrollpane/script/jquery.jscrollpane.min.js"></script>
+	<script src="../assets/vendors/spin.js/spin.js"></script>
+	<script src="../assets/vendors/ladda/dist/ladda.min.js"></script>
+	<script src="../assets/vendors/select2/dist/js/select2.full.min.js"></script>
+	<script src="../assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+	<script src="../assets/vendors/jquery-typeahead/dist/jquery.typeahead.min.js"></script>
+	<script src="../assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+	<script src="../assets/vendors/autosize/dist/autosize.min.js"></script>
+	<!-- <script src="../assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script> -->
+	<script src="../assets/vendors/moment/min/moment.min.js"></script>
+	<script src="../assets/vendors/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	
+	<!-- Clean UI Scripts -->
+	<script src="../assets/common/js/common.js"></script>
+	<script src="../assets/common/js/demo.temp.js"></script>
+	<!-- Css -->
+	<link rel="stylesheet" href="css/core.min.css" />
+	<link rel="stylesheet" href="css/skin.css" />
+
+	<!--[if lt IE 9]>
+    	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body class="shop catalogue-products">
+
+	<!-- Side Navigation Menu -->
+	<aside class="side-navigation-wrapper enter-right" data-no-scrollbar data-animation="push-in">
+		<div class="side-navigation-scroll-pane">
+			<div class="side-navigation-inner">
+				<div class="side-navigation-header">
+					<div class="navigation-hide side-nav-hide">
+						<a href="#">
+							<span class="icon-cancel medium"></span>
+						</a>
+					</div>
+				</div>
+				<div class="side-navigation-footer">
+					<p class="copyright no-margin-bottom">&copy; 2018 GPchat Alright Resiver.</p>
+				</div>
+			</div>
+		</div>
+	</aside>
+	<!-- Side Navigation Menu End -->
+
+	<div class="wrapper reveal-side-navigation">
+		<div class="wrapper-inner">
+
+			<!-- Header -->
+			<header class="header header-relative header-fixed-on-mobile nav-dark" data-bkg-threshold="100" data-sticky-threshold="0">
+				<div class="header-inner">
+					<div class="row nav-bar">
+						<div class="column width-12 nav-bar-inner">
+							<div class="logo">
+								<div class="logo-inner">
+									<a href="/home"><img src="images/logo-dark.png" alt="GPchat Logo" /></a>
+									<a href="/home"><img src="images/logo.png" alt="GPchat Logo" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End -->
+			
+
+			
+
+			<!-- Content -->
+			<div class="content clearfix">
+
+				<!-- Intro Title Section 1 -->
+				<div class="section-block intro-title-1 small">
+					<div class="row">
+						<div class="column width-12">
+							<div class="title-container">
+								<div class="title-container-inner">
+									<div class="row flex">
+										<div class="col-md-12">
+											<form action="/members" method="post">
+												<div class="form-group ad-30" style="margin-top:8px;">
+													<div class="input-group search-style">
+														<input class="form-control new-search-bar" name="username" id="search" placeholder="Search For Friend" type="text">
+														<span class="input-group-btn">
+															<button class="btn input-btn " type="" id="search-form">Search</button>
+														</span>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="column width-6 v-align-middle">
+											<!-- <div>
+												<h1 class="mb-0">OUR AWSSOME USERS</h1>
+											</div> -->
+										</div>
+										<div class="column width-6 v-align-middle">
+											<div>
+												<ul class="breadcrumb mb-0 pull-right clear-float-on-mobile">
+													<li>
+														<a href="/home">Back To chat</a>
+													</li>
+													<li>
+														Members
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Intro Title Section 1 End -->
+
+			<!-- Filter Menu -->
+				<div class="section-block pt-0 pb-0 grid-filter-dropdown" data-target-grid="#product-grid">
+					<form action="/results" method="post">
+					<input type="hidden" name="" id="name-user" value="<%= user.username %>">
+					<input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
+					<div class="freeze pt-10 bkg-white" data-extra-space-top="80" data-extra-space-bottom="0">
+						<div class="row">
+							<div class="column width-12">
+								<div class="filter-menu-inner">
+									<div class="row flex">
+										<div class="column width-8 v-align-middle">
+											<div class="product-result-count">
+												<p class="mb-0 mb-mobile-30">Showing 1–10 of 46 results</p>
+											</div>
+										</div>
+										
+										<!--  -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</form>
+				</div>
+				<!-- Filter Menu End -->
+
+				<!-- Product Grid -->
+				<% _.forEach(chunks, function(val) {  %> 
+				<div id="product-grid" class="section-block grid-container products  fade-in-progressively pt-30 pb-0" data-layout-mode="masonry" data-grid-ratio="1.5" data-animate-resize data-animate-resize-duration="0"> <!-- last -->
+					
+					<div class="row"> <!-- row start -->
+						
+						<div class="column width-12"> <!-- col 12 strty -->
+							<form action="/home" method="POST" id="favorite">
+							<div class="row grid content-grid-6">
+								
+									<% _.forEach(val, function(val2) {  %>
+									
+								<div class="grid-item product grid-sizer <%= val2.country %>">
+									<div class="thumbnail rounded product-thumbnail border-grey-light img-scale-in" data-hover-easing="easeInOut" data-hover-speed="700" data-hover-bkg-color="#ffffff" data-hover-bkg-opacity="0.9">
+										<span class="onsale"><strong> </strong></span>
+										<a class="overlay-link" href="#">
+											<img src="images/groups/grid/large-margins/product-1.jpg" alt=""/>
+											<span class="overlay-info">
+												<span>
+													<span style="font-weight: bold;">
+                                                       <%= val2.username %>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+								</div>
+								
+								<% }) %>
+							</div>
+							</form>
+							</div> <!-- col 12 end -->
+						</div> <!-- row end -->
+						
+
+					</div> <!-- last -->
+					<% }) %>
+
+				</div> <!-- all -->
+				
+				<!-- Product Grid End -->
+
+				<!-- Pagination Section 3 -->
+				<div class="section-block pagination-3">
+					<div class="row">
+						<div class="column width-12">
+							<ul>
+								<li><a class="pagination-previous icon-left-open" href="/"><span class="icon-left-open-mini"></span></a></li>
+								<li><a class="current" href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a class="pagination-next disabled" href="#"><span class="icon-right-open-mini"></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Pagination Section 3 End -->
+
+			</div>
+			<!-- Content End -->
+
+
+		</div>
+	</div>
+
+	<!-- Js -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/timber.master.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/group/sendrequest.js"></script>
+	<script src="/js/home.js"></script>
+	<script src="/js/global.js"></script>
+</body>
+</html>
