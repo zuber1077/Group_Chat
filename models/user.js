@@ -22,7 +22,19 @@ const userSchema = mongoose.Schema({
         friendId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
         friendName: {type: String, default: ''}
     }],
-    totalRequest: {type: Number, default: 0}
+    totalRequest: {type: Number, default: 0},
+    gender: {type: String, default: ''},
+    country: {type: String, default: ''},
+    bio: {type: String, default: ''},
+    favFans: [{
+        fansName: {type: String, default: ''}
+    }],
+    profesional: [{
+        profesionalName: {type: String, default: ''}
+    }],
+    About: [{
+        AboutName: {type: String}
+    }]
 });
 //enqrept password 
 userSchema.methods.encryptPassword = function (password) {

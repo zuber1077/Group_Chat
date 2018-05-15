@@ -106,41 +106,42 @@ module.exports = function(formidable, gpNames, aws) {
   //     });
   //  },
 
-  //   uploadFile: function(req, res) {
+    // uploadFile: function(req, res) {
 
-  //      const newGroup = new gpName();
-  //      newGroup.name = req.body.name;
-  //      newGroup.country = req.body.country;
-  //      newGroup.image = req.body.upload;
-  //      newGroup.save(err => {
-  //        res.render("admin/dashboard");
-  //      });
-  //    // formidable event to allow z images ,file to be added local folder
-  //     const form = new formidable.IncomingForm();
-  //     form.uploadDir = path.join(__dirname, "../public/uploads"); //z path z file to save in | stored
+    //    const newGroup = new gpName();
+    //    newGroup.name = req.body.name;
+    //    newGroup.country = req.body.country;
+    //    newGroup.image = req.body.upload;
+    //    newGroup.save(err => {
+    //      res.render("admin/dashboard");
+    //    });
+    //  // formidable event to allow z images ,file to be added local folder
+    //   const form = new formidable.IncomingForm();
+    //   form.uploadDir = path.join(__dirname, "../public/uploads"); //z path z file to save in | stored
 
-  //     //listen for event
+    //   //listen for event
 
-  //     form.on("file", (field, file) => {
-  //       //to rename z file or stored orginal name
-  //       fs.rename(file.path, path.join(form.uploadDir, file.name), err => {
-  //         if (err) throw err;
-  //         console.log("File renamed successfully");
-  //       });
-  //     }); //call z file event rename z file if s (c)
+    //   form.on("file", (field, file) => {
+    //     //to rename z file or stored orginal name
+    //     fs.rename(file.path, path.join(form.uploadDir, file.name), err => {
+    //       if (err) throw err;
+    //       console.log("File renamed successfully");
+    //     });
+    //   }); //call z file event rename z file if s (c)
 
-  //     form.on("error", err => {
-  //       //if e (err,c)
-  //       console.log(err);
-  //     });
+    //   form.on("error", err => {
+    //     //if e (err,c)
+    //     console.log(err);
+    //   });
 
-  //     form.on("end", () => {
-  //       //file upload s end and (c)
-  //       console.log("File upload is successful");
-  //     });
+    //   form.on("end", () => {
+    //     //file upload s end and (c)
+    //     console.log("File upload is successful");
+    //   });
 
-  //     form.parse(req);
-    }
+    //   form.parse(req);
+    // }
+  }
   };
 //};
 
