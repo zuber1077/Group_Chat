@@ -1,9 +1,10 @@
-module.exports = function(async, Users, Message, formidable, aws) {
+module.exports = function(async, Users, Message, formidable, aws, FriendResult) {
     return {
         SetRouting: function (router) {
 			router.get('/settings/profile', this.getProfilePage);
 			
 			router.post('/userupload', uploadFile.any(), this.userUpload);
+			router.post('/settings/profile', this.postProfilePage);
         },
 
         getProfilePage: function (req, res) {
@@ -69,8 +70,59 @@ module.exports = function(async, Users, Message, formidable, aws) {
 			form.on('error', (err) => {});
 			form.on('end', () => {});
 			form.parse(req);
+		},
+
+		postProfilePage: function(req, res) {
+			FriendResult.PostRequest(req, res, '/settings/profile');
+
+				async.waterfall([
+					function(callback) {
+						Users.findOne({'_id':req.user._id}, (err, result) => {
+							callback(err, result);
+						})
+					},
+					function (result, callback) {
+						if(req.body.upload === null || req.body.upload === ''){
+								Users.update({
+									'_id':req.user._id
+								}, 
+								{
+									username: req.body.username,
+									fullname: req.body.fullname,
+									gender: req.body.gender,
+									country: req.body.country,
+									bio: req.body.bio,
+									userImage: result.userImage
+								},
+								{//if z field doesnt exist inside doc then add it
+									upsert: true
+								}, (err, result) => {
+									console.log(result);
+									res.redirect('/settings/profile');
+								})
+						}else if(req.body.upload !== null || req.body.upload !== ''){
+								Users.update({
+									'_id':req.user._id
+								}, 
+								{
+									username: req.body.username,
+									fullname: req.body.fullname,
+									gender: req.body.gender,
+									country: req.body.country,
+									bio: req.body.bio,
+									userImage: req.body.upload
+								},
+								{//if z field doesnt exist inside doc then add it
+									upsert: true
+								}, (err, result) => {
+									console.log(result);
+									res.redirect('/settings/profile');
+								})
+						}
+					}
+				]);
 		}
-    }
+  }
 }
 
 

@@ -33,14 +33,20 @@ $(document).ready(function () { //
         var gender = $('#gender').val(); 
         var country = $('#country').val(); 
         var bio = $('#bio').val(); 
-        var userImage = $('#add-input').val(); 
+        var upload = $('#add-input').val(); 
+        var image = $('#user-image').val();
 
         var valid = true;
+
+        if(upload === ''){
+            $('#add-input').val(image); 
+        }
 
         if(username == '' || fullname == '' || country == '' || gender == '' || bio == ''){
             valid = false;
             $("#error").html('<div class="alert alert-danger">You can submit an Empity Field</div>');
         }else{
+            upload = $('#add-input').val();
             $('#error').html('');
         }
 
@@ -54,7 +60,7 @@ $(document).ready(function () { //
                     gender: gender,
                     country: country,
                     bio: bio,
-                    upload: userImage
+                    upload: upload
                 },
                 success: function() {
                     setTimeout( function() {
