@@ -26,14 +26,14 @@ const userSchema = mongoose.Schema({
     gender: {type: String, default: ''},
     country: {type: String, default: ''},
     bio: {type: String, default: ''},
-    favFans: [{
-        fansName: {type: String, default: ''}
+    Hobby: [{
+        HobbyNames: {type: String, default: ''}
     }],
-    profesional: [{
-        profesionalName: {type: String, default: ''}
+    Profecinal: [{
+        ProfecinalNames: {type: String, default: ''}
     }],
-    About: [{
-        AboutName: {type: String}
+    FavGroup: [{
+        GroupName: {type: String}
     }]
 });
 //enqrept password 

@@ -53,24 +53,7 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 				res.render('user/profile' ,{title: 'GPchat - Profile ', user:req.user,data: result1, chat: result2});
 			});
 		},
-		userUpload: function (req, res) {
-			const form = new formidable.IncomingForm();
-			 form.uploadDir = path.join(__dirname, "../public/uploads"); //z path z file to save in | stored
-
-      //listen for event
-
-      form.on("file", (field, file) => {
-        //to rename z file or stored orginal name
-        fs.rename(file.path, path.join(form.uploadDir, file.name), err => {
-          if (err) throw err;
-          console.log("File renamed successfully");
-        });
-      }); //call z file event rename z file if s (c)
-			// form.on('file', (field, file) => {});
-			form.on('error', (err) => {});
-			form.on('end', () => {});
-			form.parse(req);
-		},
+	
 
 		postProfilePage: function(req, res) {
 			FriendResult.PostRequest(req, res, '/settings/profile');
@@ -81,7 +64,7 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 							callback(err, result);
 						})
 					},
-					function (result, callback) {
+					function(result, callback) {
 						if(req.body.upload === null || req.body.upload === ''){
 								Users.update({
 									'_id':req.user._id
@@ -121,6 +104,24 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 						}
 					}
 				]);
+		},
+			userUpload: function (req, res) {
+			const form = new formidable.IncomingForm();
+			 form.uploadDir = path.join(__dirname, "../public/uploads"); //z path z file to save in | stored
+
+      //listen for event
+
+      form.on("file", (field, file) => {
+        //to rename z file or stored orginal name
+        fs.rename(file.path, path.join(form.uploadDir, file.name), err => {
+          if (err) throw err;
+          console.log("File renamed successfully");
+        });
+      }); //call z file event rename z file if s (c)
+			// form.on('file', (field, file) => {});
+			form.on('error', (err) => {});
+			form.on('end', () => {});
+			form.parse(req);
 		}
   }
 }

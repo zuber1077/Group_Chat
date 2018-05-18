@@ -24,6 +24,7 @@ $(document).ready(function () { //
                 }
             })
         }
+         ShowImage(this);
     });
 
     //personal information data
@@ -44,7 +45,7 @@ $(document).ready(function () { //
 
         if(username == '' || fullname == '' || country == '' || gender == '' || bio == ''){
             valid = false;
-            $("#error").html('<div class="alert alert-danger">You can submit an Empity Field</div>');
+            $('#error').html('<div class="alert alert-danger">You can not submit an Empity Field</div>');
         }else{
             upload = $('#add-input').val();
             $('#error').html('');
@@ -74,6 +75,17 @@ $(document).ready(function () { //
     });
 
 });
+
+
+function ShowImage(input){
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('#show_img').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 //  next pass this form data directly using AJAX from client server to db
 //  next use formidable allow to pass any type meltipart from data type 
  // becouse body-parser doest allow to pass multipart from data type
