@@ -1,7 +1,4 @@
-/**
- * TEMPLATE OPTIONS
- * Theme demo temporary scripts, remove it in your app
- */
+
 
 $(function(){
 

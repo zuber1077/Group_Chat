@@ -26,7 +26,7 @@ const {Global} = require('./helpers/Global');
 const container = require("./container");
 
 
-container.resolve(function(users, _, admin, home, group, results, privatechat, profile, userinfo){
+container.resolve(function(users, _, admin, home, group, results, privatechat, profile, userinfo, news){
 
     mongoose.Promise = global.Promise;
     mongoose.Promise = Promise;
@@ -77,7 +77,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         privatechat.SetRouting(router);
         profile.SetRouting(router);
         userinfo.SetRouting(router);
-
+        news.SetRouting(router);
         app.use(router);
     }
 

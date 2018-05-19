@@ -1,6 +1,4 @@
-/**
- * CLEAN UI THEME SETTINGS
- */
+
 
 var cleanUI = {
     hasTouch: (function() { return ('ontouchstart' in document.documentElement) })()
@@ -8,9 +6,7 @@ var cleanUI = {
 
 
 
-/**
- * CLEAN UI TEMPLATE SCRIPTS
- */
+
 
 $(function(){
 
