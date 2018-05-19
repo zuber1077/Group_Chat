@@ -69,6 +69,9 @@
             <section class="panel">
                 <div class="panel-body">
                     <div class="btn-group-vertical btn-group-justified">
+                        <a href="/profile/<%= user.username %>" type="button" class="btn">Overview</a>
+                    </div><br>
+                    <div class="btn-group-vertical btn-group-justified">
                         <a href="/settings/profile" type="button" class="btn">Back to Setting</a>
                     </div>
                 </div>
@@ -83,13 +86,17 @@
                         <dd><%= user.country %></dd>
                         <dt>Fov Group</dt>
                         <dd>
-                            <span class="label label-default">html</span>
-                            <span class="label label-default">css</span>
-                            <span class="label label-default">design</span>
-                            <span class="label label-default">javascript</span>
+                            <% _.forEach(user.FavGroup, function(val) { %>
+                            <span class="label label-default"><%= val.GroupName %></span>
+                            <% }) %>
                         </dd>
                         <dt>Profesional</dt>
-                        <dd>Microsoft, webDevelopment</dd>
+                        
+                            <span class="label label-default"></span>
+                            <% _.forEach(user.Profecinal, function(val) { %>
+                                    <%= val.ProfecinalNames %>,
+                                <% }) %>
+                       
                         <dt>Bio</dt>
                         <dd><%= user.bio %></dd>
                     </dl>

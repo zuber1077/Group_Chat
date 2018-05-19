@@ -1,10 +1,13 @@
 module.exports = function(async, Users, Message, formidable, aws, FriendResult) {
     return {
-        SetRouting: function (router) {
+        SetRouting: function(router) {
 			router.get('/settings/profile', this.getProfilePage);
 			
 			router.post('/userupload', uploadFile.any(), this.userUpload);
 			router.post('/settings/profile', this.postProfilePage);
+
+			router.get('/profile/:name', this.overviewPage);
+			router.post('/profile/:name', this.overviewPostPage);
         },
 
         getProfilePage: function (req, res) {
@@ -40,8 +43,15 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 							}, "body": {$first:"$$ROOT"}
 							}
 						}, function(err, newResult) {
-							//console.log(newResult);
-							callback(err, newResult);
+							const arr = [
+								{path: 'body.sender', model: 'User'},
+								{path: 'body.receiver', model: 'User'}
+							];
+
+							Message.populate(newResult, arr, (err, newResult1) => {
+								//console.log(newResult1[0].body.sender);
+								callback(err, newResult1);
+							});
 						}
 					)
 				}
@@ -105,7 +115,7 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 					}
 				]);
 		},
-			userUpload: function (req, res) {
+			userUpload: function(req, res) {
 			const form = new formidable.IncomingForm();
 			 form.uploadDir = path.join(__dirname, "../public/uploads"); //z path z file to save in | stored
 
@@ -122,6 +132,58 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 			form.on('error', (err) => {});
 			form.on('end', () => {});
 			form.parse(req);
+		},
+
+		//
+		overviewPage: function(req,res) {
+			async.parallel([
+				function (callback) {
+					Users.findOne({'username': req.params.name})
+					.populate('request.userId')
+					.exec((err,result) => {
+						callback(err, result);
+					})
+				},
+
+				function(callback) {
+					const nameRegex =  new RegExp("^" + req.user.username.toLowerCase(), "i");
+					Message.aggregate(
+						//math every doc thet has sender name and reciver name
+						//{or} if doest find 1st data in the 1st obj use 2nd
+						{$match:{$or:[{'senderName':nameRegex}, {'receiverName':nameRegex}]}},
+						{$sort:{"createdAt":-1}},
+						{
+							$group:{'_id':{
+								"last_message_between":{
+									$cond:[//array {operator}
+										{//obj
+											$gt:[
+												{$substr:["$senderName",0,1]},
+												{$substr:["$receiverName",0,1]}]
+										},
+											{$concat:["$senderName"," and ","$receiverName"]},
+											{$concat:["$receiverName"," and ","$senderName"]}
+									]
+								}
+							}, "body": {$first:"$$ROOT"}
+							}
+						}, function(err, newResult) {
+							//console.log(newResult);
+							callback(err, newResult);
+						}
+					)
+				}
+
+			], (err, results) => {
+				const result1 = results[0];
+				const result2 = results[1];
+				
+				res.render('user/overview' ,{title: 'GPchat - Overview ', user:req.user,data: result1, chat: result2});
+			});
+		},
+
+		overviewPostPage: function(req,res) {
+			FriendResult.PostRequest(req, res, '/profile/'+req.params.name);
 		}
   }
 }

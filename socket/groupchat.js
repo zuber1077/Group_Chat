@@ -24,7 +24,8 @@ module.exports = function(io, Users){
             io.to(message.room).emit('newMessage', { //passing an object with key text value //message.text
                 text: message.text,
                 room: message.room,
-                from: message.sender
+                from: message.sender,
+                image: message.userPic
             });
 
             //clear message text

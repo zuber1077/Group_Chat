@@ -45,10 +45,10 @@
                 <div class="panel-body">
                     <div class="profile-user-title text-center">
                         <a class="avatar" href="javascript:void(0);">
-                            <img src="https://.s3.amazonaws.com/<%= user.userImage %>" alt="user I" id="user_img">
+                            <img src="../assets/common/img/temp/avatars/1.jpg" alt="Alternative text to the image">
                         </a>
                         <br />
-                        <h3 id="receive_name" style="color: #fff">@<%= user.username %></h3>
+                        <h3 id="receive_name" style="color: #fff">@<%= data.username %></h3>
                         <div class="btn-group btn-group-justified" aria-label="" role="group">
                             <!-- <div class="btn-group">
                                 <button type="button" class="btn width-150 swal-btn-success">Follow</button>
@@ -68,37 +68,27 @@
             </section>
             <section class="panel">
                 <div class="panel-body">
-                    <div class="btn-group-vertical btn-group-justified">
-                        <a href="/profile/<%= user.username %>" type="button" class="btn">Overview</a>
-                    </div><br>
-                    <div class="btn-group-vertical btn-group-justified">
-                        <a href="/settings/userinfo" type="button" class="btn">Add More Info</a>
-                    </div>
-                </div>
-            </section>
-            <section class="panel">
-                <div class="panel-body">
                     <h6>Information</h6>
                     <dl class="dl-horizontal user-profile-dl">
                         <dt>Fullname</dt>
-                        <dd><%= user.fullname %></dd>
+                        <dd><%= data.fullname %></dd>
                         <dt>Country</dt>
-                        <dd><%= user.country %></dd>
+                        <dd><%= data.country %></dd>
                         <dt>Fov Group</dt>
                         <dd>
-                            <% _.forEach(user.FavGroup, function(val) { %>
+                            <% _.forEach(data.FavGroup, function(val) { %>
                             <span class="label label-default"><%= val.GroupName %></span>
                             <% }) %>
                         </dd>
                         <dt>Profesional</dt>
                         
                             <span class="label label-default"></span>
-                            <% _.forEach(user.Profecinal, function(val) { %>
+                            <% _.forEach(data.Profecinal, function(val) { %>
                                     <%= val.ProfecinalNames %>,
                                 <% }) %>
                        
                         <dt>Bio</dt>
-                        <dd><%= user.bio %></dd>
+                        <dd><%= data.bio %></dd>
                     </dl>
                 </div>
             </section>
@@ -123,7 +113,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="javascript: void(0);" data-toggle="tab" data-target="#settings" role="tab">
                                     <i class="icmn-cog"></i>
-                                    Settings
+                                    More Info
                                 </a>
                             </li>
                         </ul>
@@ -135,63 +125,63 @@
                             <div class="tab-pane active" id="settings" role="tabpanel">
                                 <br />
                                 <span style="text-align: center;" id="error"></span>
-                                <h5>Personal Information</h5>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="l0">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="username" value="<%= user.username %>">
-                                        </div>
+                                <!-- <div class="col-md-3">
+                                    <label class="form-control-label" for="l8">Search</label>
+                                </div> -->
+                                <!-- <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="" placeholder="Search..." id="l8">
+                                        <span class="input-group-btn">
+                                            <a href="javascript: void(0);" class="btn btn-success">
+                                                Search files
+                                            </a>
+                                        </span>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="l1">Fullname</label>
-                                            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Fullname"  value="<%= user.fullname %>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <label for="">Gender: </label>
-                                <label for="" style="margin-right: 1px;"></label>
-                                <% if(typeof user.gender !== 'undefined') { %>
-                                    <label for="" class="radio-inline">
-                                        <input type="radio" name="gender" id="gender" value="<%= user.gender %>" checked><%= user.gender %>
-                                    </label><br>
-                                <% } %>
-                                <label for="" class="radio-inline">
-                                    <input type="radio" name="gender" id="gender" value="Male">Male
-                                </label>
-                                <label for="" class="radio-inline">
-                                    <input type="radio" name="gender" id="gender" value="Female">Female
-                                </label>
+                                </div> -->
                                 <br />
-                                <h5>About</h5>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="l3">Nationality</label>
-                                            <input type="text" class="form-control" id="country" name="country" placeholder="Country" value="<%= user.country %>">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="l4" >Bio</label>
-                                            <textarea class="form-control" name="bio"  id="bio" placeholder="A one line sentence"><%= user.bio %></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <br />
-                                        <h5>Profile Avatar</h5>
-                                        <div class="form-group">
-                                           
-                                            <label class="form-control-label" for="l6">Add profile Photo</label>
-                                            <input type="hidden" id="user-image" value="<%= user.userImage %>">
-                                            <button type="button" class="add-btn btn btn-primary-outline">Add Profile Image</button>
-                                            <input type="file" name="upload" id="add-input" style="display: none">
-                                            <span id="completed"></span>
-                                        </div>
-                                    </div>
+                                <div>
+    <div>
+        <span style="text-align: center;" id="error"></span>
+        <form action="" method="POST">
+            
+                <div class="user-display">
+                    <h5>What is your Hobby</h5>
+                    <hr />
+                    <% _.forEach(data.Hobby, function(val) { %>
+                        <p>
+                            <span class="fa fa-check-square-o"></span>
+                            <%= val.HobbyNames %>
+                        </p>
+                    <% }) %>
+                </div>
+                <div class="user-display">
+                    <h5>What is Your Profecinality</h5>
+                    <hr />
+                    <% _.forEach(data.Profecinal, function(val) { %>
+                        <p>
+                            <span class="fa fa-check-square-o"></span>
+                            <%= val.ProfecinalNames %>
+                        </p>
+                    <% }) %>
+                </div>
+                <div class="user-display">
+                    <h5>write someting you like to do</h5>
+                    <hr />
+                    <% _.forEach(data.FavGroup, function(val) { %>
+                        <p>
+                            <span class="fa fa-check-square-o"></span>
+                            <%= val.GroupName %>
+                        </p>
+                    <% }) %>
+                </div>
+    </form>
+    </div>
+</div>
+<!-- -->
+                                
+                                   
+                              
+                                
                                     <!-- <div class="col-lg-6">
                                         <br />
                                         <h5>Group you Like</h5>
@@ -210,12 +200,6 @@
                                             <input type="file" id="l5">
                                         </div>
                                     </div> -->
-                                </div>
-                                <div class="form-actions">
-                                    <div class="form-group">
-                                        <button type="submit" id="profile" name="submit" class="btn width-150 btn-primary">Save Profile</button>
-                                        <button type="button" id="cancel" name="cancel" class="btn btn-default">Cancel</button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -272,6 +256,7 @@
 <script src="/js/messagelink.js"></script>
 <script src="/js/group/sendrequest.js"></script>
 <script src="/js/user/profile.js"></script>
+<script src="/js/user/userinfo.js"></script>
 <script src="/js/global.js"></script>
 <script src="/js/deparam.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>

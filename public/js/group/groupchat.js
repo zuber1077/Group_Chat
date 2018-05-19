@@ -5,6 +5,8 @@ $(document).ready(function () {
 
     var room = $('#groupName').val();
     var sender = $('#sender').val();
+
+    var userPic = $('#name-image').val();
     //io.emit  emit an event to all client including z sender
 
 
@@ -50,37 +52,39 @@ $(document).ready(function () {
         var template = $('#message-template').html();
         var message = Mustache.render(template, {
             text: data.text,
-            sender: data.from
+            sender: data.from,
+            userImage: data.image
         });
         $('#messages').append(message);
 
     });
 
-    $("#message-form").on("submit", function(e) {
+    $('#message-form').on('submit', function(e) {
       e.preventDefault(); //to nor reload the form once the form submited
 
-      var msg = $("#msg").val(); //get data from an input field
+      var msg = $('#msg').val(); //get data from an input field
 
       socket.emit(
-        "createMessage",{ 
+        'createMessage',{ 
           text: msg,
           room: room,
-          sender: sender
+          sender: sender,
+          userPic: userPic
         },
         function() {
-          $("#msg").val("");
+          $('#msg').val('');
         });
 
         //ajax for saving message into db
       $.ajax({
-        url: "/group/"+room,
-        type: "POST",
+        url: '/group/'+room,
+        type: 'POST',
         data: {
           message: msg,
           groupName: room
         },
         success: function() {
-          $("#msg").val("");
+          $('#msg').val('');
         }
       })
     });

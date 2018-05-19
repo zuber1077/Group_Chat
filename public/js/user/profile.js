@@ -1,14 +1,14 @@
-$(document).ready(function () { //
-    $('.add-btn').on('click',function () { //button display form once click
-        $("#add-input").click(); //z input field click will be trigerd
+$(document).ready(function() { //
+    $('.add-btn').on('click',function() { //button display form once click
+        $('#add-input').click(); //z input field click will be trigerd
     });
-    $('#add-input').on('change',function () { //chacking to see if there is a change in z input field //get z input stored in uploadInput 
+    $('#add-input').on('change',function() { //chacking to see if there is a change in z input field //get z input stored in uploadInput 
         var addInput = $('#add-input'); //i add AJAX code to send from client to server
         //to make sure z input is not empity
         if(addInput.val() != ''){ //chack if z value is not empty
             var formData = new FormData(); //created new instance formData constracure //allow img to be upload or send to server
             //get z name of input field for z img 
-            formData.append('upload',addInput[0].files[0]); //get from z file array 
+            formData.append('upload', addInput[0].files[0]); //get from z file array 
             $('#completed').html('File Uploaded Successfully');
             //z value they place at index 0 //this automaticly create a key value pair
             //developer.mozilla.org/en/docs/Web/API/FormData
@@ -51,7 +51,7 @@ $(document).ready(function () { //
             $('#error').html('');
         }
 
-        if(valid === true){
+        if(valid == true){
             $.ajax({
                 url: '/settings/profile',
                 type: 'POST',
@@ -64,7 +64,7 @@ $(document).ready(function () { //
                     upload: upload
                 },
                 success: function() {
-                    setTimeout( function() {
+                    setTimeout(function() {
                         window.location.reload();
                     }, 200);
                 }

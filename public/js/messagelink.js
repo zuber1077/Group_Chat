@@ -17,11 +17,11 @@ $(document).ready(function () {
         }
 
         socket.emit('join PM', params);
+        socket.on('new refresh', function() {
+            $('#reload').load(location.href + ' #reload'); //load data from server 
+        });
     });
 
-    socket.on('new refresh', function () {
-       $('#reload').load(location.href + ' #reload'); //load data from server 
-    });
 
     $(document).on('click', '#messageLink', function () {
         var chatId = $(this).data().value;
@@ -30,7 +30,7 @@ $(document).ready(function () {
             url: '/chat/'+paramOne,
             type: 'POST',
             data: {chatId: chatId},
-            success: function () {
+            success: function() {
                 
             }
         });

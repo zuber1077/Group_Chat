@@ -39,6 +39,7 @@ module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users, 
 					Users.findOne({'username': req.user.username})
 					.populate('request.userId')
 					.exec((err,result) => {
+                        //console.log(result.request[0].userId.userImage);
 						callback(err, result);
 					})
                 },
@@ -66,8 +67,15 @@ module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users, 
 							}, "body": {$first:"$$ROOT"}
 							}
 						}, function(err, newResult) {
-							//console.log(newResult);
-							callback(err, newResult);
+							const arr = [
+								{path: 'body.sender', model: 'User'},
+								{path: 'body.receiver', model: 'User'}
+							];
+
+							Message.populate(newResult, arr, (err, newResult1) => {
+								//console.log(newResult1[0].body.sender);
+								callback(err, newResult1);
+							});
 						}
 					)
 				}

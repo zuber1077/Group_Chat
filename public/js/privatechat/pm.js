@@ -24,8 +24,12 @@ $(document).ready(function() {
 
         socket.emit('join PM', params);
 
-        socket.on('message display', function () {
+        socket.on('message display', function() {
             $('#reload').load(location.href + ' #reload'); //load data from server
+        });
+
+        socket.on('new refresh', function(){
+            $('#reload').load(location.href + ' #reload');
         });
     });
      //template for desplaying message using Mustache
