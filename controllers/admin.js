@@ -14,7 +14,7 @@ module.exports = function(formidable, gpNames, aws) {
       //router.get('/files/:filename', this.filesPage);
      // router.get('/image/:filename', this.filesPage);
       //router.get('/files/:filename', this.filePage);
-    router.post("/uploadFile", uploadFile.any(), this.uploadFile); //for images ,file
+    router.post("/uploadFile", this.uploadFile); //for images ,file
     //router.post("/uploadFile", uploadFile.single('name','country','upload'), this.uploadFile); //for images ,file
      //router.post("/uploadFile", aws.Upload.any(), this.uploadFile); //for images ,file
      // router.post("/dashboard",  this.adminPostPage);
@@ -159,62 +159,62 @@ module.exports = function(formidable, gpNames, aws) {
 
 
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
-const crypto = require("crypto");
-const mongoose = require("mongoose");
-const multer = require("multer");
-const GridFsStorage = require("multer-gridfs-storage");
-const Grid = require("gridfs-stream");
-// const methodOverride = require("method-override");
+// const express = require("express");
+// const bodyParser = require("body-parser");
+// const path = require("path");
+// const crypto = require("crypto");
+// const mongoose = require("mongoose");
+// const multer = require("multer");
+// const GridFsStorage = require("multer-gridfs-storage");
+// const Grid = require("gridfs-stream");
+// // const methodOverride = require("method-override");
 
 
-const app = express();
+// const app = express();
 
-// Middleware
-app.use(bodyParser.json());
-// app.use(methodOverride("_method"));
-app.set("view engine", "ejs");
+// // Middleware
+// app.use(bodyParser.json());
+// // app.use(methodOverride("_method"));
+// app.set("view engine", "ejs");
 
-// Mongo URI
-const mongoURI = "mongodb://127.0.0.1/groupchat";
+// // Mongo URI
+// const mongoURI = "mongodb://127.0.0.1/groupchat";
 
-// Create mongo connection
-const conn = mongoose.createConnection(mongoURI);
+// // Create mongo connection
+// const conn = mongoose.createConnection(mongoURI);
 
-let gfs;
+// let gfs;
 
-conn.once('open', function(){
-    gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection("group");
-})
-
-// app.post('/dashboard', upload.single('upload'), (req,res)=>{
-
+// conn.once('open', function(){
+//     gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection("group");
 // })
 
+// // app.post('/dashboard', upload.single('upload'), (req,res)=>{
 
-// Create storage engine
-const storage = new GridFsStorage({
-  url: mongoURI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString("hex") + path.extname(file.originalname);
-        const fileInfo = {
-          // name: "name",
-          // image: "upload",
-          // country: "country",
-          filename: filename,
-          bucketName: "group"
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-const uploadFile = multer({ storage });
+// // })
+
+
+// // Create storage engine
+// const storage = new GridFsStorage({
+//   url: mongoURI,
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString("hex") + path.extname(file.originalname);
+//         const fileInfo = {
+//           // name: "name",
+//           // image: "upload",
+//           // country: "country",
+//           filename: filename,
+//           bucketName: "group"
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   }
+// });
+// const uploadFile = multer({ storage });

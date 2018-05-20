@@ -3,7 +3,7 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
         SetRouting: function(router) {
 			router.get('/settings/profile', this.getProfilePage);
 			
-			router.post('/userupload', uploadFile.any(), this.userUpload);
+			router.post('/userupload',  this.userUpload);
 			router.post('/settings/profile', this.postProfilePage);
 
 			router.get('/profile/:name', this.overviewPage);
@@ -190,37 +190,37 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 
 
 
-const fs = require('fs');
-const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
-const crypto = require("crypto");
-const mongoose = require("mongoose");
-const multer = require("multer");
-const GridFsStorage = require("multer-gridfs-storage");
-const Grid = require("gridfs-stream");
-// const methodOverride = require("method-override");
+// const fs = require('fs');
+// const express = require("express");
+// const bodyParser = require("body-parser");
+// const path = require("path");
+// const crypto = require("crypto");
+// const mongoose = require("mongoose");
+// const multer = require("multer");
+// const GridFsStorage = require("multer-gridfs-storage");
+// const Grid = require("gridfs-stream");
+// // const methodOverride = require("method-override");
 
 
-const app = express();
+// const app = express();
 
-// Middleware
-app.use(bodyParser.json());
-// app.use(methodOverride("_method"));
-app.set("view engine", "ejs");
+// // Middleware
+// app.use(bodyParser.json());
+// // app.use(methodOverride("_method"));
+// app.set("view engine", "ejs");
 
-// Mongo URI
-const mongoURI = "mongodb://127.0.0.1/groupchat";
+// // Mongo URI
+// const mongoURI = "mongodb://127.0.0.1/groupchat";
 
-// Create mongo connection
-const conn = mongoose.createConnection(mongoURI);
+// // Create mongo connection
+// const conn = mongoose.createConnection(mongoURI);
 
-let gfs;
+// let gfs;
 
-conn.once('open', function(){
-    gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection("upload");
-})
+// conn.once('open', function(){
+//     gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection("upload");
+// })
 
 // app.post('/dashboard', upload.single('upload'), (req,res)=>{
 
@@ -228,25 +228,25 @@ conn.once('open', function(){
 
 
 // Create storage engine
-const storage = new GridFsStorage({
-  url: mongoURI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString("hex") + path.extname(file.originalname);
-        const fileInfo = {
-          // name: "name",
-          // image: "upload",
-          // country: "country",
-          filename: filename,
-          bucketName: "upload"
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-const uploadFile = multer({ storage });
+// const storage = new GridFsStorage({
+//   url: mongoURI,
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString("hex") + path.extname(file.originalname);
+//         const fileInfo = {
+//           // name: "name",
+//           // image: "upload",
+//           // country: "country",
+//           filename: filename,
+//           bucketName: "upload"
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   }
+// });
+// const uploadFile = multer({ storage });

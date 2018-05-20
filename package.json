@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "a group chat build with nodejs, .Mongodb .express and socket.io for my networking Program Design Project",
   "main": "server.js",
+  "engine": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +27,7 @@
     "aws-sdk": "^2.228.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
@@ -33,6 +40,7 @@
     "express-validator": "^5.1.2",
     "formidable": "^1.2.1",
     "gridfs-stream": "^1.1.1",
+    "helmet": "^3.12.1",
     "https": "^1.0.0",
     "lodash": "^4.17.5",
     "mongoose": "^4.13.12",

@@ -13,6 +13,9 @@ const passport = require('passport');
 const socketIO = require('socket.io');
 const { Users } = require('./helpers/UsersClass');
 const {Global} = require('./helpers/Global');
+
+const compression = require('compression'); //to compress the request that has been return
+const helmet = require('helmet'); //secruity perpres
 // const fs = require("fs");
 // var path = require("path");
 // const option = {
@@ -30,14 +33,32 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
 
     mongoose.Promise = global.Promise;
     mongoose.Promise = Promise;
-    mongoose.connect('mongodb://127.0.0.1/groupchat',{useMongoClient: true}, function(error, db) {
+    // mongoose.connect('mongodb://127.0.0.1/groupchat',{useMongoClient: true}, function(error, db) {
+    //     if(!error){
+    //          console.log("We are connected");
+    //     }
+    //     else
+    //        console.dir(error);
+    // });
+    // mongoose.connect('mongodb://groupchats:password@ds229380.mlab.com:29380/groupchat',{useMongoClient: true}, function(error, db) {
+    //     if(!error){
+    //          console.log("We are connected");
+    //     }
+    //     else
+    //        console.dir(error);
+    // });
+    mongoose.connect(process.env.MONGODB_URI,{useMongoClient: true}, function(error, db) {
+        
         if(!error){
              console.log("We are connected");
         }
         else
            console.dir(error);
     });
+    //console.log(process.env.MONGODB_URI);
 // );
+    // mongoose.connect('mongodb://<groupchats>:<password>@ds229380.mlab.com:29380/groupchat', { useMongoClient: true });
+
     mongoose.connection.on("error", err => {
       console.error(`MongoDB connection error: ${err}`);
       process.exit(1);
@@ -78,11 +99,19 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         profile.SetRouting(router);
         userinfo.SetRouting(router);
         news.SetRouting(router);
+
         app.use(router);
+
+        app.use(function(req, res) {
+            res.render('404');
+        });
     }
 
     //configuration or express midlle wear 
     function ConfigureExpress(app) {
+
+        app.use(compression());
+        app.use(helmet());
 
         require('./passport/passport-local');
         require('./passport/passport-facebook');
@@ -97,7 +126,8 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(validator()); //validate on z server side for storing data 
 
         app.use(session({ //save session
-            secret: "myownsecretkey", 
+             secret: "myownsecretkey", 
+            //secret: process.env.SECRET_KEY, 
             resave: false, 
             saveUninitialized: false, 
             store: new MongoStore({ mongooseConnection: mongoose.connection})  //data can be save in db reuse later
@@ -109,6 +139,8 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(passport.session());
 
         app.locals._ = _;
+
+        
     }
 });
  
