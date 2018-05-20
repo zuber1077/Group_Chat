@@ -126,8 +126,8 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(validator()); //validate on z server side for storing data 
 
         app.use(session({ //save session
-             secret: "myownsecretkey", 
-            //secret: process.env.SECRET_KEY, 
+             //secret: "myownsecretkey", 
+            secret: process.env.SECRET_KEY, 
             resave: false, 
             saveUninitialized: false, 
             store: new MongoStore({ mongooseConnection: mongoose.connection})  //data can be save in db reuse later

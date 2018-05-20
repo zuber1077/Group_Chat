@@ -38,6 +38,7 @@
     "express-promise-router": "^3.0.2",
     "express-session": "^1.15.6",
     "express-validator": "^5.1.2",
+    "forever": "^0.15.3",
     "formidable": "^1.2.1",
     "gridfs-stream": "^1.1.1",
     "helmet": "^3.12.1",
