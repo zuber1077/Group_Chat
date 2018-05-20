@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "a group chat build with nodejs, .Mongodb .express and socket.io for my networking Program Design Project",
   "main": "server.js",
-  "engine": {
+  "engines": {
     "node": "8.11.1",
     "npm": "5.6.0"
   },
