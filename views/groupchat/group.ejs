@@ -1,308 +1,253 @@
+
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><%= title %></title>
-    <style>
+<html lang="en">
+	<head>
+      <style>
         .modal {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
+          display: none;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0, 0, 0);
+          background-color: rgba(0, 0, 0, 0.4);
+        }
+      
+        .modal-title {
+          color: #4aa1f3;
+      
+        }
+      
+        #nameLink,
+        .btn_close {
+          background-color: #387ed1;
+          background-image: linear-gradient(90deg, #42b0ff, #4262ff);
+          color: white !important;
+        }
+      
+        .modal-body {
+          text-align: center;
+        }
+      
+        .modal-content {
+          background-color: #fefefe;
+          margin: 15% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 100%;
+        }
+      
+        .modal-footer {
+          padding-top: 15px;
+        }
+      
+        #accept_friend {
+          background-color: #387ed1;
+          background-image: linear-gradient(90deg, #42b0ff, #4262ff);
+          color: white !important;
+        }
+      </style>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="This is social network html5 template available in themeforest......" />
+		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+		<meta name="robots" content="index, follow" />
+		<title><%= title %></title>
 
-.modal-title{
-    color: #4aa1f3;
-    
-}
+<%- include ../partials/chatNav.ejs %>
+<ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+  <li class="dropdown nav-item" data-menu="dropdown">
+    <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown">
+      <i class="ft-home"></i>
+      <span>Friend Online <span id="numOfFriends"></span></span>
+    </a>
+    <ul class="dropdown-menu">
+      <% if(data.friendsList.length > 0) { %>
+        <% _.forEach(data.friendsList, function(value) { %>
+      
+      <div class="friend" hidden>@
+        <%= value.friendName %>
+      </div>
+      <% }) %>
+        <% } %>
+        <li class="onlineFriends2" data-menu=""></li>
+    </ul>
+  </li>
+</ul>
+<ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+  <li class="dropdown nav-item" data-menu="dropdown">
+    <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown">
+      <i class="ft-home"></i>
+      <span>Global Online <span id="numValue">(0)</span></span>
+    </a>
+    <ul id="users" class="dropdown-menu">
+      
+      
+    </ul>
+  </li>
+</ul>
+</div>
+<!-- /horizontal menu content-->
+</div>
+<!-- Horizontal navigation-->
 
-#nameLink, .btn_close{
-    background-color: #387ed1;
-   background-image: linear-gradient(90deg,#42b0ff,#4262ff);
-    color: white !important;
-}
-
-.modal-body{
-    text-align: center;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 100%;
-}
-
-.modal-footer {
-    padding-top: 15px;
-}
-
-#accept_friend{
-     background-color: #387ed1;
-   background-image: linear-gradient(90deg,#42b0ff,#4262ff);
-    color: white !important;
-}
-    </style>
-
-<%- include ../partials/navbar.ejs %>
-
-
-
-<!-- navabar -->
-
-
-
-<section class="page-content">
-<div class="page-content-inner">
-
-    <!-- Messaging -->
+    <!-- Header
+    ================================================= -->
+    <!--Header End-->
     <input type="hidden" name="" id="name-user" value="<%= user.username %>">
     <input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
-    
-    <section class="panel panel-with-sidebar sidebar-large panel-with-borders messaging">
-        <div class="panel-sidebar">
-            <div class="messaging-search">
-                <div class="search-block">
-                    <h5 class="messaging-list-title-name">Online Friend <span id="numOfFriends"></span></h5>
-                    <div class="form-input-icon form-input-icon-right">
-                        <i class="icmn-search"></i>
-                        <input type="text" class="form-control form-control-sm" placeholder="Search...">
-                        <button type="submit" class="search-block-submit "></button>
-                    </div>
+    <div class="app-content container center-layout mt-2">
+      <div class="sidebar-left sidebar-fixed">
+        <div class="sidebar">
+          <div class="sidebar-content card d-none d-lg-block">
+            <div class="card-body chat-fixed-search">
+              <fieldset class="form-group position-relative has-icon-left m-0">
+                <input type="text" class="form-control" id="iconLeft4" placeholder="Search user">
+                <div class="form-control-position">
+                  <i class="ft-search"></i>
                 </div>
+              </fieldset>
             </div>
-            
-            <div class="messaging-list">
-                <div class="messaging-list-item">
-                    <div class="s2">
-                        <% if(data.friendsList.length > 0) { %>
-                            <% _.forEach(data.friendsList, function(value) { %>
-                        <div class="friend" hidden>@<%= value.friendName %></div>
-                    <% }) %>
-                        <% } %>
-                    </div>
-                </div>
+            <div id="users-list" class="list-group position-relative">
+              <div class="users-list-padding media-list">
+                <% if(data.friendsList.length > 0) { %>
+                  <% _.forEach(data.friendsList, function(value) { %>
+                
+                <div class="friend" hidden>@<%= value.friendName %></div>
+                
+                <% }) %>
+                  <% } %>
                 <div class="onlineFriends"></div>
+              </div>
             </div>
-        
+          </div>
         </div>
-        <div class="panel-heading">
-            <div class="pull-right">
-                <div class="dropdown">
-                    <a href="javascript: void(0);" class="dropdown-toggle dropdown-inline-button" data-toggle="dropdown" aria-expanded="false">
-                        <i class="dropdown-inline-button-icon icmn-users4"></i>
-                        <span class="">
-                        <%= groupName.replace(/-/g, " ") %> Onlines</span>
-                        <span id="numValue" class="caret">(0)</span>
-                    </a>
-                    <ul id="users"  class="dropdown-menu dropdown-menu-right" aria-labelledby="" role="menu">
-                        <a   class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-pencil7"></i>only you are Online</a>
-                    </ul>
-                    <div class="gr-rightsidebar">
-                    
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-                    
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h3 class="modal-title" id="name"></h3>
-                                    </div>
-                                    <div class="modal-body btn-group">
-                                        <form action="" method="post" id="add_friend">
-                                            <input type="hidden" name="receiverName" id="receiverName" value="">
-                                            <input type="hidden" name="sender-name" id="sender-name" value="<%= user.username %>">
-                                            <button type="submit" id="friend-add" class="btn add btn width-150 swal-btn-success-2">
-                                                <i class="fa fa-user"></i> Add Friend</button>
-                    
-                                            <a id="nameLink" class="btn ">View Profile</a>
-                    
-                                            <div id="myTest">
-                    
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn_close" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                    
-                            </div>
-                        </div>
-                    
-                        <div class="col-md-12" id="main">
-                            <div id="users"></div>
-                    
-                        </div>
-                    
+      </div>
+
+      <div class="content-right">
+        <div class="content-wrapper">
+          <div class="content-header row">
+          </div>
+          <div class="content-body">
+            <section class="chat-app-window">
+              <div class="badge badge-default mb-1">Chat History</div>
+              <div class="chats">
+                <div id="messages" class="chats">
+                  <% _.forEach(groupMsg, function(val) { %>
+                    <% if(groupName === val.name) {%>
+                  <div class="chat chat-left">
+                    <div class="chat-avatar">
+                      <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
+                        <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar" />
+                      </a>
                     </div>
+                    <div class="chat-body">
+                      <div class="chat-content">
+                        <strong class="chat-name">
+                          <%= val.sender.username %>
+                        </strong>
+                        <p><%= val.body %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <% } %>
+                    <% }) %>
                 </div>
-            </div>
-            <!-- <h6 class="messaging-title"><%= groupName %></h6> -->
-        </div>
-        
-
-        <!-- add friend box -->
-        
-
-
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="conversation-block height-700 custom-scroll">
-                        <div id="messages" class="conversation-item">
-                            <% _.forEach(groupMsg, function(val) { %>
-                                <!-- if statment for match groupName -->
-                                <% if(groupName === val.name) { %>
-                            <div class="conversation-item">
-                            <div class="s1">
-                                <a class="avatar" href="javascript:void(0);">
-                                    <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
-                                </a>
-                            </div>
-                            <div class="s2">
-                                <strong><%= val.sender.username %></strong>
-                                <p><%= val.body %></p>
-                            </div>
-                            </div>
-                                <% } %>
-                            <% }) %>
-                        </div>
-
-                        <script id="message-template" type="text/template">
-                             <div class="conversation-item">
-                            <div class="s1">
-                                <a class="avatar" href="javascript:void(0);">
-                                    <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
-                                </a>
-                            </div>
-                            <div class="s2">
-                                <strong>{{ sender }}</strong>
-                                <p>{{ text }}</p>
-                            </div>
-                            </div>
-                        </script>
-
-
-                       
-                        <!-- <script id="message-template" type="text/template">
-                             <div class="conversation-item you">
-                            <div class="s1">
-                                <a class="avatar" href="javascript:void(0);">
-                                    <img src="../assets/common/img/temp/avatars/5.jpg" alt="Alternative text to the image">
-                                </a>
-                            </div>
-                            <div class="s2">
-                                <strong>{{ sender }}</strong>
-                                <p>{{ text }}</p>
-                            </div>
-                            </div>
-                        </script> -->
-
-                        <div class="conversation-item you">
-                            
-                        </div>
+             <script id="message-template" type="text/template">
+                  <div class="chat chat-left">
+                    <div class="chat-avatar">
+                      <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
+                        <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar" />
+                      </a>
                     </div>
-                    
-                    <form action="" id="message-form" method="POST" >
-                    <input type="hidden" name="groupName" id="groupName" value="<%= groupName %>">
-                    <input type="hidden" name="sender" id="sender" value="<%= user.username %>">
-                    <div class="form-group padding-top-20 margin-bottom-0">
-                        <input type="hidden" name="" id="groupName" value="<%= groupName %>">
-                        <textarea name="message" id="msg" class="form-control adjustable-textarea" placeholder="Type and press enter" style="overflow-x: hidden; word-wrap: break-word; resize: none; overflow-y: visible;"></textarea>
-                        <button id="send-message" class="btn btn-primary width-200 margin-top-10">
-                            <i class="fa fa-send margin-right-5"></i>
-                            Send
-                        </button>
-                        <button type="file" class="btn btn-link margin-top-10">
-                            Attach File
-                        </button>
+                    <div class="chat-body">
+                      <div class="chat-content">
+                        <span class="chat-name">
+                          {{ sender }}
+                        </span>
+                        <p>{{ text }}</p>
+                      </div>
                     </div>
-                    </form>
-                </div>
-            </div>
+                  </div>                  
+             </script>
+
+              </div>
+            </section>
+            <section class="chat-app-form">
+              <form class="chat-app-input d-flex" id="message-form" method="POST">
+                <input type="hidden" name="groupName" id="groupName" value="<%= groupName %>">
+                <input type="hidden" name="sender" id="sender" value="<%= user.username %>">
+                <fieldset class="form-group position-relative has-icon-left col-10 m-0">
+                  <div class="form-control-position">
+                    <i class="icon-emoticon-smile"></i>
+                  </div>
+                  <input name="message" id="msg" type="text" class="form-control" id="iconLeft4" placeholder="Type your message">
+                  <div class="form-control-position control-position-right">
+                    <i class="ft-image"></i>
+                  </div>
+                </fieldset>
+                <fieldset class="form-group position-relative has-icon-left col-2 m-0">
+                  <button id="send-message" class="btn btn-primary">
+                    <i class="fa fa-paper-plane-o d-lg-none"></i>
+                    <span class="d-none d-lg-block">Send</span>
+                  </button>
+                </fieldset>
+              </form>
+            </section>
+          </div>
         </div>
-    </section>
-    <!-- End Messaging -->
+      </div>
+    </div>
 
-</div>
+<div class="gr-rightsidebar">
 
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title" id="name"></h3>
+        </div>
+        <div class="modal-body btn-group">
+          <form action="" method="post" id="add_friend">
+            <input type="hidden" name="receiverName" id="receiverName" value="">
+            <input type="hidden" name="sender-name" id="sender-name" value="<%= user.username %>">
+            <button type="submit" id="friend-add" class="btn add btn width-150 swal-btn-success-2">
+              <i class="fa fa-user"></i> Add Friend</button>
+
+            <a id="nameLink" class="btn ">View Profile</a>
+
+            <div id="myTest">
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn_close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> 
+    <!-- Footer
+    ================================================= -->
+    <!-- <footer id="footer">
+      
+		</footer> -->
     
+ 
 
-    <style>
-        .label.label-primary{
-                background: #d9534f;
-        }
-    </style>
-    
-    
-
-<!-- Page Scripts -->
-<script>
-    // $(function() {
-
-    //     ///////////////////////////////////////////////////
-    //     // SIDEBAR CURRENT STATE
-
-    //     $('.messaging-list-item').on('click', function(){
-    //         $('.messaging-list-item').removeClass('current');
-    //         $(this).addClass('current');
-    //     });
-
-    //     ///////////////////////////////////////////////////////////
-    //     // CUSTOM SCROLL
-    //     if (!cleanUI.hasTouch) {
-    //         $('.custom-scroll').each(function() {
-    //             $(this).jScrollPane({
-    //                 autoReinitialise: true,
-    //                 autoReinitialiseDelay: 100
-    //             });
-    //             var api = $(this).data('jsp'),
-    //                     throttleTimeout;
-    //             $(window).bind('resize', function() {
-    //                 if (!throttleTimeout) {
-    //                     throttleTimeout = setTimeout(function() {
-    //                         api.reinitialise();
-    //                         throttleTimeout = null;
-    //                     }, 50);
-    //                 }
-    //             });
-    //         });
-    //     }
-
-    //     ///////////////////////////////////////////////////////////
-    //     // MEDIA PLAYER
-    //     if (!(typeof angular === 'undefined')) {
-    //         $('.mediatec-cleanaudioplayer').cleanaudioplayer();
-    //         $('.mediatec-cleanvideoplayer').cleanvideoplayer();
-    //     }
-
-    //     ///////////////////////////////////////////////////////////
-    //     // ADJUSTABLE TEXTAREA
-    //     autosize($('.adjustable-textarea'));
-
-    // });
-</script>
-
-
-
-<!-- End Page Scripts -->
-</section>
-
-<div class="main-backdrop"><!-- --></div>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/messagelink.js"></script>
-<script src="/js/group/groupchat.js"></script>
-<script src="/js/group/sendrequest.js"></script>
-<script src="/js/global.js"></script>
-<script src="/js/deparam.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
-</body>
+    <!-- Scripts
+    ================================================= -->
+    <%- include ../partials/chatFooter.ejs %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/messagelink.js"></script>
+    <script src="/js/group/groupchat.js"></script>
+    <script src="/js/group/sendrequest.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/deparam.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+  </body>
 </html>

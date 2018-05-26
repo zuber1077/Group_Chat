@@ -3,7 +3,7 @@
 const passport = require('passport');
 const User = require('../models/user');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-//const secret = require('../secret/secretFile');
+const secret = require('../secret/secretFile');
 
 //inside user be store userid,name.. /done then save it in z session 
 passport.serializeUser((user,done)=>{
@@ -17,10 +17,10 @@ passport.deserializeUser((id,done)=>{
 });
 
 passport.use(new GoogleStrategy({
-        // clientID: secret.google.clientID,
-        // clientSecret: secret.google.clientSecret,
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+         //clientID: secret.google.clientID,
+         //clientSecret: secret.google.clientSecret,
+       clientID: process.env.GOOGLE_CLIENT_ID,
+       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: 'http://localhost:3000/auth/google/callback',
         // callbackURL: 'https://localhost:3000/auth/facebook/callback',
         passReqCallback: true //allow us to pass z data to call back when users try to login //tp check the user exist in db

@@ -27,10 +27,10 @@ $(document).ready(function () {
 
     socket.on('usersList', function(users) {
         //console.log(users); 
-        var ul = $('<ul role="menu" class=""dropdown-menu dropdown-menu-right"></ul>');
+        var div = $('<li></li>');
 
         for(var i = 0; i < users.length; i++){
-            ul.append('<a id="val" data-toggle="modal" data-target="#myModal" class="dropdown-item">' + '<i class="dropdown-icon icmn-satellite-dish2"></i>' + users[i] + "</a>");
+            div.append('<a class="dropdown-item" id="val" data-toggle="modal" data-target="#myModal">'+ users[i] +'<submenu class="name"></submenu></a>');
         }
 
         $(document).on('click', '#val', function() {
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 
         $('#numValue').text('('+users.length+')');
-        $('#users').html(ul);
+        $('#users').html(div);
 
     });
 

@@ -40,7 +40,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
     //     else
     //        console.dir(error);
     // });
-    // mongoose.connect('mongodb://groupchats:password@ds229380.mlab.com:29380/groupchat',{useMongoClient: true}, function(error, db) {
+    // mongoose.connect('mongodb://127.0.0.1/groupchat',{useMongoClient: true}, function(error, db) {
     //     if(!error){
     //          console.log("We are connected");
     //     }
@@ -55,7 +55,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         else
            console.dir(error);
     });
-    //console.log(process.env.MONGODB_URI);
+//     console.log(process.env.MONGODB_URI);
 // );
     // mongoose.connect('mongodb://<groupchats>:<password>@ds229380.mlab.com:29380/groupchat', { useMongoClient: true });
 

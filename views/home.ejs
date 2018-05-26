@@ -1,287 +1,140 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en" data-textdirection="ltr">
 <head>
-	<meta charset="UTF-8" />
-	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
-
-	<!-- Open Graph -->
-	<meta property="og:type" content="website" />
-	<meta property="og:description" content="Your Page Description Here" />
-
-	<!-- Twitter Theme -->
-	
-	<!-- Title &amp; Favicon -->
-	<title>GPchat | group chat</title>
-
-	<!-- Font -->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/vendors/jscrollpane/style/jquery.jscrollpane.css">
-	
-	<link rel="stylesheet" type="text/css" href="../assets/vendors/select2/dist/css/select2.min.css">
-	
-	
-	
-	<!-- Clean UI Styles -->
-	<link rel="stylesheet" type="text/css" href="../assets/common/css/source/main.css">
-	
-	<!-- Vendors Scripts -->
-	<!-- v1.0.0 -->
-	<script src="../assets/vendors/jquery/jquery.min.js"></script>
-	<script src="../assets/vendors/tether/dist/js/tether.min.js"></script>
-	<script src="../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../assets/vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-	<script src="../assets/vendors/jscrollpane/script/jquery.jscrollpane.min.js"></script>
-	<script src="../assets/vendors/spin.js/spin.js"></script>
-	<script src="../assets/vendors/ladda/dist/ladda.min.js"></script>
-	<script src="../assets/vendors/select2/dist/js/select2.full.min.js"></script>
-	<script src="../assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
-	<script src="../assets/vendors/jquery-typeahead/dist/jquery.typeahead.min.js"></script>
-	<script src="../assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-	<script src="../assets/vendors/autosize/dist/autosize.min.js"></script>
-	<!-- <script src="../assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script> -->
-	<script src="../assets/vendors/moment/min/moment.min.js"></script>
-	<script src="../assets/vendors/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-	
-	<!-- Clean UI Scripts -->
-	<script src="../assets/common/js/common.js"></script>
-	<script src="../assets/common/js/demo.temp.js"></script>
-	<!-- Css -->
-	<link rel="stylesheet" href="css/core.min.css" />
-	<link rel="stylesheet" href="css/skin.css" />
-
-	<!--[if lt IE 9]>
-    	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-</head>
-<body class="shop catalogue-products">
-
-	<!-- Side Navigation Menu -->
-	<aside class="side-navigation-wrapper enter-right" data-no-scrollbar data-animation="push-in">
-		<div class="side-navigation-scroll-pane">
-			<div class="side-navigation-inner">
-				<div class="side-navigation-header">
-					<div class="navigation-hide side-nav-hide">
-						<a href="#">
-							<span class="icon-cancel medium"></span>
-						</a>
-					</div>
-				</div>
-				<div class="side-navigation-footer">
-					<p class="copyright no-margin-bottom">&copy; 2018 GPchat Alright Resiver.</p>
-				</div>
-			</div>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="author" content="ZUBER">
+  <title>GPchat | Home</title>
+  <%- include partials/navbar.ejs %>
+  <!-- Horizontal navigation-->
+  <div class="app-content container center-layout mt-2">
+    <div class="content-wrapper">
+      <div class="content-header row">
+        <div class="content-header-left col-md-6 col-12 mb-2">
+          <h3 class="content-header-title mb-0">Groupchat</h3>
+          <div class="row breadcrumbs-top">
+            <div class="breadcrumb-wrapper col-12">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Groupchat
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-body">
+		<div class="col-12">
+			<h4 class="text-uppercase">Welcome back
+				<strong>
+					<%= user.username %>
+				</strong>
+			</h4>
+			<p>it is time to Stay loop with the GPchats.</p>
 		</div>
-	</aside>
-	<!-- Side Navigation Menu End -->
-
-	<div class="wrapper reveal-side-navigation">
-		<div class="wrapper-inner">
-
-			<!-- Header -->
-			<header class="header header-relative header-fixed-on-mobile nav-dark" data-bkg-threshold="100" data-sticky-threshold="0">
-				<div class="header-inner">
-					<div class="row nav-bar">
-						<div class="column width-12 nav-bar-inner">
-							<div class="logo">
-								<div class="logo-inner">
-									<a href="/home"><img src="images/logo-dark.png" alt="GPchat Logo" /></a>
-									<a href="/home"><img src="images/logo.png" alt="GPchat Logo" /></a>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-			
-			<!-- Header End -->
-		
-	
-
-			<!-- Content -->
-			<div class="content clearfix">
-
-				<!-- Intro Title Section 1 -->
-				<div class="section-block intro-title-1 small">
-					<div class="row">
-						<div class="column width-12">
-							<div class="title-container">
-								<div class="title-container-inner">
-									<div class="row flex">
-										<div class="col-md-12">
-											<form action="/results" method="post">
-												<div class="form-group ad-30" style="margin-top:8px;">
-													<div class="input-group search-style">
-														<input class="form-control new-search-bar" name="country" id="search" placeholder="Search For Groups" type="text">
-														<span class="input-group-btn">
-															<button class="btn input-btn " type="" id="search-form">Search</button>
-														</span>
-													</div>
-												</div>
-											</form>
-										</div>
-										<div class="column width-6 v-align-middle">
-											<div>
-												<h1 class="mb-0">JOIN TO JOIN</h1>
-												<p class="lead mb-0 mb-mobile-20">Welcome back
-												<strong><%= user.username %></strong> it is time to Stay loop with the GPchats</p>
-											</div>
-										</div>
-										<div class="column width-6 v-align-middle">
-											<div>
-												<ul class="breadcrumb mb-0 pull-right clear-float-on-mobile">
-													<li>
-														<a href="/">SignUp</a>
-													</li>
-													<li>
-														Home
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Intro Title Section 1 End -->
-
-			<!-- Filter Menu -->
-				<div class="section-block pt-0 pb-0 grid-filter-dropdown" data-target-grid="#product-grid">
-					<form action="/results" method="post">
-					<input type="hidden" name="" id="name-user" value="<%= user.username %>">
-					<input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
-					<div class="freeze pt-10 bkg-white" data-extra-space-top="80" data-extra-space-bottom="0">
-						<div class="row">
-							<div class="column width-12">
-								<div class="filter-menu-inner">
-									<div class="row flex">
-										<div class="column width-8 v-align-middle">
-											<div class="product-result-count">
-												<p class="mb-0 mb-mobile-30">Showing 1–10 of 46 results</p>
-											</div>
-										</div>
-										
-										<div class="column width-4 right left-on-mobile">
-											<span class="dropdown-label mb-0 mb-mobile-30">Filter: </span>
-											<div class="dropdown medium inline-block" data-update-selection>
-												<a href="#" class="button rounded center border-grey-light color-grey bkg-hover-theme color-hover-white"><span>Sort Groups</span><span class="icon-down-open-mini pull-right"></span></a>
-												<% _.forEach(chunks, function(val) {  %>
-												<ul class="dropdown-list">
-													
-													<li><a class="active" href="#" data-filter="*">All Groups</a></li>
-													<% _.forEach(val, function(val2) {  %>
-													<li name="country" id="country" ><a href="/group/<%= val2.country %>" data-filter="<%= val2.country %>"><%= val2.country %></a></li>
-													<% }) %>
-													<!-- </ul> -->
-												<% }) %>
-												</ul>
-											</div>
-											<button style="margin: 0 0 0 0;" class="button small rounded bkg-theme bkg-hover-theme color-white color-hover-white">Apply</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					</form>
-				</div>
-				<!-- Filter Menu End -->
-
-				<!-- Product Grid -->
-				<% _.forEach(chunks, function(val) {  %> 
-				<div id="product-grid" class="section-block grid-container products  fade-in-progressively pt-30 pb-0" data-layout-mode="masonry" data-grid-ratio="1.5" data-animate-resize data-animate-resize-duration="0"> <!-- last -->
-					
-					<div class="row"> <!-- row start -->
-						
-						<div class="column width-12"> <!-- col 12 strty -->
-							<form action="/home" method="POST" id="favorite">
-							<div class="row grid content-grid-4">
-								
-									<% _.forEach(val, function(val2) {  %>
-									
-								<div class="grid-item product grid-sizer <%= val2.country %>">
-									<div class="thumbnail rounded product-thumbnail border-grey-light img-scale-in" data-hover-easing="easeInOut" data-hover-speed="700" data-hover-bkg-color="#ffffff" data-hover-bkg-opacity="0.9">
-										<span class="onsale"><%= val2.country %><strong> [<%= val2.fans.length %>]</strong></span>
-							<a class="overlay-link" href="/group/<%= val2.name.replace(/ /g, "-") %>">
-											<img src="images/groups/grid/large-margins/product-1.jpg" alt=""/>
-											<span class="overlay-info">
-												<span>
-													<span>
-														<%= val2.country %>
-													</span>
-												</span>
-											</span>
-										</a>
-										<div class="product-actions center">
-											<input type="hidden" name="id" id="id" value="<%= val2._id %>">
-											<input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name%>">
-											<button class="button add-to-cart-button rounded small">Add to Favorite →</button>
-										</div>
-									</div>
-									<div class="product-details center">
-										<h3 class="product-title text-truncate">
-											<a href="<%= val2.name %>">
-												<%= val2.name %> 
-											</a>
-										</h3>
-										<div class="product-actions-mobile">
-											<input type="hidden" name="id" id="id" value="<%= val2._id %>">
-											<input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name %>">
-											<button class="button add-to-cart-button rounded small">Add to Favorite →</button>
-										</div>
-									</div>
-								</div>
-								
-								<% }) %>
-							</div>
-							</form>
-							</div> <!-- col 12 end -->
-						</div> <!-- row end -->
-						
-
-					</div> <!-- last -->
-					<% }) %>
-
-				</div> <!-- all -->
-				<!-- </div> -->
-				<!-- Product Grid End -->
+        
+		<!-- User Profile Cards with Stats -->
+		<form action="/home" method="POST" id="favorite">
+		<% _.forEach(chunks, function(val) {  %> 
+        <section id="user-profile-cards-with-stats" class="row mt-2">
+         
+			<% _.forEach(val, function(val2) {  %>
 				
-				<!-- Pagination Section 3 -->
-				<div class="section-block pagination-3">
-					<div class="row">
-						<div class="column width-12">
-							<ul>
-								<li><a class="pagination-previous icon-left-open" href="/"><span class="icon-left-open-mini"></span></a></li>
-								<li><a class="current" href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a class="pagination-next disabled" href="#"><span class="icon-right-open-mini"></span></a></li>
-							</ul>
-						</div>
+          <div class="col-xl-4 col-md-6 col-12">
+            <div class="card profile-card-with-stats border-teal border-lighten-2">
+              <div class="text-center">
+				<div class="card profile-card-with-cover ">
+					<!--<img class="card-img-top img-fluid" src="../../../app-assets/images/carousel/16.jpg" alt="Card cover image">-->
+					<div class="card-img-top img-fluid bg-cover height-200" style="background: url('../../../app-assets/images/carousel/16.jpg');"></div>
+					<div class="card-profile-image">
+						<img src="../../../app-assets/images/portrait/small/avatar-s-9.png" class="rounded-circle img-border" alt="Card image">
 					</div>
 				</div>
-				<!-- Pagination Section 3 End -->
-
-			</div>
-			<!-- Content End -->
-
-
-		</div>
-	<!-- </div> -->
-
-	<!-- Js -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/timber.master.min.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/messagelink.js"></script>
-	<script src="/js/group/sendrequest.js"></script>
-	<script src="/js/home.js"></script>
-	<script src="/js/global.js"></script>
-	<script src="/js/deparam.js"></script>
+                <div class="card-body">
+                  <br><h4 class="card-title"><%= val2.name %></h4>
+                  <ul class="list-inline list-inline-pipe">
+                    <li><%= val2.country %></li>
+                    <li>Group</li>
+                  </ul>
+                </div>
+                <div class="btn-group" role="group" aria-label="Profile example">
+                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
+                    <span class="ladda-label"><i class="fa fa-bell-o"></i>
+                      <span>12+</span>
+                    </span>
+                    <span class="ladda-spinner"></span>
+                  </button>
+                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
+					<span class="ladda-label"><i class="fa fa-heart-o"></i>
+						<input type="hidden" name="id" id="id" value="<%= val2._id %>">
+						<input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name%>">
+                      <span><%= val2.fans.length %></span>
+                    </span>
+                    <span class="ladda-spinner"></span>
+                  </button>
+                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
+                    <span class="ladda-label"><i class="ft-mail"></i>
+                      <span>75+</span>
+                    </span>
+                    <span class="ladda-spinner"></span>
+                  </button>
+                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
+                    <span class="ladda-label"><i class="fa fa-dashcube"></i>
+                      <span>125</span>
+                    </span>
+                    <span class="ladda-spinner"></span>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <input type="hidden" name="id" id="id" value="<%= val2._id %>">
+                  <input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name%>">
+                  <button type="button" class="button btn btn-outline-danger btn-md btn-round mr-1"> Add To Fov</button>
+                  <a class="overlay-link" href="/group/<%= val2.name.replace(/ /g, "-") %>"><button type="button" class="btn btn-outline-danger btn-md btn-round mr-1"> Enter Group</button></a>
+                </div>
+              </div>
+            </div>
+		  </div>
+		 
+		  <% }) %>
+          
+		</section>
+		<% }) %>
+		</form>
+        <!-- User Profile Cards with Stats -->
+      </div>
+    </div>
+  </div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<footer class="footer footer-static footer-light navbar-shadow">
+  <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout">
+    <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2018
+      <a class="text-bold-800 grey darken-2" href="https://zuham.herokuapp.com/" target="_blank">GPChat </a>, All rights reserved. </span>
+    <span class="float-md-right d-block d-md-inline-block d-none d-lg-block">Group And Private Chat </span>
+  </p>
+</footer>
+<!-- BEGIN VENDOR JS-->
+<script src="/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+<!-- BEGIN VENDOR JS-->
+<!-- BEGIN PAGE VENDOR JS-->
+<script type="text/javascript" src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
+<script type="text/javascript" src="/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
+<!-- END PAGE VENDOR JS-->
+<!-- BEGIN STACK JS-->
+<script src="/app-assets/js/core/app-menu.js" type="text/javascript"></script>
+<script src="/app-assets/js/core/app.js" type="text/javascript"></script>
+<script src="/app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+<!-- END STACK JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<script type="text/javascript" src="/app-assets/js/scripts/ui/breadcrumbs-with-stats.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/messagelink.js"></script>
+<script src="/js/group/sendrequest.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/deparam.js"></script>
+<!-- END PAGE LEVEL JS-->
 </body>
+
 </html>
