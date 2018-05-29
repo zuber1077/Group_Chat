@@ -3,7 +3,7 @@
 const passport = require('passport');
 const User = require('../models/user');
 const FacebookStrategy = require('passport-facebook').Strategy;
-const secret = require('../secret/secretFile');
+//const secret = require('../secret/secretFile');
 
 //inside user be store userid,name.. /done then save it in z session 
 passport.serializeUser((user,done)=>{
@@ -18,8 +18,8 @@ passport.deserializeUser((id,done)=>{
 
 passport.use(new FacebookStrategy({
         clientID: secret.facebook.clientID,
-        //clientID: process.env.FB_CLIENT_ID,
-        clientSecret: secret.facebook.clientSecret,
+        clientID: process.env.FB_CLIENT_ID,
+        //clientSecret: secret.facebook.clientSecret,
         //clientSecret: process.env.FB_CLIENT_SECRET,
         profileFields: ['email','displayName','photos'], //profile users
         // callbackURL: 'https://localhost:3000/auth/facebook/callback',
