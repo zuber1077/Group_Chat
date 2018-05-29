@@ -17,10 +17,10 @@ passport.deserializeUser((id,done)=>{
 });
 
 passport.use(new FacebookStrategy({
-        clientID: secret.facebook.clientID,
+        //clientID: secret.facebook.clientID,
         clientID: process.env.FB_CLIENT_ID,
         //clientSecret: secret.facebook.clientSecret,
-        //clientSecret: process.env.FB_CLIENT_SECRET,
+        clientSecret: process.env.FB_CLIENT_SECRET,
         profileFields: ['email','displayName','photos'], //profile users
         // callbackURL: 'https://localhost:3000/auth/facebook/callback',
         callbackURL: 'http://localhost:3000/auth/facebook/callback',

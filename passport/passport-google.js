@@ -19,8 +19,8 @@ passport.deserializeUser((id,done)=>{
 passport.use(new GoogleStrategy({
        //  clientID: secret.google.clientID,
          //clientSecret: secret.google.clientSecret,
-       clientID: process.env.GOOGLE_CLIENT_ID,
-       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+         clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: 'http://localhost:3000/auth/google/callback',
         // callbackURL: 'https://localhost:3000/auth/facebook/callback',
         passReqCallback: true //allow us to pass z data to call back when users try to login //tp check the user exist in db
