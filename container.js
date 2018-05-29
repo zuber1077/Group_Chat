@@ -4,6 +4,8 @@ const path = require('path'); //tell dependable to go any folder we pesefied her
 
 const container = dependable.container();
 
+//for example lodash can be used as multiple times in diffent files
+
 const dependencies = [//this arrayz
   ['_','lodash'],
   ['passport','passport'],
@@ -29,13 +31,13 @@ const dependencies = [//this arrayz
 //register depenscies i use forEach loop to loop thro .. insted of make use of in every file 
 dependencies.forEach(function(val) {
     container.register(val[0], function(){ //only call '_'
-        return require(val[1]);
+        return require(val[1]); //call by own name
     })
 });
 
 //any function that we have in those file we can make use of them out side those file by likely calling module.export
-container.load(path.join(__dirname,'/controllers')); //interacting w db 
-container.load(path.join(__dirname,'/helpers'));
+container.load(path.join(__dirname,'/controllers')); //interacting w db //
+container.load(path.join(__dirname,'/helpers')); //any function inside this can be reused
 
 container.register('container',function(){
     return container;

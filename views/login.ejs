@@ -1,160 +1,215 @@
 <!DOCTYPE html>
-<html lang="zxx">
-<head>
-	<meta charset="UTF-8" />
-	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>GPchat | Login</title>
 
-
-	<!-- Twitter Theme -->
-	<meta name="twitter:widgets:theme" content="light">
-	
-	<!-- Title &amp; Favicon -->
-	<title>GPchat | Login</title>
-
-	<!-- Font -->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,700' rel='stylesheet' type='text/css'>
-	
-	<!-- Css -->
-	<link rel="stylesheet" href="css/core.min.css" />
-	<link rel="stylesheet" href="css/skin.css" />
-
-	<!--[if lt IE 9]>
-    	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <!-- HTML5 shim and Respond.js for < IE9 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Vendors Styles -->
+    <!-- v1.0.0 -->
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <!--  Styles -->
+    <link rel="stylesheet" type="text/css" href="/assets/common/css/source/main.css">
+
+    <!-- Vendors Scripts -->
+    <!-- v1.0.0 -->
+    <script src="/assets/vendors/jquery/jquery.min.js"></script>
+    <script src="/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+    <script src="/assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+
+    <!-- v1.0.1 -->
+    <!-- v1.1.1 -->
+    <script src="/assets/vendors/gsap/src/minified/TweenMax.min.js"></script>
+
+    <!--  Scripts -->
+    <script src="/assets/common/js/common.js"></script>
+    <script src="/assets/common/js/demo.temp.js"></script>
 </head>
-<body class="shop home-page">
+<body>
 
+<section class="page-content">
+<div class="page-content-inner" style="background-image: url(../assets/common/img/temp/login/6.jpg)">
 
-	<div class="wrapper">
-		<div class="wrapper-inner">
-
-			<!-- Content -->
-			<div class="content clearfix">
-
-				<!-- Login Section -->
-				<div class="section-block replicable-content window-height bkg-heavy-rain-gradient">
-					<div class="row flex v-align-middle">
-						<div class="column width-6 offset-3">
-							<div>
-								<div class="logo mb-50">
-									<div class="logo-inner center">
-										<a href="/"><img src="images/logo-dark.png" width="125" alt="Faulkner Logo" /></a>
-									</div>
-								</div>
-								<div class="signup-box box rounded xlarge bkg-white shadow">
-									<h3 class="center">Sign in to continue</h3>
-									<p class="mb-20 center">Need a client account? <a href="/" class="fade-location">Click Here</a></p>
-
-										<% if(hasErrors)  { %>
-											<div class="box dismissable rounded small warning">
-												<a href="#" class="dismissable"></a>
-												<% _.forEach(messages,function(error){ %>
-													<%= error %><br>
-												<% }) %>
-											</div>
-										<% } %>
-
-									
-									<div class="login-form-container">
-										<form class="login-form" action="#" method="post" novalidate>
-											<div class="row">
-												<div class="column width-12">
-													<div class="field-wrapper">
-														<a href="/auth/facebook" class="button rounded medium center full-width bkg-facebook bkg-hover-facebook color-white color-hover-white mb-10"><span class="icon-facebook left"></span><span>Sign in with Facebook</span></a>
-														<a href="/auth/google" class="button rounded medium center full-width bkg-google bkg-hover-google color-white color-hover-white mb-10"><span class="icon-google left"></span><span>Sign in with Google</span></a>
-														<div class="divider center mt-40 mb-50"><span class="bkg-white text-large">Or use a GPchat account</span></div>
-														<label class="color-charcoal">Email:</label>
-														<input type="text" name="email" class="form-username form-element rounded medium" placeholder="zuber1077@yahoo.com">
-													</div>
-												</div>
-												<div class="column width-12">
-													<div class="field-wrapper">
-														<label class="color-charcoal">Password:</label>
-														<input type="password" name="password" class="form-password form-element rounded medium" placeholder="••••••••">
-													</div>
-												</div>
-												<div class="column width-12">
-													<div class="field-wrapper pt-0 pb-20">
-													 	<input id="checkbox-1" class="form-element checkbox rounded" name="login[checkbox-1]" type="checkbox" required>
-														<label for="checkbox-1" class="checkbox-label no-margins">Remember Me</label>
-													</div>
-												</div>
-												<div class="column width-12 center">
-													<input type="submit" value="Sign In" class="form-submit button rounded medium bkg-green bkg-hover-theme bkg-focus-green color-white color-hover-white mb-0">
-												</div>
-											</div>
-										</form>
-										<div class="form-response show"></div>
-									</div>
-								</div>
-								<p class="text-small center mt-20 mb-0 center">I forgot my password - <a href="#">Remind me</a></p>
-							</div>
+    <!-- Login Page -->
+    <div class="single-page-block-header">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="logo">
+                    <a href="javascript: history.back();">
+                        <img src="../assets/common/img/logo-inverse.png" alt="GPchat | - Mobile Application" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="single-page-block-header-menu">
+                    <ul class="list-unstyled list-inline">
+                        <li><a href="javascript: history.back();">&larr; Back</a></li>
+                        <li class="active"><a href="javascript: void(0);">Login</a></li>
+                        <li><a href="/">Register</a></li>
+                        <!-- <li><a href="javascript: void(0);">Support</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-page-block">
+        <div class="single-page-block-inner effect-3d-element">
+            <div class="blur-placeholder"><!-- --></div>
+            <div class="single-page-block-form">
+                <h3 class="text-center">
+                    <i class="icmn-enter margin-right-10"></i>
+                    Sign in to continue
+                </h3>
+				<br />
+				<% if(hasErrors) {%>
+				
+					<% _.forEach(messages, function(error){ %>
+						<div class="alert alert-danger text-center">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<%= error %>
+								<br>
 						</div>
-					</div>
-				</div>
-				<!-- Login Section End -->
+						<% }) %>
+				
+						<% } %>
+                <form id="form-validation" name="form-validation" method="POST">
+                    <div class="form-group">
+                        <input id="validation-email"
+                               class="form-control"
+                               placeholder="Email or Username"
+                               name="email"
+                               type="text"
+                               data-validation="[EMAIL]">
+                    </div>
+                    <div class="form-group">
+                        <input id="validation-password"
+                               class="form-control password"
+                               name="password"
+                               type="password" data-validation="[L>=6]"
+                               data-validation-message="$ must be at least 6 characters"
+                               placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <a href="javascript: void(0);" class="pull-right">Forgot Password?</a>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="example6" checked>
+                                Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field-wrapper">
+                        <a href="/auth/facebook" style="outline: 0; text-decoration: none;">
+                            <span class="icon-facebook left"></span>
+                            <!-- <i class="icmn-facebook2" ></i> -->
+                            <button class="btn btn-primary width-20" style="background-color:#3b5998 !important; border-color: #3b5998 !important; outline: 0; padding: 1px 16px !important; 1.3rem!important"><i class="icmn-facebook2"></i></button>
+                            <!-- <span>Sign in with Facebook</span> -->
+                        </a>
+                        <a href="/auth/google" style="outline: 0; text-decoration: none;">
+                            
+                            <!-- <span> Sign in with Google</span> -->
+                            <button class="btn btn-primary width-20" style="background-color:  #d34836 !important; border-color:  #d34836 !important; padding: 1px 16px;"><i class="icmn-google-plus2"></i></button>
+                        </a>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary width-150">Sign In</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="single-page-block-footer text-center">
+        <ul class="list-unstyled list-inline">
+            <li><a href="javascript: void(0);">Terms of Use</a></li>
+            <!-- <li class="active"><a href="javascript: void(0);">Compliance</a></li>
+            <li><a href="javascript: void(0);">Confidential Information</a></li> -->
+            <li><a href="javascript: void(0);">Support</a></li>
+            <li><a href="javascript: void(0);">Contacts</a></li>
+        </ul>
+    </div>
+    <!-- End Login Page -->
 
-				<!-- Subscribe Advanced Modal End -->
-				<div id="subscribe-modal" class="section-block pt-0 pb-30 background-none hide">
-					
-					<!-- Intro Title Section 2 -->
-					<div class="section-block intro-title-2-1 xsmall bkg-grey-ultralight">
-						<div class="media-overlay bkg-black opacity-03"></div>
-						<div class="row">
-							<div class="column width-12">
-								<div class="title-container">
-									<div class="title-container-inner center color-white">
-										<h1 class="title-medium mb-0">Subscribe To Newsletter</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Intro Title Section 2 End -->
+</div>
+<style>
+    .single-page-block-footer ul li a {
+        color: #ebebef !important
+    }
+</style>
+<!-- Page Scripts -->
+<script>
+    $(function() {
 
-					<!-- Signup -->
-					<div class="section-block pt-60 pb-0">
-						<div class="row">
-							<div class="column width-12 center">
-								<div class="signup-form-container">
-									<div class="row">
-										<div class="column width-10 offset-1">
-											
-										</div>
-									</div>
-									<form class="signup-form merged-form-elements" action="php/subscribe.php" method="post" novalidate>
-										<div class="row">
-											<div class="column width-8">
-												<div class="field-wrapper">
-													<input type="email" name="email" class="form-email form-element rounded medium left" placeholder="Email address*" tabindex="2" required>
-												</div>
-											</div>
-											<div class="column width-4">
-												<input type="submit" value="Subscribe" class="form-submit button rounded large bkg-theme bkg-hover-green color-white color-hover-white">
-											</div>
-										</div>
-										<input type="text" name="honeypot" class="form-honeypot form-element">
-									</form>
-									<div class="form-response show"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Signup End -->
+        // Form Validation
+        $('#form-validation').validate({
+            submit: {
+                settings: {
+                    inputContainer: '.form-group',
+                    errorListClass: 'form-control-error',
+                    errorClass: 'has-danger'
+                }
+            }
+        });
 
-				</div>
-				<!-- Subscribe Advanced Modal End -->
+        // Show/Hide Password
+        $('.password').password({
+            eyeClass: '',
+            eyeOpenClass: 'icmn-eye',
+            eyeCloseClass: 'icmn-eye-blocked'
+        });
 
-			</div>
-			<!-- Content End -->
+        // Add class to body for change layout settings
+        $('body').addClass('single-page');
 
-		</div>
-	</div>
+        // Set Background Image for Form Block
+        function setImage() {
+            var imgUrl = $('.page-content-inner').css('background-image');
 
-	<!-- Js -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3JCAhNj6tVAO_LSb8M-AzMlidiT-RPAs"></script>
-	<script src="js/timber.master.min.js"></script>
+            $('.blur-placeholder').css('background-image', imgUrl);
+        };
+
+        function changeImgPositon() {
+            var width = $(window).width(),
+                    height = $(window).height(),
+                    left = - (width - $('.single-page-block-inner').outerWidth()) / 2,
+                    top = - (height - $('.single-page-block-inner').outerHeight()) / 2;
+
+
+            $('.blur-placeholder').css({
+                width: width,
+                height: height,
+                left: left,
+                top: top
+            });
+        };
+
+        setImage();
+        changeImgPositon();
+
+        $(window).on('resize', function(){
+            changeImgPositon();
+        });
+
+        // Mouse Move 3d Effect
+        var rotation = function(e){
+            var perX = (e.clientX/$(window).width())-0.5;
+            var perY = (e.clientY/$(window).height())-0.5;
+            TweenMax.to(".effect-3d-element", 0.4, { rotationY:15*perX, rotationX:15*perY,  ease:Linear.easeNone, transformPerspective:1000, transformOrigin:"center" })
+        };
+
+    });
+</script>
+<!-- End Page Scripts -->
+</section>
+<div class="main-backdrop"><!-- --></div>
+
 </body>
 </html>

@@ -87,7 +87,7 @@ module.exports = function(async, gpNames, _, gfs, find, mu, mu2, crypto, Users, 
                const res4 = results[2];
                 //console.log(res1);
                 const dataChunk = [];
-                const chunkSize = 4;
+                const chunkSize = 3;
                 for (let i = 0; i < res1.length; i += chunkSize){
                     dataChunk.push(res1.slice(i, i+chunkSize));
                 }

@@ -76,9 +76,8 @@ module.exports = function(formidable, gpNames, aws) {
         
     },
 
-    // filePage: function (req,res) {
-        
-    // },
+
+ 
 
 
     adminPage: function(req, res) {

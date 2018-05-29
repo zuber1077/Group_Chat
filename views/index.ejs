@@ -1,299 +1,223 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Your Page Title Here" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="Your Page Description Here" />
-
-
-    <!-- Title &amp; Favicon -->
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>GPchat | - Mobile Application</title>
-
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CHind+Madurai:400,500&amp;subset=latin-ext" rel="stylesheet">
-
-    <!-- Css -->
-    <link rel="stylesheet" href="css/core.min.css" />
-    <link rel="stylesheet" href="css/skin.css" />
-
+ <!-- HTML5 shim and Respond.js for < IE9 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Vendors Styles -->
+    <!-- v1.0.0 -->
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/assets/common/css/source/main.css">
+
+    <!-- Vendors Scripts -->
+    <!-- v1.0.0 -->
+    <script src="/assets/vendors/jquery/jquery.min.js"></script>
+    <script src="/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+    <script src="/assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+
+    <!-- v1.0.1 -->
+    <!-- v1.1.1 -->
+    <script src="/assets/vendors/gsap/src/minified/TweenMax.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="/assets/common/js/common.js"></script>
+    <script src="/assets/common/js/demo.temp.js"></script>
 </head>
+<body>
 
-<body class="shop home-page">
+<section class="page-content">
+<div class="page-content-inner" style="background-image: url(../assets/common/img/temp/login/6.jpg)">
 
-    <!-- Side Navigation Menu -->
-    <aside class="side-navigation-wrapper enter-right" data-no-scrollbar data-animation="slide-in">
-        <div class="side-navigation-scroll-pane">
-            <div class="side-navigation-inner">
-                <div class="side-navigation-header">
-                    <div class="navigation-hide side-nav-hide">
-                        <a href="#">
-                            <span class="icon-cancel medium"></span>
-                        </a>
-                    </div>
+    <!-- Register Page -->
+    <div class="single-page-block-header">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="logo">
+                    <a href="javascript: history.back();">
+                        <img src="../assets/common/img/logo-inverse.png" alt="GPchat | - Mobile Application" />
+                    </a>
                 </div>
-                <nav class="side-navigation nav-block">
-                    <ul>
-                        <li>
-                            <a href="elements-sticky-columns.html">About Us</a>
-                        </li>
-                        <li>
-                            <a href="elements-sticky-columns.html">How it works</a>
-                        </li>
-                        <li>
-                            <a href="elements-sticky-columns.html">stay connect</a>
-                        </li>
-                    </ul>
-                </nav>
-                <nav class="side-navigation nav-block">
-                    <ul>
-                        <li>
-                            <a href="#" class="contains-sub-menu">quick Contact</a>
-                            <div class="sub-menu custom-content login-form-container">
-                                <form class="login-form" action="#" method="post" novalidate>
-                                    <div class="row">
-                                        <div class="column width-12">
-                                            <div class="field-wrapper">
-                                                <input type="text" name="email" class="form-name form-element rounded small" placeholder="Email" tabindex="1" required>
-                                            </div>
-                                        </div>
-                                        <div class="column width-12">
-                                            <div class="field-wrapper">
-                                                <input type="password" name="password" class="form-email form-element rounded small" placeholder="Password" tabindex="2" required>
-                                            </div>
-                                        </div>
-                                        <div class="column width-12">
-                                            <div class="row flex">
-                                                <div class="column width-6">
-                                                    <input type="submit" value="Login" class="form-submit button small rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                                                        tabindex="3">
-                                                </div>
-                                                <div class="column width-6 v-align-middle right">
-                                                    <div>
-                                                        <a class="recuperate-password" href="">Password?</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="text" name="honeypot" class="form-honeypot form-element">
-                                </form>
-                                <div class="form-response"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                
             </div>
-        </div>
-    </aside>
-    <!-- Side Navigation Menu End -->
-
-    <div class="wrapper reveal-side-navigation">
-        <div class="wrapper-inner">
-
-            <!-- Header -->
-            <header class="header header-absolute header-transparent header-fixed-on-mobile" data-helper-in-threshold="200" data-helper-out-threshold="500"
-                data-sticky-threshold="200" data-bkg-threshold="100">
-                <div class="header-inner">
-                    <div class="row nav-bar">
-                        <div class="column width-12 nav-bar-inner">
-                            <div class="logo">
-                                <div class="logo-inner">
-                                    <a href="index.html">
-                                        <img src="images/logo-dark.png" alt="Faulkner Logo" />
-                                    </a>
-                                    <a href="index.html">
-                                        <img src="images/logo.png" alt="Faulkner Logo" />
-                                    </a>
-                                </div>
-                            </div>
-                            <nav class="navigation nav-block secondary-navigation nav-right">
-                                <ul>
-                                    <li class="aux-navigation hide">
-                                        <!-- Aux Navigation -->
-                                        <a href="#" class="navigation-show side-nav-show nav-icon">
-                                            <span class="icon-menu"></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <nav class="navigation nav-block primary-navigation nav-left sub-menu-indicator">
-                                <ul>
-                                    <li class="current">
-                                        <a href="#home" class="scroll-link">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="#about" class="scroll-link">About Us</a>
-                                    </li>
-                                    <!-- <li class="contains-sub-menu">
-                                        <a href="#how-it-works" class="scroll-link">How It Works</a>
-                                        <div class="sub-menu custom-content">
-                                            <div class="video-container">
-                                                <iframe src="https://player.vimeo.com/video/213961896?title=0&mp;byline=0&amp;portrait=0&amp;color=717dfb" width="500" height="281"></iframe>
-                                            </div> -->
-                                    <!-- <ul>
-                                                <li>
-                                                    <h4>Get started</h4>
-                                                </li>
-                                                <li>
-                                                    <a href="index.html">Overview</a>
-                                                </li>
-                                                <li>
-                                                    <a href="homepage-mobile-application-2.html">Payment System</a>
-                                                </li>
-                                                <li>
-                                                    <a href="about-style-one.html">About Us</a>
-                                                </li>
-                                                <li>
-                                                    <a href="elements-pricing-tables.html">Pricing</a>
-                                                </li>
-                                            </ul> -->
-                                    <!-- <ul class="bkg-grey-ultralight">
-                                                <li>
-                                                    <h4>Popular topics</h4>
-                                                </li>
-                                                <li>
-                                                    <a href="index-register-2.html">Create Account</a>
-                                                </li>
-                                                <li>
-                                                    <a href="project-style-two.html">Roadmap</a>
-                                                </li>
-                                                <li>
-                                                    <a href="elements-feature-columns.html">Features</a>
-                                                </li>
-                                                <li>
-                                                    <a href="frequently-asked-questions.html">Frequent Questions</a>
-                                                </li>
-                                            </ul> -->
-                                    <!-- </div> -->
-                                    </li>
-                                    <li>
-                                        <a href="#signup" class="scroll-link">Stay Connected</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+            <div class="col-lg-8">
+                <div class="single-page-block-header-menu">
+                    <ul class="list-unstyled list-inline">
+                        <li><a href="javascript: history.back();">&larr; Back</a></li>
+                        <li class="active"><a href="javascript: void(0);">Register</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <!-- <li><a href="javascript: void(0);">Support</a></li> -->
+                    </ul>
                 </div>
-            </header>
-            <!-- Header End -->
-
-            <!-- Content -->
-            <div class="content clearfix">
-
-                <!-- Intro Section -->
-                <div id="home" class="section-block hero-2-4 window-height clear-height-on-tablet">
-                    <div class="media-overlay bkg-black opacity-05"></div>
-                    <div class="row flex v-align-middle">
-                        <div class="column width-12">
-                            <div class="row flex one-column-on-tablet">
-                                <div class="column width-6 v-align-middle">
-                                    <div>
-                                        <h1 class="color-white">Get Closer to Your Clients</h1>
-                                        <p class="lead color-white">GPchat is a web app that enables anyone to send, receive, and pay for goods and services
-                                            with the tap of a button.</p>
-                                        <a href="#about" class="scroll-link button rounded medium border-white bkg-hover-green color-white color-hover-white left mb-80">
-                                            Discover More
-                                        </a>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="column width-5 offset-1">
-                                    <div class="signup-box box rounded xlarge mb-0 bkg-white shadow">
-                                        <h3>Register an Account</h3>
-                                        <% if(hasErrors)  { %>
-                                            <div class="box dismissable rounded small warning">
-                                                <a href="#" class="dismissable"></a>
-                                                <% _.forEach(messages,function(error){ %>
-                                                    <%= error %>
-                                                        <br>
-                                                        <% }) %>
-                                            </div>
-                                            <% } %>
-                                                <p class="mb-20">Already have an account?
-                                                    <a href="login" class="fade-location">Click Here</a>
-                                                </p>
-                                                
-                                                <div class="register-form-container">
-                                                    <form class="register-form" action="/" method="post">
-                                                        <div class="row">
-                                                            <!-- <div class="column width-6">
-                                                        <div class="field-wrapper">
-                                                            <label class="color-charcoal">First Name:</label>
-                                                            <input type="text" name="" class="form-firstname form-element rounded medium" placeholder="John" required>
-                                                        </div>
-                                                    </div> -->
-                                                    <a href="/auth/facebook" class="button rounded medium center full-width bkg-facebook bkg-hover-facebook color-white color-hover-white mb-10">
-                                                        <span class="icon-facebook left"></span>
-                                                        <span>Sign in with Facebook</span>
-                                                    </a>
-                                                    <a href="/auth/google" class="button rounded medium center full-width bkg-google bkg-hover-google color-white color-hover-white mb-10">
-                                                        <span class="icon-google left"></span>
-                                                        <span>Sign in with google</span>
-                                                    </a>
-                                                            <div class="column width-12">
-                                                                <div class="field-wrapper">
-                                                                    <label for="username" class="color-charcoal">username:</label>
-                                                                    <input type="text" name="username" class="form-element rounded medium" placeholder="zuber">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="column width-12">
-                                                                <div class="field-wrapper">
-                                                                    <label for="email" class="color-charcoal">Email:</label>
-                                                                    <input type="email" name="email" class="form-element rounded medium" placeholder="zuber1077@yahoo.com">
-                                                                </div>
-                                                            </div>
-                                                            <div class="column width-12">
-                                                                <div class="field-wrapper">
-                                                                    <label for="password" class="color-charcoal">Password:</label>
-                                                                    <input type="password" name="password" class="form-element rounded medium" placeholder="•••••••• (8 or more characters)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="column width-12 mt-10 center">
-                                                                <input type="submit" value="Register" class="button rounded medium bkg-green bkg-hover-theme bkg-focus-green color-white color-hover-white no-margins">
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                    <p class="text-small mt-20 center">By creating an account you agree to our terms -
-                                                        <a href="#">Read More</a>
-                                                    </p>
-                                                    <div class="form-response show"></div>
-                                                </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Intro Section End -->
-
-
-
             </div>
-            <!-- Content End -->
-
-
-
         </div>
     </div>
+    <div class="single-page-block">
+        <div class="single-page-block-inner effect-3d-element">
+            <div class="blur-placeholder"><!-- --></div>
+            <div class="single-page-block-form">
+                <h3 class="text-center">
+                    <i class="icmn-users margin-right-10"></i>
+                    Register Account
+                </h3>
+                <br />
+                <% if(hasErrors) {%>
+                
+                    <% _.forEach(messages, function(error){ %>
+                        <div class="alert alert-danger text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <%= error %>
+                                <br>
+                        </div>
+                        <% }) %>
+                
+                            <% } %>
+                <form class="login-form" action="/" id="form-validation" name="form-validation" method="POST">
+                    <div class="form-group">
+                        <div class="form-input-icon form-input-icon-right">
+                            <input id="validation-email"
+                                   class="form-control"
+                                   placeholder="Username"
+                                   name="username"
+                                   type="text"
+                                   data-validation="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-input-icon form-input-icon-right">
+                            <i class="icmn-spinner11 util-spin"></i>
+                            <input id="validation-email"
+                                   class="form-control"
+                                   placeholder="Email"
+                                   name="email"
+                                   type="text"
+                                   data-validation="[EMAIL]">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input id="validation-password"
+                               class="form-control password"
+                               name="password"
+                               type="password" data-validation="[L>=6]"
+                               data-validation-message="$ must be at least 6 characters"
+                               placeholder="Password">
+                    </div>
+                    <!-- <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Repeat Password">
+                    </div> -->
+                    <div class="field-wrapper">
+                        <a href="/auth/facebook" style="outline: 0; text-decoration: none;">
+                            <span class="icon-facebook left"></span>
+                            <!-- <i class="icmn-facebook2" ></i> -->
+                            <button class="btn btn-primary width-20" style="background-color:#3b5998 !important; border-color: #3b5998 !important; outline: 0; padding: 1px 16px !important; 1.3rem!important">
+                                <i class="icmn-facebook2"></i>
+                            </button>
+                            <!-- <span>Sign in with Facebook</span> -->
+                        </a>
+                        <a href="/auth/google" style="outline: 0; text-decoration: none;">
+                    
+                            <!-- <span> Sign in with Google</span> -->
+                            <button class="btn btn-primary width-20" style="background-color:  #d34836 !important; border-color:  #d34836 !important; padding: 1px 16px;">
+                                <i class="icmn-google-plus2"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" value="Login" class="btn btn-primary width-150">Sign Up</button>
+                        <div class="checkbox margin-left-10">
+                            <label>
+                                <input type="checkbox" name="example6" checked>
+                                 Remember me
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="single-page-block-footer text-center">
+        <ul class="list-unstyled list-inline">
+            <li><a href="javascript: void(0);">Terms of Use</a></li>
+            <li><a href="javascript: void(0);">Support</a></li>
+            <li><a href="javascript: void(0);">Contacts</a></li>
+        </ul>
+    </div>
+    <style>
+       .single-page-block-footer ul li a{color: #ebebef !important}
+    </style>
+    <!-- End Register Page -->
 
-    <!-- Js -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3JCAhNj6tVAO_LSb8M-AzMlidiT-RPAs"></script> -->
-    <script src="js/timber.master.min.js"></script>
+</div>
+
+<!-- Page Scripts -->
+<script>
+
+    $(function () {
+
+        // Form Validation
+        $('#form-validation').validate({
+            submit: {
+                settings: {
+                    inputContainer: '.form-group',
+                    errorListClass: 'form-control-error',
+                    errorClass: 'has-danger'
+                }
+            }
+        });
+
+        // Add class to body for change layout settings
+        $('body').addClass('single-page');
+
+        // Set Background Image for Form Block
+        function setImage() {
+            var imgUrl = $('.page-content-inner').css('background-image');
+
+            $('.blur-placeholder').css('background-image', imgUrl);
+        };
+
+        function changeImgPositon() {
+            var width = $(window).width(),
+                height = $(window).height(),
+                left = - (width - $('.single-page-block-inner').outerWidth()) / 2,
+                top = - (height - $('.single-page-block-inner').outerHeight()) / 2;
+
+
+            $('.blur-placeholder').css({
+                width: width,
+                height: height,
+                left: left,
+                top: top
+            });
+        };
+
+        setImage();
+        changeImgPositon();
+
+        $(window).on('resize', function(){
+            changeImgPositon();
+        });
+
+        // Mouse Move 3d Effect
+        var rotation = function(e){
+            var perX = (e.clientX/$(window).width())-0.5;
+            var perY = (e.clientY/$(window).height())-0.5;
+            TweenMax.to(".effect-3d-element", 0.4, { rotationY:15*perX, rotationX:15*perY,  ease:Linear.easeNone, transformPerspective:1000, transformOrigin:"center" })
+        };
+
+    });
+
+</script>
+<!-- End Page Scripts -->
+</section>
+
+<div class="main-backdrop"><!-- --></div>
+
 </body>
-
 </html>
