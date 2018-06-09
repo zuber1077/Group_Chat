@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const gpNames = mongoose.Schema({
     name: {type: String, default: ''},
-    filename: {type: String, default: ''},
+   // filename: {type: String, default: ''},
     country: {type: String, default: ''},
     image: {type: String, default: 'default.png'},
     fans: [{
@@ -12,4 +12,4 @@ const gpNames = mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.model('group.files',gpNames);
+module.exports = mongoose.model('gpNames',gpNames);
