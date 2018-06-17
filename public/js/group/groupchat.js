@@ -27,10 +27,10 @@ $(document).ready(function () {
 
     socket.on('usersList', function(users) {
         //console.log(users); 
-        var div = $('<li></li>');
+        var div = $('<div class="online-users list-inline"></div>');
 
         for(var i = 0; i < users.length; i++){
-            div.append('<a class="dropdown-item" id="val" data-toggle="modal" data-target="#myModal">'+ users[i] +'<submenu class="name"></submenu></a>');
+            div.append('<img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" /><div><form action="" method="post" id="add_friend"><input type = "hidden" name = "receiverName" id = "receiverName" value = "" ><input type="hidden" name="sender-name" id="sender-name" value="<%= user.username %>"><h5><a class="friend" data-toggle="modal" id="val" data-target="#myModals3">' + users[i] +'</a></h5><button type="submit" type="submit" id="friend-add" class="btn " value="accept" class="text-green">Add friend</button></div></form>');
         }
 
         $(document).on('click', '#val', function() {

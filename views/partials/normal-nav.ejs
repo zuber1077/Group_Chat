@@ -1,0 +1,174 @@
+<!-- Stylesheets
+    ================================================= -->
+<link rel="stylesheet" href="/new/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/new/css/style.css" />
+<link rel="stylesheet" href="/new/css/ionicons.min.css" />
+<link rel="stylesheet" href="/new/css/font-awesome.min.css" />
+<!--     <link href="public/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+ -->
+ 
+<link href="/new/public/css/fontawesome-all.min.css" rel="stylesheet">
+<link href="/new/public/css/style.css" rel="stylesheet">
+<!-- Favicon-->
+<link rel="shortcut icon" href="/new/public/img/bird.png">
+<script type="text/javascript" src="/new/public/js/jquery.min.js"></script>
+<!-- Bootstrap depedency-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
+<script type="text/javascript" src="/new/public/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="/new/public/js/app.js"></script>
+<!--Google Font-->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
+
+<!--Favicon-->
+<link rel="shortcut icon" type="image/png" href="/new/images/fav.png" />
+</head>
+
+<body>
+
+  <!-- Header
+    ================================================= -->
+  <header class="navbar" role="banner">
+    <div class="container">
+      <div class="navbar__group navbar__group_left">
+        <ul class="navbar__main-navigation">
+          <li>
+            <a href="/home" title="Home">
+              <i class="fas fa-home" aria-hidden="true"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/settings/profile" title="Inbox">
+              <i class="far fa-envelope" aria-hidden="true"></i>
+              <span>Inbox</span>
+            </a>
+          </li>
+          <li>
+            <a href="/chat/" title="chat">
+              <i class="far fa-comments" aria-hidden="true"></i>
+              <span>Chat Users</span>
+            </a>
+          </li>
+          <li>
+            <a title="activity" data-toggle="modal" id="val" data-target="#myModal2">
+              <i class="far fa-bell" aria-hidden="true"></i>
+              <span class="d-lg-none">
+                    <span style="background-color: blue;" class="badge badge-pill badge-primary">0</span>
+              </span>
+            </a>
+          </li>
+          <li>
+         
+            <a data-toggle="modal" id="val" data-target="#myModal">
+              <i class="far fa-envelope"></i>
+              <span class="d-lg-none">
+                <span style="background-color: blue;" class="badge badge-pill badge-primary">0</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+        
+      </div>
+      <span class="navbar__logo">
+        <a href="/home">
+          <img src="/images/logo.png">
+        </a>
+      </span>
+      <div class="navbar__group navbar__group_right">
+        <div class="navbar__profile">
+          <div id="drops" class="navbar__profile-logout" href="/logout" title="logout">
+            <li  class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= _.upperFirst(user.username) %></a>
+                  <ul class="dropdown-menu newsfeed-home">
+                    <li><a href="/settings/profile"><i class="far fa-user"></i> Edit Profile</a></li>
+                    <div class="line"></div>
+                    <li><a href="/logout">logout</a></li>
+                  </ul>
+              </li>
+               <img class="tweet__image chat-image logout-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
+            <!-- <span>Logout</span> -->
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+  
+ 
+  <div class="gr-rightsidebar">
+  
+
+   
+  </div>
+  <!--Header End-->
+
+  <div id="page-contents">
+    <div class="container">
+      <div class="row">
+  
+        <!-- Newsfeed Common Side Bar Left
+            ================================================= -->
+        <div class="col-md-3 static">
+          <div class="profile-card">
+            <img src="http://placehold.it/300x300" alt="user" class="profile-photo" />
+            <h5>
+              <a href="timeline.html" class="text-white">
+                <%= user.username %>
+              </a>
+            </h5>
+            <a href="#" class="text-white">
+              <i class="ion ion-android-person-add"></i> 1,299 followers</a>
+          </div>
+          <!--profile card ends-->
+          <ul class="nav-news-feed">
+            <li>
+              <i class="icon ion-ios-paper"></i>
+              <div>
+                <a href="/letest-news">Latest News</a>
+              </div>
+            </li>
+            <li>
+              <i class="icon ion-ios-search-strong"></i>
+              <div>
+                <a href="/members">Search</a>
+              </div>
+            </li>
+            <li>
+              <i class="icon ion-ios-people-outline"></i>
+              <div>
+                <a href="newsfeed-friends.html">Friends</a>
+              </div>
+            </li>
+            <li>
+              <i class="icon ion-chatboxes"></i>
+              <div>
+                <a href="newsfeed-messages.html">Messages</a>
+              </div>
+            </li>
+            <!-- <li>
+                <i class="icon ion-images"></i>
+                <div>
+                  <a href="newsfeed-images.html">Images</a>
+                </div>
+              </li>
+              <li>
+                <i class="icon ion-ios-videocam"></i>
+                <div>
+                  <a href="newsfeed-videos.html">Videos</a>
+                </div>
+              </li> -->
+          </ul>
+          <!--news-feed links ends-->
+          <div id="chat-block">
+            <div class="title">Chat online</div>
+            <ul class="online-users list-inline">
+              <li>
+                <a href="newsfeed-messages.html" title="Linda Lohan">
+                  <img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" />
+                  <span class="online-dot"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!--chat block ends-->
+        </div>
