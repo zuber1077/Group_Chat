@@ -5,10 +5,6 @@
     <meta charset="UTF-8" />
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
 
-
-    <!-- Twitter Theme -->
-    <meta name="twitter:widgets:theme" content="light">
-
     <!-- Title &amp; Favicon -->
     <title>GPchat | - Admin dashboard</title>
 
@@ -17,7 +13,6 @@
 
     <!-- Css -->
     <link rel="stylesheet" href="/css/core.min.css" />
-    <link rel="stylesheet" href="/css/skin.css" />
 
     <!--[if lt IE 9]>
     	<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -49,7 +44,7 @@
                                          <div class="column width-12">
                                             <div class="field-wrapper">
                                                 <div class="register-form-container">
-                    <form class="register-form" action="/dashboard" method="post" enctype="multipart/form-data">
+                    <form class="register-form" action="/uploadFile" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="column width-6">
                                 <div class="field-wrapper">
@@ -63,7 +58,7 @@
                                     <input type="text" name="country" class="form-element rounded medium" placeholder="catagory">
                                 </div>
                             </div>
-                            <input  type="file" name="upload" class="form-element rounded medium" id="upload-input" style="display: ;">
+                            <input  type="file" name="file" class="form-element rounded medium" id="upload-input" style="display: ;">
                             <!-- <button type="button" class="form-submit button rounded medium bkg-green bkg-hover-theme bkg-focus-green color-white color-hover-white mb-0 center-left upload-btn">Upload File
                                 <span class="icon-upload right"></span>
                             </button> -->

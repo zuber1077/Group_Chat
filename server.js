@@ -11,9 +11,11 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash'); //allow us to display flush messages
 const passport = require('passport');
 const socketIO = require('socket.io');
+const upload = require('express-fileupload');
 const { Users } = require('./helpers/UsersClass');
 const {Global} = require('./helpers/Global');
-
+const {isEmpty} = require('./helpers/upload');
+// 
 const compression = require('compression'); //to compress the request that has been return
 const helmet = require('helmet'); //secruity perpres
 // const fs = require("fs");
@@ -122,11 +124,12 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.set('view engine','ejs');
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({extended: true}));
+        app.use(upload());
 
         app.use(validator()); //validate on z server side for storing data 
 
         app.use(session({ //save session
-            // secret: "myownsecretkey", 
+            //secret: "myownsecretkey", 
             secret: process.env.SECRET_KEY, 
             resave: false, 
             saveUninitialized: false, 

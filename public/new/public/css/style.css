@@ -1,0 +1,734 @@
+/* General */
+/*body {
+  font-size: 13px;
+  min-height: 100vh;
+  background-color: #141D26;
+  color: #8899A6; }*/
+
+body > div.container {
+  /* Calculate the minimum height by subtracting the header and footer height */
+  min-height: calc(100vh - 50px - 150px);
+  /* padding-top: 30px; */
+  padding-bottom: 30px; }
+
+h4 {
+  font-size: 1.2rem;
+ }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+li{
+   text-decoration: none !important; 
+}
+#drops>li{
+ display: inline !important; 
+}
+.dropdown-menu{
+  min-width: 10rem;
+        
+}
+
+
+.dropdown-menu>li>a {
+padding: 2px 12px;
+}
+
+a {
+  color: #1DA1F2; }
+  a:hover {
+    color: #0c85d0;
+    text-decoration: none; }
+
+hr {
+  border-color: #141D26; }
+
+.btn {
+  border-radius: 5px;
+  font-size: 11px;
+  padding: 3px 8px;
+  color: #ffffff;
+  background-color: #2075bc; }
+  .btn:hover {
+    background-color: blue;
+    cursor: pointer;
+    color: #ffffff; }
+
+textarea {
+  color: #8899A6;
+  padding: 5px 10px;
+  width: 100%;
+  background-color: #141D26;
+  border: solid 1px #000;
+  border-radius: 8px; }
+  textarea::placeholder {
+    color: #8899A6; }
+  textarea:focus {
+    color: #000; }
+
+pre {
+  white-space: pre-wrap;
+  /* css-3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */ }
+
+pre code {
+  color: black; }
+
+/* Navbar */
+.navbar__main-navigation span,
+.navbar__logo {
+  display: none; }
+  @media (min-width: 992px) {
+    .navbar__main-navigation span,
+    .navbar__logo {
+      display: inline-block;
+      text-align: center; } }
+
+.navbar {
+  background-color: #2075bc;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  border-bottom: 1px solid #000; }
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    height: 100%; }
+    .navbar .container > * {
+      flex-grow: 1; }
+  .navbar a {
+    color: #fff; }
+
+.navbar__group {
+  height: 100%; }
+  .navbar__group_right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center; }
+
+.navbar__main-navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: auto; }
+  .navbar__main-navigation li {
+    margin-right: 5px;
+    display: flex;
+    height: 100%;
+    align-items: center; }
+    .navbar__main-navigation li:hover {
+      color: #1DA1F2 !important; }
+  .navbar__main-navigation a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 8px;
+    padding-right: 8px; }
+    .navbar__main-navigation a:hover {
+      color: #fff !important;
+      /* border-bottom: 2px solid #fff;  */
+    }
+      .navbar__main-navigation a:hover > * {
+        margin-bottom: -2px; }
+    .navbar__main-navigation a i {
+      margin-right: 4px; }
+  .navbar__main-navigation .fa {
+    font-size: 22px;
+    display: inline-block;
+    padding: 0;
+    padding-right: 10px;
+    padding-left: 10px; }
+    @media (min-width: 992px) {
+      .navbar__main-navigation .fa {
+        padding-left: 0; } }
+
+.navbar__logo {
+  position: absolute;
+  left: 50%;
+  margin-left: -13px; }
+  .navbar__logo img {
+    height: 26px; }
+
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; }
+  .navbar__profile .navbar__profile-logout {
+    display: flex; }
+  .navbar__profile .fa {
+    font-size: 20px;
+    padding-right: 10px; }
+
+.navbar__new-tweet {
+  text-align: right; }
+  .navbar__new-tweet .navbar__new-tweet-button {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 7px 14px;
+    border-radius: 20px; }
+    .navbar__new-tweet .navbar__new-tweet-button:hover {
+      color: #ffffff; }
+
+.navbar__notifications {
+  color: red !important; }
+
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
+  background-color: #1B2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.follower {
+  text-align: center; }
+
+.follower__user-info {
+  margin-top: 10px; }
+
+.follower__image {
+  border-radius: 50%;
+  width: 100px;
+  max-width: 100%; }
+
+/* Tweets */
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
+  background-color: #1B2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.tweet {
+  color: #ffffff; }
+
+.tweet::after {
+  content: "";
+  clear: both;
+  display: block; }
+
+.tweet__image {
+  border-radius: 50%;
+  height: 40px;
+  border: 1px solid blue; }
+
+.logout-image {
+  height: 20px; }
+
+.tweet__description {
+  padding-left: 25px; }
+
+.tweet__content {
+  margin: 5px 0 10px;
+  word-wrap: break-word; }
+
+.tweet__form .tweet__edit {
+  background-color: #2AAF81; }
+  .tweet__form .tweet__edit:hover {
+    background-color: #2fc490; }
+
+.tweet__form .tweet__delete {
+  margin-left: 10px;
+  background-color: #E53939; }
+  .tweet__form .tweet__delete:hover {
+    background-color: #e85050; }
+
+.tweet__username a {
+  color: #ffffff;
+  font-weight: bold; }
+
+.tweet__date,
+.tweet__date a {
+  color: #8899A6; }
+
+.tweet textarea.edit-tweet {
+  margin: 10px 0 15px; }
+
+.tweet textarea {
+  font-size: 13px;
+  background-color: #141D26;
+  border-color: #000;
+  display: block;
+  padding: 6px 12px;
+  color: #ffffff;
+  border-radius: 4px;
+  width: 100%; }
+
+.tweet__comments .btn {
+  margin: auto;
+  display: block;
+  margin-top: 10px; }
+
+.tweets__comment-image {
+  border-radius: 50%;
+  height: 20px;
+  border: 1px solid #000;
+  margin-right: 6px; }
+
+.notification-icon {
+  margin-right: 10px; }
+
+.pagination {
+  text-align: center; }
+  .pagination a,
+  .pagination li.out-of-range {
+    padding: 6px 12px; }
+
+.pagination {
+  justify-content: center; }
+
+.pagination__list {
+  display: flex; }
+  .pagination__list li a {
+    color: #ffffff;
+    border-color: #000 !important; }
+  .pagination__list .no a {
+    background-color: #1B2836;
+    color: #ffffff; }
+  .pagination__list .active a {
+    background-color: #1DA1F2 !important; }
+
+.modal-dialog {
+  margin-top: 60px; }
+
+.modal-content {
+  background: none; }
+
+.modal-header {
+  background-color: #141D26;
+  justify-content: center;
+  border-bottom: 0; }
+  .modal-header button.close {
+    color: #8899A6;
+    opacity: 1;
+    text-shadow: none;
+    position: absolute;
+    right: 15px; }
+    .modal-header button.close:hover {
+      cursor: pointer; }
+
+.modal-body {
+  background-color: #1B2836;
+  padding: 20px 15px; }
+
+.modal {
+  padding: 0; }
+
+.new-tweet__button,
+.new-message__button {
+  font-size: 14px;
+  padding: 4px 10px;
+  background-color: #1da1f2;
+  color: #fff;
+  margin: auto;
+  margin-top: 10px;
+  display: block; }
+
+/* Profile Card */
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
+  background-color: #1B2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.profile {
+  text-align: center; }
+
+.profile__handle {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: inline-block; }
+
+.profile__image {
+  border: 0;
+  border-radius: 50%;
+  width: 150px;
+  max-width: 100%; }
+
+.profile__messaging-options .btn {
+  margin: 10px; }
+
+.profile__follow {
+  margin: 10px 0; }
+
+.profile__follow-button.following {
+  background-color: #E53939; }
+  .profile__follow-button.following:hover {
+    background-color: #e85050; }
+
+/* Login Page */
+.login {
+  padding-top: 36px; }
+
+.login-container {
+  text-align: center;
+  margin: auto; }
+
+.github-btn {
+  margin-left: 20px; }
+
+.icon-container {
+  margin-left: 6px; }
+
+.stats-parent-container {
+  margin-top: 60px; }
+
+.login-using-github {
+  font-size: 20px; }
+
+/* Main Dashboard */
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
+  background-color: #1B2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.user-information > .row {
+  align-items: center; }
+
+.user-information__image {
+  padding-right: 0; }
+  .user-information__image img {
+    border-radius: 50%;
+    width: 100px;
+    max-width: 100%;
+    float: right; }
+
+.user-information__text {
+  text-align: center; }
+
+.user-information h4,
+.useful-links h4,
+.recent-visits h4 {
+  color: #fff; }
+
+.user-information__stats ul {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  width: 100%; }
+
+@media (min-width: 992px) {
+  .user-information__stats_small {
+    display: none; } }
+
+.user-information__stats_large {
+  display: none; }
+  @media (min-width: 992px) {
+    .user-information__stats_large {
+      display: block; } }
+
+.user-information__stat-title {
+  display: block; }
+
+.user-information__stats span:not(.user-information__stat-title) {
+  font-size: 18px;
+  color: #1da1f2; }
+
+.useful-links a {
+  font-weight: bold; }
+
+.useful-links,
+.recent-visits {
+  text-align: center; }
+
+.first-column .recent-visits,
+.first-column .useful-links {
+  display: none; }
+  @media (min-width: 992px) {
+    .first-column .recent-visits,
+    .first-column .useful-links {
+      display: block; } }
+
+@media (min-width: 1200px) {
+  .first-column .recent-visits {
+    display: none; } }
+
+@media (min-width: 992px) {
+  .third-column .recent-visits,
+  .third-column .useful-links {
+    display: none; } }
+
+@media (min-width: 1200px) {
+  .third-column .recent-visits {
+    display: block; } }
+
+/* Analytics Page */
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
+  background-color: #1B2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.analytics {
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  .analytics h1 {
+    color: #fff;
+    text-align: center; }
+
+.analytics__table {
+  table-layout: fixed;
+  width: 100%; }
+  .analytics__table th,
+  .analytics__table td {
+    border: 1px solid #fff;
+    padding: .25rem .75rem; }
+  .analytics__table th {
+    font-weight: bold;
+    color: #fff;
+    text-align: center; }
+  .analytics__table td {
+    word-wrap: break-word;
+    vertical-align: middle; }
+
+.analytics__user-column {
+  width: 25%; }
+
+.analytics__stats {
+  margin: 20px 0; }
+  .analytics__stats ul {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold; }
+    .analytics__stats ul li {
+      text-align: center; }
+
+.analytics__stats-title {
+  font-size: 16px; }
+
+.analytics__stats-value {
+  font-size: 18px;
+  color: #1da1f2;
+  display: block; }
+
+.analytics__user {
+  font-weight: bold;
+  text-align: center; }
+
+.chatbox {
+  padding: 20px; }
+
+.chatMessage {
+  display: inline; }
+
+span.sender {
+  color: red;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+span.message {
+  width: fit-content;
+  padding: 6px; }
+
+.msgtime {
+  font-size: 10px; }
+
+.chatlist {
+  margin-left: 20px; }
+
+.chat-image {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+.chatrow {
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 7px; }
+
+.inboxlink {
+  margin-left: 40px; }
+
+.message-row {
+  margin-top: 6px; }
+
+.following-image, .follower-image {
+  margin-right: 6px; }
+
+a.logout {
+  color: red !important; }
+
+.btn-message {
+  margin-right: 12px; }
+
+.chatgroup {
+  margin-bottom: 20px; }
+
+.chat-bubble {
+  margin-bottom: 10px; }
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #243447;
+  padding-top: 30px;
+  height: 150px; }
+
+/* Media Queries */
+#error-stack-trace {
+  background: yellow;
+  padding: 20px;
+  margin-top: 20px; }
+
+/*# sourceMappingURL=style.css.map */
+
+
+/*--------------------
+search
+--------------------*/
+.search-form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 40px;
+  border-radius: 40px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #fff;
+  transition: all 0.3s ease;
+}
+.search-form.focus {
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+.search-input {
+  position: absolute;
+  top: 10px;
+  left: 38px;
+  font-size: 14px;
+  background: none;
+  color: #5a6674;
+  width: 195px;
+  height: 20px;
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+}
+.search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.search-button {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none !important;
+  cursor: pointer;
+}
+.search-button svg {
+  width: 20px;
+  height: 20px;
+  fill: #5a6674;
+}
+
+.search-option {
+  position: absolute;
+  text-align: right;
+  top: 10px;
+  right: 15px;
+}
+.search-option div {
+  position: relative;
+  display: inline-block;
+  margin: 0 1px;
+  cursor: pointer;
+}
+.search-option div input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.01;
+  cursor: pointer;
+}
+.search-option div span {
+  position: absolute;
+  display: block;
+  text-align: center;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0;
+  background: #929AA3;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-transform: uppercase;
+  padding: 4px 7px;
+  border-radius: 12px;
+  top: -18px;
+  transition: all .2s ease-in-out;
+}
+.search-option div span::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border-top: 4px solid #929AA3;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  transition: all .2s ease-in-out;
+}
+.search-option div:hover span {
+  opacity: 1;
+  top: -21px;
+}
+.search-option div label {
+  display: block;
+  cursor: pointer;
+}
+.search-option div svg {
+  height: 20px;
+  width: 20px;
+  fill: #5a6674;
+  opacity: 0.6;
+  transition: all .2s ease-in-out;
+  pointer-events: none;
+}
+.search-option div:hover svg {
+  opacity: 1;
+}
+.search-option div input:checked + label svg {
+  fill: #e24040;
+  opacity: .9;
+}
+.search-option div input:checked + label span {
+  background: #e24040;
+}
+.search-option div input:checked + label span::after {
+  border-top-color: #e24040;
+}

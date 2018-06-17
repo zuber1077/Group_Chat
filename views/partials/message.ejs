@@ -6,79 +6,59 @@
     }
  }  %>
 
-
-<li class="dropdown dropdown-notification nav-item notification-list" id="reload">
-    <a  class="nav-link nav-link-label" href="#" data-toggle="dropdown">
-        <i class="ficon ft-mail"></i>
-        <% if(numberOfTrue !== 0) { %>
-        <span class="badge badge-pill badge-default badge-warning badge-default badge-up"><%= numberOfTrue %></span>
-        <% }else{ %>
-        <span class="badge badge-pill badge-default badge-warning badge-default badge-up">0</span>
-        <% } %>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-        <li class="dropdown-menu-header">
-            <h6 class="dropdown-header m-0">
-                <span class="grey darken-2">Messages</span>
-                <span class="notification-tag badge badge-default badge-warning float-right m-0"><%= numberOfTrue %></span>
-            </h6>
-        </li>
-         
-        <li class="scrollable-container media-list">
-            <% if(chat.length > 0) { %>
-                <% _.forEach(chat, function(val) { %>
-                    <% if(user.username !== val.body.senderName) { %>
-            <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>">
-                <div class="media">
-                    <div class="media-left">
-                        <span class="avatar avatar-sm avatar-online rounded-circle">
-                            <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar">
-                            <i></i>
-                        </span>
-                    </div>
-                    <div class="media-body">
-                        <% if(user.username !== val.body.receiverName) { %>
-                        <h6 class="media-heading"><%= val.body.receiverName %></h6>
-                        <% }else { %>
-                        <h6 class="media-heading"><%= val.body.senderName %></h6>
-                        <% } %>
-                        <p class="notification-text font-small-3 text-muted"><%= val.body.message %></p>
-                         <input type="hidden" name="chatId" id="chatId" value="<%= val.body._id %>">
-                        <small>
-                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Today</time>
-                        </small>
-                    </div>
-                </div>
-            </a>
-            <% }else if(user.username === val.body.senderName){ %>
+<div id="myModal" class="new-tweet modal fade" id="reload">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">New Message</h4>
+            </div>
+            <div class="modal-body">
+                <% if(chat.length > 0) { %>
+                    <% _.forEach(chat, function(val) { %>
+                        <% if(user.username !== val.body.senderName) { %>
                 <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>">
-                <div class="media">
-                    <div class="media-left">
-                        <span class="avatar avatar-sm avatar-online rounded-circle">
-                            <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar">
-                            <i></i>
-                        </span>
-                    </div>
-                    <div class="media-body">
+                    <img class="tweets__comment-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
+                    <span class="tweet__username-date">
                         <% if(user.username !== val.body.receiverName) { %>
-                        <h6 class="media-heading"><%= val.body.receiverName %></h6>
+                        <span class="tweet__username">
+                            <a href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.receiverName %></a>
+                        </span>
                         <% }else { %>
-                        <h6 class="media-heading"><%= val.body.senderName %></h6>
+                        <span class="tweet__username">
+                            <a href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.senderName %></a>
+                        </span>
                         <% } %>
-                        <p class="notification-text font-small-3 text-muted"><%= val.body.message %></p>
-                         <input type="hidden" name="chatId" id="chatId" value="<%= val.body._id %>">
-                        <small>
-                            <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Today</time>
-                        </small>
-                    </div>
-                </div>
-            </a>
-        <% } %>
-        <% }) %>
-        <% } %>
-        </li>
-        <li class="dropdown-menu-footer">
-            <a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a>
-        </li>
-    </ul>
-</li>
+                        <span class="tweet__date"> • June 8, 2018</span>
+                        <p class="tweet__content"><%= val.body.message %></p>
+                        <input type="hidden" name="chatId" id="chatId" value="<%= val.body._id %>">
+                    </span>
+                </a>
+                <% }else if(user.username === val.body.senderName){ %>
+                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>">
+                    <img class="tweets__comment-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
+                    <span class="tweet__username-date">
+                        <% if(user.username !== val.body.receiverName) { %>
+                        <span class="tweet__username">
+                            <a data-value="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>" href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.receiverName %></a>
+                        </span>
+                        <% }else { %>
+                        <span class="tweet__username">
+                            <a data-value="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.senderName %></a>
+                        </span>
+                        <% } %>
+                        <span class="tweet__date"> • June 8, 2018</span>
+                        <p class="tweet__content"><%= val.body.message %></p>
+                        <input type="hidden" name="chatId" id="chatId" value="<%= val.body._id %>">
+                    </span>
+                </a>
+                <% } %>
+                <% }) %>
+                <% } %>
+                <li class="dropdown-menu-footer">
+                    <a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>
