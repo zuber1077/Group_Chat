@@ -12,7 +12,7 @@ module.exports = function (upload, gpNames, aws, isEmpty) {
 
     },
 
-    uploadFile: function (req, res) {
+    uploadFile: function(req, res) {
 
       let filename = 'default.jpg';
 

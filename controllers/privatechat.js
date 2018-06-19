@@ -20,7 +20,7 @@ module.exports = function(async, Users, Message, FriendResult) {
 				function(callback) {
 					const nameRegex =  new RegExp("^" + req.user.username.toLowerCase(), "i");
 					Message.aggregate(
-						//math every doc thet has sender name and reciver name
+						//match every doc thet has sender name and reciver name
 						//{or} if doest find 1st data in the 1st obj use 2nd
 						{$match:{$or:[{'senderName':nameRegex}, {'receiverName':nameRegex}]}},
 						{$sort:{"createdAt":-1}},

@@ -1,11 +1,11 @@
 module.exports = function() {
     return {
         SetRouting: function(router) {
-            router.get('/letest-news', this.letestNews);
+            router.get('/news/tech', this.letestNews);
         },
 
         letestNews: function(req, res) {
-            res.render('news/news', {title: 'GPchat - leatest News', user: req.user})
+            res.render('news/tech', {title: 'GPchat - Tech News', user: req.user})
         }
     }
 }

@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 function GetResult() {
     $.ajax({
-        url: 'http://content.guardianapis.com/technology?page-size=120&order-by=newest&show-fields=all&api-key=9179b4d2-7b0f-44b3-becc-8a8813be5cbb',
+        url: 'https://content.guardianapis.com/technology?page-size=120&order-by=newest&show-fields=all&api-key=9179b4d2-7b0f-44b3-becc-8a8813be5cbb',
         type: 'GET',
         datatype: 'json',
         success: function(data) {
