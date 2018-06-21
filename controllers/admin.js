@@ -20,7 +20,7 @@ module.exports = function (upload, gpNames, aws, isEmpty) {
       // Upload File
 
       let file = req.files.file;
-      filename = Date.now() + '-' + file.name;
+      filename = Date.now() + '-';
 
       file.mv('./public/uploads/' + filename, (err) => {
         if (err) throw err;

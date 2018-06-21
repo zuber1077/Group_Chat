@@ -934,7 +934,11 @@ textarea{
 /*Profile Card CSS*/
 
 .profile-card{
-  background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url("http://placehold.it/1030x430") no-repeat;
+  /* background: linear-gradient((to bottom, linear-gradient(to right, #0571fb, #00B4DB)), url("http://placehold.it/1030x430") no-repeat; */
+  background: #00B4DB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0571fb, #00B4DB), url("http://placehold.it/1030x430") no-repeat; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-size: cover;
   width: 100%;
   min-height: 90px;
@@ -1012,7 +1016,7 @@ ul.nav-news-feed i.ion-ios-videocam{color: #9e1f63;}
 }
 
 #chat-block .title{
-  background: #8dc63f;
+  background: linear-gradient(to bottom, rgba(141,198,63, 1), rgba(0,148,68, 1));
   padding: 2px 20px;
   width: 70%;
   height: 30px;
@@ -1310,7 +1314,7 @@ ul.online-users li span.online-dot{
 }
 
 .chat-room .chat-body ul.chat-message li.left .chat-item{
-  background: rgba(141,198,63, .1);
+  background: #f2f4f8;
   margin-left: 50px;
   padding: 5px 10px;
   position: relative;
@@ -1358,6 +1362,9 @@ ul.online-users li span.online-dot{
   border-bottom: 1px dotted #bce8f7;
   margin-bottom: 10px;
 }
+.chat-item-header>h5{
+  font-weight: bold;
+} 
 
 .chat-room .chat-body ul.chat-message li .chat-item .chat-item-header h5{
   color: #4d4d4d;
@@ -1376,7 +1383,8 @@ ul.online-users li span.online-dot{
 }
 
 .chat-room .send-message button{
-  background: #000;
+  background-color: #0190fe;
+  border-color: #0190fe;
   color: #fff;
 }
 
