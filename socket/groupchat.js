@@ -21,7 +21,7 @@ module.exports = function(io, Users){
 
         Socket.on('createMessage', (message, callback) => {
             console.log(message);
-            io.to(message.room).emit('newMessage', { //passing an object with key text value //message.text
+            io.to(message.room).emit('newMessage', { //passing an object with key text value //message.text // show message only for paticular channal
                 text: message.text,
                 room: message.room,
                 from: message.sender,

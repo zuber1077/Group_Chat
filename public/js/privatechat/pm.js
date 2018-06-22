@@ -59,6 +59,10 @@ $(document).ready(function() {
         }
     });
 
+    sentRequest: [{
+        username: 'user 2'
+    }]
+
     $('#send-message').on('click', function() {
         var message = $('#msg').val();
 
