@@ -14,7 +14,7 @@ module.exports = function(upload, gpNames, aws, isEmpty) {
 
     uploadFile: function (req,res) {
 
-      let filename = '700.jpg';
+      let filename = 'default.jpg';
 
       // if (!isEmpty(req.files)) {
         // Upload File
