@@ -50,15 +50,9 @@ hr {
   font-size: 11px;
   padding: 3px 8px;
   color: #ffffff;
-<<<<<<< HEAD
-  background-color: #2075bc; }
-  .btn:hover {
-    background-color: blue;
-=======
   background-color: #007bff; }
   .btn:hover {
     background-color: #1f9dfe;
->>>>>>> MoreFuture
     cursor: pointer;
     color: #ffffff; }
 
@@ -100,23 +94,15 @@ pre code {
       text-align: center; } }
 
 .navbar {
-<<<<<<< HEAD
-  background-color: #0072ff;
-=======
   /* background-color: #0072ff; */
   background: #00B4DB;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #0571fb, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
->>>>>>> MoreFuture
   height: 50px;
   margin: 0;
   padding: 0;
   font-size: 14px;
-<<<<<<< HEAD
-  border-bottom: 1px solid #000; }
-=======
   border-bottom: 1px solid #fff; }
->>>>>>> MoreFuture
   .navbar .container {
     display: flex;
     align-items: center;
@@ -239,11 +225,7 @@ pre code {
 .tweet__image {
   border-radius: 50%;
   height: 40px;
-<<<<<<< HEAD
-  border: 1px solid blue; }
-=======
   border: 1px solid #39a1e4; }
->>>>>>> MoreFuture
 
 .logout-image {
   height: 20px; }
