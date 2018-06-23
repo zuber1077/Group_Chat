@@ -42,21 +42,21 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
     //     else
     //        console.dir(error);
     // });
-    mongoose.connect('mongodb://127.0.0.1/groupchat',{useMongoClient: true}, function(error, db) {
-        if(!error){
-             console.log("We are connected");
-        }
-        else
-           console.dir(error);
-    });
-    // mongoose.connect(process.env.MONGODB_URI,{useMongoClient: true}, function(error, db) {
-        
+    // mongoose.connect('mongodb://127.0.0.1/groupchat',{useMongoClient: true}, function(error, db) {
     //     if(!error){
     //          console.log("We are connected");
     //     }
     //     else
     //        console.dir(error);
     // });
+    mongoose.connect(process.env.MONGODB_URI,{useMongoClient: true}, function(error, db) {
+        
+        if(!error){
+             console.log("We are connected");
+        }
+        else
+           console.dir(error);
+    });
 //     console.log(process.env.MONGODB_URI);
 // );
     // mongoose.connect('mongodb://<groupchats>:<password>@ds229380.mlab.com:29380/groupchat', { useMongoClient: true });
@@ -129,8 +129,8 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(validator()); //validate on z server side for storing data 
 
         app.use(session({ //save session
-            secret: "myownsecretkey", 
-            //secret: process.env.SECRET_KEY, 
+            //secret: "myownsecretkey", 
+            secret: process.env.SECRET_KEY, 
             resave: false, 
             saveUninitialized: false, 
             store: new MongoStore({ mongooseConnection: mongoose.connection})  //data can be save in db reuse later
