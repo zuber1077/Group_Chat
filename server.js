@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');//allow us get data from html form
 const ejs = require('ejs');
-// const https = require('https');
 const http = require('http');
 const cookieParser = require('cookie-parser'); 
 const validator = require('express-validator');
