@@ -1,140 +1,202 @@
 <!DOCTYPE html>
-<html lang="en" data-textdirection="ltr">
+<html lang="en">
+
 <head>
-  
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="author" content="ZUBER">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow" />
   <title>GPchat | Home</title>
+
   <%- include partials/navbar.ejs %>
-  <!-- Horizontal navigation-->
-  <div class="app-content container center-layout mt-2">
-    <div class="content-wrapper">
-      <div class="content-header row">
-        <div class="content-header-left col-md-6 col-12 mb-2">
-          <h3 class="content-header-title mb-0">Groupchat</h3>
-          <div class="row breadcrumbs-top">
-            <div class="breadcrumb-wrapper col-12">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/home">Home</a>
-                </li>
-                <li class="breadcrumb-item active">Groupchat
-                </li>
-              </ol>
-            </div>
+
+  <div id="page-contents">
+    <div class="container">
+      <div class="row">
+
+        <!-- Newsfeed Common Side Bar Left
+          ================================================= -->
+        <div class="col-md-3 static">
+          <div class="profile-card">
+            <img src="http://placehold.it/300x300" alt="user" class="profile-photo" />
+            <h5>
+              <a href="timeline.html" class="text-white"><%= user.username %></a>
+            </h5>
+            <a href="#" class="text-white">
+              <i class="ion ion-android-person-add"></i> 1,299 followers</a>
           </div>
+          <!--profile card ends-->
+          <ul class="nav-news-feed">
+            <li>
+              <i class="icon ion-ios-paper"></i>
+              <div>
+                <a href="/news/tech">Latest News</a>
+              </div>
+            </li>
+            <li>
+              <i class="icon ion-ios-search-strong"></i>
+              <div>
+                <a href="/members">Search</a>
+              </div>
+            </li>
+            <li>
+              <i class="icon ion-ios-people-outline"></i>
+              <div>
+                <a href="#">Friends</a>
+              </div>
+            </li>
+            <li>
+              <i class="icon ion-chatboxes"></i>
+              <div>
+                <a href="#">Messages</a>
+              </div>
+            </li>
+            <!-- <li>
+              <i class="icon ion-images"></i>
+              <div>
+                <a href="newsfeed-images.html">Images</a>
+              </div>
+            </li>
+            <li>
+              <i class="icon ion-ios-videocam"></i>
+              <div>
+                <a href="newsfeed-videos.html">Videos</a>
+              </div>
+            </li> -->
+          </ul>
+          <!--news-feed links ends-->
+          <div id="chat-block">
+            <div class="title">Chat online</div>
+            <ul class="online-users list-inline">
+              <li>
+                <a href="newsfeed-messages.html" title="Linda Lohan">
+                  <img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" />
+                  <span class="online-dot"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!--chat block ends-->
         </div>
-      </div>
-      <div class="content-body">
-		<div class="col-12">
-			<h4 class="text-uppercase">Welcome back
-				<strong>
-					<%= user.username %>
-				</strong>
-			</h4>
-			<p>it is time to Stay loop with the GPchats.</p>
-		</div>
-        
-		<!-- User Profile Cards with Stats -->
-		<form action="/home" method="POST" id="favorite">
-		<% _.forEach(chunks, function(val) {  %> 
-        <section id="user-profile-cards-with-stats" class="row mt-2">
-         
-			<% _.forEach(val, function(val2) {  %>
-				
-          <div class="col-xl-4 col-md-6 col-12">
-            <div class="card profile-card-with-stats border-teal border-lighten-2">
-              <div class="text-center">
-				<div class="card profile-card-with-cover ">
-					<!--<img class="card-img-top img-fluid" src="../../../app-assets/images/carousel/16.jpg" alt="Card cover image">-->
-					<div class="card-img-top img-fluid bg-cover height-200" style="background: url('/uploads/<%= val2.image %>');"></div>
-					<div class="card-profile-image">
-						<img src="../../../app-assets/images/portrait/small/avatar-s-9.png" class="rounded-circle img-border" alt="Card image">
-					</div>
-				</div>
-                <div class="card-body">
-                  <br><h4 class="card-title"><%= val2.name %></h4>
-                  <ul class="list-inline list-inline-pipe">
-                    <li><%= val2.country %></li>
-                    <li>Group</li>
+
+        <div class="col-md-7">
+
+          <!-- Post Create Box
+            ================================================= -->
+          <div class="create-post">
+            <div class="row">
+              <div class="col-md-7 col-sm-7">
+                <div class="form-group">
+                  <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
+                  <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-5">
+                <div class="tools">
+                  <ul class="publishing-tools list-inline">
+                    <li>
+                      <a href="#">
+                        <i class="ion-compose"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="ion-images"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="ion-ios-videocam"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="ion-map"></i>
+                      </a>
+                    </li>
                   </ul>
-                </div>
-                <div class="btn-group" role="group" aria-label="Profile example">
-                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
-                    <span class="ladda-label"><i class="fa fa-bell-o"></i>
-                      <span>12+</span>
-                    </span>
-                    <span class="ladda-spinner"></span>
-                  </button>
-                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
-					<span class="ladda-label"><i class="fa fa-heart-o"></i>
-						<input type="hidden" name="id" id="id" value="<%= val2._id %>">
-						<input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name%>">
-                      <span><%= val2.fans.length %></span>
-                    </span>
-                    <span class="ladda-spinner"></span>
-                  </button>
-                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
-                    <span class="ladda-label"><i class="ft-mail"></i>
-                      <span>75+</span>
-                    </span>
-                    <span class="ladda-spinner"></span>
-                  </button>
-                  <button type="button" class="btn btn-float box-shadow-0 btn-outline-info btn-round">
-                    <span class="ladda-label"><i class="fa fa-dashcube"></i>
-                      <span>125</span>
-                    </span>
-                    <span class="ladda-spinner"></span>
-                  </button>
-                </div>
-                <div class="card-body">
-                  <input type="hidden" name="id" id="id" value="<%= val2._id %>">
-                  <input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name%>">
-                  <button type="button" class="button btn btn-outline-danger btn-md btn-round mr-1"> Add To Fov</button>
-                  <a class="overlay-link" href="/group/<%= val2.name.replace(/ /g, "-") %>"><button type="button" class="btn btn-outline-danger btn-md btn-round mr-1"> Enter Group</button></a>
+                  <button class="btn btn-primary pull-right">Publish</button>
                 </div>
               </div>
             </div>
-		  </div>
-		 
-		  <% }) %>
-          
-		</section>
-		<% }) %>
-		</form>
-        <!-- User Profile Cards with Stats -->
+          </div>
+          <!-- Post Create Box End -->
+
+          <!-- Media
+            ================================================= -->
+          <div class="media">
+            <div class="row js-masonry" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
+              <div class="grid-sizer col-md-6 col-sm-6"></div>
+
+              <form action="/home" method="POST" id="favorite">
+                <% _.forEach(chunks, function(val) {  %>
+                    <% _.forEach(val, function(val2) {  %>
+              <div class="grid-item col-md-6 col-sm-6">
+                <div class="media-grid">
+                  <div class="img-wrapper" data-toggle="modal" data-target=".modal-2">
+                    <img src="/uploads/<%= val2.image %>" alt="" class="img-responsive post-image" />
+                  </div>
+                  <div class="media-info">
+                    <div class="reaction">
+                      <a class="btn text-green">
+                        <input type="hidden" name="id" id="id" value="<%= val2._id %>">
+                        <input type="hidden" name="gpName" id="gp_Name" value="<%= val2.name%>">
+                        <i class="fa fa-thumbs-up"></i> <%= val2.fans.length %></a>
+                      <a class="btn text-red">
+                        <i class="fa fa-thumbs-down"></i> 0</a>
+                      <a href="/group/<%= val2.name.replace(/ /g, "-") %>" class="btn text-red">
+                        <i class="fa fa-user-circle"></i> Enter</a>
+                    </div>
+                    <div class="user-info">
+                      <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
+                      <div class="user">
+                        <h6>
+                          <a href="/group/<%= val2.name.replace(/ /g, "-") %>" class="profile-link"><%= val2.name %></a>
+                        </h6>
+                        <a class="text-green" href="#"><%= val2.country %></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+              <% }) %>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsfeed Common Side Bar Right
+          ================================================= -->
+        <div class="col-md-2 static">
+          <div class="suggestions" id="sticky-sidebar">
+            <h4 class="grey">Who to Follow</h4>
+            <div class="follow-user">
+              <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
+              <div>
+                <h5>
+                  <a href="timeline.html">Zube Ab</a>
+                </h5>
+                <a href="#" class="text-green">Add friend</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
-<!-- ////////////////////////////////////////////////////////////////////////////-->
-<footer class="footer footer-static footer-light navbar-shadow">
-  <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout">
-    <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2018
-      <a class="text-bold-800 grey darken-2" href="https://zuham.herokuapp.com/" target="_blank">GPChat </a>, All rights reserved. </span>
-    <span class="float-md-right d-block d-md-inline-block d-none d-lg-block">Group And Private Chat </span>
-  </p>
-</footer>
-<!-- BEGIN VENDOR JS-->
-<script src="/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-<!-- BEGIN VENDOR JS-->
-<!-- BEGIN PAGE VENDOR JS-->
-<script type="text/javascript" src="/app-assets/vendors/js/ui/jquery.sticky.js"></script>
-<script type="text/javascript" src="/app-assets/vendors/js/charts/jquery.sparkline.min.js"></script>
-<!-- END PAGE VENDOR JS-->
-<!-- BEGIN STACK JS-->
-<script src="/app-assets/js/core/app-menu.js" type="text/javascript"></script>
-<script src="/app-assets/js/core/app.js" type="text/javascript"></script>
-<script src="/app-assets/js/scripts/customizer.js" type="text/javascript"></script>
-<!-- END STACK JS-->
-<!-- BEGIN PAGE LEVEL JS-->
-<script type="text/javascript" src="/app-assets/js/scripts/ui/breadcrumbs-with-stats.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/messagelink.js"></script>
-<script src="/js/group/sendrequest.js"></script>
-<script src="/js/home.js"></script>
-<script src="/js/deparam.js"></script>
-<!-- END PAGE LEVEL JS-->
+
+
+
+  <!-- Scripts
+    ================================================= -->
+  <script src="new/js/jquery-3.1.1.min.js"></script>
+  <script src="new/js/bootstrap.min.js"></script>
+  <script src="new/js/masonry.pkgd.min.js"></script>
+  <script src="new/js/jquery.sticky-kit.min.js"></script>
+  <script src="new/js/jquery.scrollbar.min.js"></script>
+  <script src="new/js/script.js"></script>
+
 </body>
 
 </html>

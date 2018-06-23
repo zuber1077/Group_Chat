@@ -1,183 +1,243 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="This is social network html5 template available in themeforest......" />
-		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
-		<meta name="robots" content="index, follow" />
-		<title><%= title %></title>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow" />
+    <title><%= title %></title>
 
-<%- include ../partials/chatNav.ejs %>
-<ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-  <li class="dropdown nav-item" data-menu="dropdown">
-    <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown">
-      <i class="ft-home"></i>
-      <span>Friend Online <span id="numOfFriends"></span></span>
-    </a>
-    <ul class="dropdown-menu">
-      <% if(data.friendsList.length > 0) { %>
-        <% _.forEach(data.friendsList, function(value) { %>
-      
-      <div class="friend" hidden>@
-        <%= value.friendName %>
-      </div>
-      <% }) %>
-        <% } %>
-        <li class="onlineFriends2" data-menu=""></li>
-    </ul>
-  </li>
-</ul>
-<!-- /horizontal menu content-->
-</div>
-</div>
-<!-- Horizontal navigation-->
+  <%- include ../partials/navbar.ejs %>
 
-    <!-- Header
-    ================================================= -->
-    <!--Header End-->
-    <input type="hidden" name="" id="name-user" value="<%= user.username %>">
-    <input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
-    <div class="app-content container center-layout mt-2">
-      <div class="sidebar-left sidebar-fixed">
-        <div class="sidebar">
-          <div class="sidebar-content card d-none d-lg-block">
-            <div class="card-body chat-fixed-search">
-              <fieldset class="form-group position-relative has-icon-left m-0">
-                <input type="text" class="form-control" id="iconLeft4" placeholder="Search user">
-                <div class="form-control-position">
-                  <i class="ft-search"></i>
-                </div>
-              </fieldset>
-            </div>
-            <div id="users-list" class="list-group position-relative">
-              <div class="users-list-padding media-list">
+
+  <input type="hidden" name="" id="name-user" value="<%= user.username %>">
+  <input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
+    <div id="page-contents">
+    	<div class="container">
+    		<div class="row">
+
+
+          <!-- Newsfeed Common Side Bar Left
+                    ================================================= -->
+          <div class="col-md-3 static">
+          
+            <div id="chat-block">
+              <div class="title">Friend Online <span id="numOfFriends"></span></div>
+              <ul class="online-users list-inline">
                 <% if(data.friendsList.length > 0) { %>
                   <% _.forEach(data.friendsList, function(value) { %>
-                
-                <div class="friend" hidden>@<%= value.friendName %></div>
-                
+                     <div class="friend" hidden>@<%= value.friendName %></div>
                 <% }) %>
                   <% } %>
+
                 <div class="onlineFriends"></div>
+              </ul>
+            </div>
+            <!--chat block ends-->
+          </div>
+             
+             
+             
+    			<div class="col-md-7">
+
+            <!-- Post Create Box
+            ================================================= -->
+            <div class="create-post">
+            	<div class="row">
+            		<div class="col-md-7 col-sm-7">
+                  <div class="form-group">
+                    <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
+                    <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
+                  </div>
+                </div>
+            		<div class="col-md-5 col-sm-5">
+                  <div class="tools">
+                    <ul class="publishing-tools list-inline">
+                      <li><a href="#"><i class="ion-compose"></i></a></li>
+                      <li><a href="#"><i class="ion-images"></i></a></li>
+                      <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
+                      <li><a href="#"><i class="ion-map"></i></a></li>
+                    </ul>
+                    <button class="btn btn-primary pull-right">Publish</button>
+                  </div>
+                </div>
+            	</div>
+            </div><!-- Post Create Box End -->
+
+            <!-- Chat Room
+            ================================================= -->
+            <div class="chat-room">
+              <div  class="row">
+              
+                <div class="col-md-9">
+
+                  <!--Chat Messages in Right-->
+                  <div class="tab-content scrollbar-wrapper wrapper scrollbar-outer">
+                    <div class="tab-pane active" id="contact-1">
+                      <div class="chat-body chats">
+
+                      	<ul id="messages" class="chat-message">
+                          <% if(chats.length > 0) {%>
+                            <% _.forEach(chats, function(val) { %>
+                              <% if(name === val.receiver.username.toLowerCase()) {%>
+                      		<li class="left">
+                      			<img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
+                      			<div class="chat-item">
+                              <div class="chat-item-header">
+                              	<h5><%= val.senderName %></h5>
+                              	<small class="text-muted">3 days ago</small>
+                              </div>
+                              <p><%= val.message %></p>
+                            </div>
+                          </li>
+                          <% } else if(name === val.sender.username.toLowerCase()) {%>
+                            <li class="right">
+                      			<img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-right" />
+                      			<div class="chat-item">
+                              <div class="chat-item-header">
+                              	<h5><%= val.senderName %></h5>
+                              	<small class="text-muted">3 days ago</small>
+                              </div>
+                              <p><%= val.message %></p>
+                            </div>
+                          </li>
+                          <% } %>
+                            <% }) %>
+                              <% } %>
+                                              
+                        
+
+
+                        <script id="message-template" type="text/template">
+                              <li class="left">
+                      			<img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
+                      			<div class="chat-item">
+                              <div class="chat-item-header">
+                              	<h5>{{ sender }}</h5>
+                              	<small class="text-muted">3 days ago</small>
+                              </div>
+                              <p>{{ text }}</p>
+                            </div>
+                          </li>             
+                        </script>
+                        </ul>
+                      </div>
+                    </div>
+                  </div><!--Chat Messages in Right End-->
+                  <section class="chat-app-form">
+                  <form class="chat-app-input d-flex" id="message_form" method="POST">
+                   
+                  <div class="send-message">
+                    <div class="input-group">
+                      <input name="message" id="msg"  type="text" class="form-control" placeholder="Type your message">
+                      <span class="input-group-btn">
+                        <button id="send-message" class="btn btn-default" >Send</button>
+                      </span>
+                    </div>
+                  </div>
+                  </form>
+                  </section>
+                </div>
+                <div class="clearfix"></div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="content-right">
-        <div class="content-wrapper">
-          <div class="content-header row">
-          </div>
-          <div class="content-body">
-            <section class="chat-app-window">
-              <div class="badge badge-default mb-1">Chat History</div>
-              <div class="chats">
-                <div id="messages" class="chats">
-                   <% if(chats.length > 0) { %>
-                        <% _.forEach(chats, function(val) { %>
-                        <% if(name === val.receiver.username.toLowerCase()) { %>
-                  <div class="chat chat-left">
-                    <div class="chat-avatar">
-                      <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                        <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar" />
-                      </a>
-                    </div>
-                    <div class="chat-body">
-                      <div class="chat-content">
-                        <strong class="chat-name">
-                          <%= val.senderName %>
-                        </strong>
-                        <p><%= val.message %></p>
-                      </div>
-                    </div>
-                  </div>
-                   <% } else if(name === val.sender.username.toLowerCase()) { %>
-                    <div class="chat chat-left">
-                    <div class="chat-avatar">
-                      <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                        <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar" />
-                      </a>
-                    </div>
-                    <div class="chat-body">
-                      <div class="chat-content">
-                        <strong class="chat-name">
-                          <%= val.senderName %>
-                        </strong>
-                        <p><%= val.message %></p>
-                      </div>
-                    </div>
-                  </div>
-                   <% } %>   
-                    <% }) %>
-                    <% } %>
-                </div>
-             <script id="message-template" type="text/template">
-                  <div class="chat chat-left">
-                    <div class="chat-avatar">
-                      <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                        <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar" />
-                      </a>
-                    </div>
-                    <div class="chat-body">
-                      <div class="chat-content">
-                        <span class="chat-name">
-                          {{ sender }}
-                        </span>
-                        <p>{{ text }}</p>
-                      </div>
-                    </div>
-                  </div>                  
-             </script>
+    			<!-- Newsfeed Common Side Bar Right
+          ================================================= -->
+    			<!-- <div class="col-md-2 static">
+            <div id="users-list" class="suggestions" id="sticky-sidebar">
+              <span>Global Online <span id="numValue">(0)</span></span>
+
+              <div id="users">
 
               </div>
-            </section>
-            <section class="chat-app-form">
-              <form class="chat-app-input d-flex" action="" id="message_form" method="POST">
-                <input type="hidden" name="" id="groupName" value="">
-                <fieldset class="form-group position-relative has-icon-left col-10 m-0">
-                  <div class="form-control-position">
-                    <i class="icon-emoticon-smile"></i>
-                  </div>
-                  <input name="message" id="msg" type="text" class="form-control" id="iconLeft4" placeholder="Type your message">
-                  <div class="form-control-position control-position-right">
-                    <i class="ft-image"></i>
-                  </div>
-                </fieldset>
-                <fieldset class="form-group position-relative has-icon-left col-2 m-0">
-                  <button id="send-message" class="btn btn-primary">
-                    <i class="fa fa-paper-plane-o d-lg-none"></i>
-                    <span class="d-none d-lg-block">Send</span>
-                  </button>
-                </fieldset>
-              </form>
-            </section>
+              </div>              
+            </div> -->
           </div>
+    		</div>
+    	</div>
+    </div>
+
+
+    <div id="myModals3" class="new-tweet modal fade">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Add Friend</h4>
+        </div>
+  
+        <div class="modal-body">
+          <li class="scrollable-container media-list" id="reload">
+                <div class="media">
+                      <img class="tweets__comment-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
+                      <span class="tweet__username">
+                            <a id="name"></a>
+                        </span>
+          
+                    <span class="accept">
+                      <form action="" method="post" id="add_friend">
+                      <input type="hidden" name="receiverName" id="receiverName" value="">
+                      <input type="hidden" name="sender-name" id="sender-name" value="<%= user.username%>">
+                      <button type="submit" type="submit" id="friend-add" class="btn " value="accept">Add Friend</button>
+                      <a id="nameLink" class="btn ">View Profile</a>
+                      </form>
+                    </span>
+                  </span>
+                </div>
+
+          </li>
         </div>
       </div>
     </div>
-
-    <!-- Footer
-    ================================================= -->
-    <!-- <footer id="footer">
-      
-		</footer> -->
+    <!-- Modal for ad friedn -->
+    <div id="myModals3" class="modal fade" role="dialog">
+      <div class="modal-dialog">
     
- 
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="modal-title" id="name"></h3>
+          </div>
+          <div class="modal-body btn-group">
+            <form action="" method="post" id="add_friend">
+              <input type="hidden" name="receiverName" id="receiverName" value="">
+              <input type="hidden" name="sender-name" id="sender-name" value="<%= user.username %>">
+              <button type="submit" id="friend-add" class="btn add btn width-150 swal-btn-success-2">
+                <i class="fa fa-user"></i> Add Friend</button>
+    
+              <a id="nameLink" class="btn ">View Profile</a>
+    
+              <div id="myTest">
+    
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn_close" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+   
 
     <!-- Scripts
     ================================================= -->
-    <%- include ../partials/chatFooter.ejs %>
+    <script src="/new/js/jquery-3.1.1.min.js"></script>
+    <script src="/new/js/bootstrap.min.js"></script>
+    <script src="/new/js/jquery.sticky-kit.min.js"></script>
+    <script src="/new/js/jquery.scrollbar.min.js"></script>
+    <script src="/new/js/script.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/messagelink.js"></script>
+  <script src="/js/privatechat/pm.js"></script>
+  <script src="/js/global.js"></script>
+  <script src="/js/deparam.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+    </body>
+    
+    </html>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/privatechat/pm.js"></script>
-<script src="/js/messagelink.js"></script>
-<script src="/js/group/sendrequest.js"></script>
-<script src="/js/global.js"></script>
-<script src="/js/deparam.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
-
-</body>
+  </body>
 </html>

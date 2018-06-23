@@ -1,156 +1,151 @@
 <!DOCTYPE html>
-<html lang="en" data-textdirection="ltr">
+<html lang="en">
 
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow" />
+  <title>
+    <%= title %>
+  </title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="author" content="ZUBER">
-    <title><%= title %></title>
+  <%- include ../partials/navbar.ejs %>
+ 
+ <div class="container">
 
-<%- include ../partials/navbar.ejs %>
+      <!-- Timeline
+      ================================================= -->
+      <div class="timeline">
+        <div class="timeline-cover">
 
-    <!-- Profile Header -->
-
-    <input type="hidden" name="" id="name-user" value="<%= user.username %>">
-    <input type="hidden" name="" id="name-image" value="<%= user.userImage %>">
-  <div class="app-content container center-layout mt-2">
-    <div class="content-wrapper">
-      <div class="content-header row">
-      </div>
-      <div class="content-body">
-        <div id="user-profile">
-          <div class="row">
-            <div class="col-12">
-              <div class="card profile-with-cover">
-                <div class="card-img-top img-fluid bg-cover height-300" style="background: url('../../../app-assets/images/carousel/22.jpg') 50%;"></div>
-                <div class="media profil-cover-details w-100">
-                  <div class="media-left pl-2 pt-2">
-                    <a href="#" class="profile-image">
-                      <img src="../../../app-assets/images/portrait/small/avatar-s-8.png" class="rounded-circle img-border height-100"
-                      alt="Card image">
-                    </a>
-                  </div>
-                  <div class="media-body pt-3 px-2">
-                    <div class="row">
-                      <div class="col">
-                        <h3 class="card-title">@ <%= user.username %></h3>
-                      </div>
-                      <div class="col text-right">
-                        <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Follow</button>
-                        <div class="btn-group d-none d-md-block float-right ml-2" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-success"><i class="fa fa-dashcube"></i> Message</button>
-                          <button type="button" class="btn btn-success"><i class="fa fa-cog"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          <!--Timeline Menu for Large Screens-->
+          <div class="timeline-nav-bar hidden-sm hidden-xs">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="profile-info">
+                  <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+                  <h3>@<%= user.username %></h3>
+                  <p class="text-muted">Creative Director</p>
                 </div>
-                <nav class="navbar navbar-light navbar-profile align-self-end">
-                  <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" aria-expanded="false"
-                  aria-label="Toggle navigation"></button>
-                  <nav class="navbar navbar-expand-lg">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                          <a class="nav-link" href="#"><i class="fa fa-line-chart"></i> Timeline <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                          <a class="nav-link" href="/profile/<%= user.username %>"><i class="fa fa-heart-o"></i> Overview</a>
-                        </li>
-                      </ul>
-                    </div>
               </div>
+              <div class="col-md-9">
+                <ul class="list-inline profile-menu">
+                  <li><a href="#">Timeline</a></li>
+                  <li><a href="#" class="active">About</a></li>
+                  <li><a href="#">Album</a></li>
+                  <li><a href="#">Friends</a></li>
+                </ul>
+                <ul class="follow-me list-inline">
+                  <li>1,299 people following her</li>
+                  <li><button class="btn-primary">Add Friend</button></li>
+                </ul>
               </div>
-              </div>
-              </div>
-              </div>
-              </div>
-              
-             
-        <div class="content-body">
-            <span style="text-align: center;" id="error"></span>
-        <!-- Basic form layout section start -->
-        <section id="horizontal-form-layouts">
+            </div>
+          </div><!--Timeline Menu for Large Screens End-->
+
+          <!--Timeline Menu for Small Screens-->
+          <div class="navbar-mobile hidden-lg hidden-md">
+            <div class="profile-info">
+              <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+              <h4><%= user.username %></h4>
+              <p class="text-muted">Creative Director</p>
+            </div>
+            <div class="mobile-menu">
+              <ul class="list-inline">
+                <li><a href="timline.html">Timeline</a></li>
+                <li><a href="timeline-about.html" class="active">About</a></li>
+                <li><a href="timeline-album.html">Album</a></li>
+                <li><a href="timeline-friends.html">Friends</a></li>
+              </ul>
+              <button class="btn-primary">Add Friend</button>
+            </div>
+          </div><!--Timeline Menu for Small Screens End-->
+
+        </div>
+        <div id="page-contents">
           <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header">
-                  <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                  <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                      <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                      <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                      <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                      <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                  </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-7">
+
+              <!-- About
+              ================================================= -->
+              <div class="about-profile">
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information</h4>
+                  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur</p> -->
                 </div>
-                <div class="card-content collpase show">
-                  <div class="card-body">
-                    <form class="form form-horizontal"role="form">
-                      <div class="form-body">
-                        <h4 class="form-section"><i class="ft-user"></i> Personal Info</h4>
-
-                        <h4>Country</h4>
-                        <hr>
-                            <p><h6><%= data.country %></h6></p>
-                        <br>
-
-                        <h4>Bio</h4>
-                        <% _.forEach(data.Profecinal, function(val) { %>
-                            <%= val.ProfecinalNames %>,
-                                <% }) %>
-                        <hr><p><h6><%= data.bio %></h6></p>
-                        <br>
-                        <h4>Your Hobby</h4>
-                        <hr>
+                <div class="about-content-block">
+                  <!-- <h4 class="grey"><i class="ion-ios-briefcase-outline icon-in-title"></i>Interests </h4> -->
+                  <div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                      <h5>Hobby</h5>
                         <% _.forEach(user.Hobby, function(val) { %>
-                            <p>
-                                <span class="fa fa-check-square-o"></span>
-                                <%= val.HobbyNames %>
-                            </p>
-                            <% }) %>
-<br>
-
-                        <h4>Your Profecinal</h4>
-                        <hr>
-                        <% _.forEach(user.Profecinal, function(val) { %>
-                        <p>
-                            <span class="fa fa-check-square-o"></span>
-                            <%= val.ProfecinalNames %>
-                        </p>
-                    <% }) %>
-<br>
-
-                        <h4>Add you like st</h4>
-                        <hr>
-                         <% _.forEach(user.FavGroup, function(val) { %>
-                        <p>
-                            <span class="fa fa-check-square-o"></span>
-                            <%= val.GroupName %>
-                        </p>
-                    <% }) %>
+                      <p><%= val.HobbyNames %></span></p>
+                      <% }) %>
+                    </div>
+                  </div>
+                  <div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                       <h5>Profecinal</h5>
+                      <% _.forEach(user.Profecinal, function(val) { %>
+                      <p><%= val.ProfecinalNames %></span></p>
+                      <% }) %>
+                    </div>
+                  </div>
+                  <div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                  <h5>Favorite</h5>
+                      <% _.forEach(user.FavGroup, function(val) { %>
+                      <h5><%= val.GroupName %></h5>
+                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
+                      <% }) %>
+                    </div>
+                  </div>
+                </div>
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-heart-outline icon-in-title"></i>Interests</h4>
+                  <ul class="interests list-inline">
+                    <li><span class="int-icons" title="Bycycle riding"><i class="icon ion-android-bicycle"></i></span></li>
+                    <li><span class="int-icons" title="Photography"><i class="icon ion-ios-camera"></i></span></li>
+                    <li><span class="int-icons" title="Shopping"><i class="icon ion-android-cart"></i></span></li>
+                    <li><span class="int-icons" title="Traveling"><i class="icon ion-android-plane"></i></span></li>
+                    <li><span class="int-icons" title="Eating"><i class="icon ion-android-restaurant"></i></span></li>
+                  </ul>
+                </div>
+                <!-- <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-chatbubble-outline icon-in-title"></i>Language</h4>
+                    <ul>
+                      <li><a href="">Russian</a></li>
+                      <li><a href="">English</a></li>
+                    </ul>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-2 static">
+              <div id="sticky-sidebar">
+                <h4 class="grey"><%= user.username %>'s activity</h4>
+                <div class="feed-item">
+                  <div class="live-activity">
+                    <p><a href="#" class="profile-link">Zuber</a> Commended on a Photo</p>
+                    <p class="text-muted">5 mins ago</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <!-- // Basic form layout section end -->
         </div>
+      </div>
+    </div>
 
-</div>
-  <%- include ../partials/chatFooter.ejs %>
-<!-- BEGIN PAGE LEVEL JS-->
-<script src="/js/privatechat/pm.js"></script>
-<script src="/js/messagelink.js"></script>
-<script src="/js/group/sendrequest.js"></script>
-<script src="/js/user/profile.js"></script>
-<script src="/js/global.js"></script>
-<script src="/js/deparam.js"></script>
-<!-- END PAGE LEVEL JS-->
-</body>
-
-
+    <%- include ../partials/footer.ejs %>
+  <script src="/js/privatechat/pm.js"></script>
+  <script src="/js/messagelink.js"></script>
+  <script src="/js/group/sendrequest.js"></script>
+  <script src="/js/user/profile.js"></script>
+  <script src="/js/user/userinfo.js"></script>
+  <script src="/js/deparam.js"></script>
+  <!-- END PAGE LEVEL JS-->
+  </body>

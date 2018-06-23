@@ -1,166 +1,309 @@
-<!DOCTYPE html>
-<html lang="en" data-textdirection="ltr">
-<head>
-  
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="author" content="ZUBER">
-  <!-- <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico"> -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
-    rel="stylesheet">
-  <!-- BEGIN VENDOR CSS-->
-  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/vendors.css">
-  <!-- END VENDOR CSS-->
-  <!-- BEGIN STACK CSS-->
-  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/app.css">
-  <!-- END STACK CSS-->
-  <!-- BEGIN Page Level CSS-->
-  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/horizontal-menu.css">
-  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/users.css">
-  <!-- END Page Level CSS-->
 
-  <!-- END Custom CSS-->
+<!-- Stylesheets
+    ================================================= -->
+<link rel="stylesheet" href="/new/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/new/css/style.css" />
+<link rel="stylesheet" href="/new/css/ionicons.min.css" />
+<!-- <link rel="stylesheet" href="/new/css/font-awesome.min.css" /> -->
+<!--     <link href="public/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+ -->
+ 
+<link href="/new/public/css/fontawesome-all.min.css" rel="stylesheet">
+<link href="/new/public/css/style.css" rel="stylesheet">
+<!-- Favicon-->
+<script type="text/javascript" src="/new/public/js/jquery.min.js"></script>
+<!-- Bootstrap depedency-->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script> -->
+<!-- <script type="text/javascript" src="/new/public/js/bootstrap/bootstrap.min.js"></script> -->
+<script type="text/javascript" src="/new/public/js/app.js"></script>
+<!--Google Font-->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
+
+
 </head>
-<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="click"
-data-menu="horizontal-menu" data-col="2-columns">
-  <!-- fixed-top-->
-  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-static-top navbar-light navbar-border navbar-brand-center">
-    <div class="navbar-wrapper">
-      <div class="navbar-header">
-        <ul class="nav navbar-nav flex-row">
-          <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
-          <li class="nav-item">
-            <a class="navbar-brand" href="/home">
-              <img class="brand-logo" alt="" src="">
-              <h2 style="padding-left: 0px; font-weight: bold;" class="brand-text">GPchat</h2>
+
+<body>
+
+  <!-- Header
+    ================================================= -->
+  <header class="navbar" role="banner">
+    <div class="container">
+      <div class="navbar__group navbar__group_left">
+        <ul class="navbar__main-navigation">
+          <li>
+            <a href="/home" title="Home">
+              <i class="fas fa-home" aria-hidden="true"></i>
+              <span>Home</span>
             </a>
           </li>
-          <li class="nav-item d-md-none">
-            <a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a>
+          <!--   <li>
+                            <a href="/users/5b19f2547f6e670004202ccf" title="Profile">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li> -->
+          <!--  <li>
+                            <a href="/analytics/" title="analytics">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <span>Analytics</span>
+                            </a>
+                        </li> -->
+          <li>
+            <a title="Inbox" data-toggle="modal" id="val" data-target="#search">
+              <i class="fa fa-search fa-sm" aria-hidden="true"></i>
+              <span>Search</span>
+            </a>
+          </li>
+          <li>
+            <a href="/chat/" title="chat">
+              <i class="far fa-comments" aria-hidden="true"></i>
+              <span>Chat Users</span>
+            </a>
+          </li>
+          <li>
+            <a title="activity" data-toggle="modal" id="val" data-target="#myModal2">
+              <i class="far fa-bell" aria-hidden="true"></i>
+              <span class="d-lg-none">
+                <% if(data.totalRequest > 0) { %>
+                  <span style="background-color: #fb434a;" class="badge badge-pill badge-primary">
+                    <%= data.request.length %>New</span>
+                  <% }else{ %>
+                    <span style="background-color: #fb434a;" class="badge badge-pill badge-primary">0</span>
+                    <% } %>
+              </span>
+            </a>
+          </li>
+          <li>
+            <% var numberOfTrue = 0 %>
+            
+              <% for(var i=0; i < chat.length; i++) { 
+                if(chat[i].body.isRead === false){
+                    numberOfTrue = numberOfTrue + 1
+                }
+             }  %>
+            <a data-toggle="modal" id="val" data-target="#myModal">
+              <i class="far fa-envelope"></i>
+              <span class="d-lg-none">
+                <% if(numberOfTrue !== 0) { %>
+                <span style="background-color: #fb434a;" class="badge badge-pill badge-primary"><%= numberOfTrue %> New</span>
+                <% }else{ %>
+                <span style="background-color: #fb434a;" class="badge badge-pill badge-primary">0</span>
+                <% } %>
+              </span>
+            </a>
           </li>
         </ul>
+        
       </div>
-      <div class="navbar-container container center-layout">
-        <div class="collapse navbar-collapse" id="navbar-mobile">
-          <ul class="nav navbar-nav mr-auto float-left">
-            <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
-            <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
-            <form action="/results" method="post">
-            <li class="input-group nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i class="ficon ft-search"></i></a>
-              <div class="search-input">
-                <input class="input new-search-bar" name="country" id="search" type="text" placeholder="Search For Groups...">
-                <button style="display: none;" class="btn input-btn " type="" id="search-form">Search</button>
-              </div>
-            </li>
-            </form>
-          </ul>
-          <ul class="nav navbar-nav float-right">
-            <li class="dropdown dropdown-notification nav-item" id="reload">
-              <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
-                <% if(data.totalRequest > 0) { %>
-                <span class="badge badge-pill badge-default badge-warning badge-default badge-up"><%= data.request.length %></span>
-                <% }else{ %>
-                  <span class="badge badge-pill badge-default badge-warning badge-default badge-up"></span>
-                  <% } %>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                <li class="dropdown-menu-header">
-                  <h6 class="dropdown-header m-0">
-                    <span class="grey darken-2">Friend Request</span>
-                    <% if(data.totalRequest > 0) { %>
-                    <span class="notification-tag badge badge-default badge-warning float-right m-0"><%= data.request.length %></span>
-                    <% }else{ %>
-                      <span style="display: none;" class="notification-tag badge badge-default badge-warning float-right m-0">4 New</span>
-                      <% } %>
-                  </h6>
-                </li>
-                <li class="scrollable-container media-list" id="reload">
-                  <% if(data.request.length > 0) { %>
-                     <% _.forEach(data.request, function(val) { %>
-                
-                    <div class="media">
-                      <div class="media-left">
-                        <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span>
-                      </div>
-                      
-                      <span class="text-right">
-                        <div class="media-body">
-                          <h6 style="text-align: left !important;" class="media-heading"><%= val.username %></h6>
-                        </div>
-                        <!-- accept -->
-                        <span class="accept">
-                          <input type="hidden" name="senderId" id="senderId" value="<%= val.userId._id %>">
-                          <input type="hidden" name="senderName" id="senderName" value="<%= val.username %>">
-                          <input type="submit" name="accept" id="accept_friend" class="btn btn-primary btn-sm" value="accept">
+      <span class="navbar__logo">
+        <a href="/home">
+          <img src="/images/logo.png">
+        </a>
+      </span>
+      <div class="navbar__group navbar__group_right">
+        <div class="navbar__profile">
+          <div id="drops" class="navbar__profile-logout" href="/logout" title="logout">
+            <li  class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= _.upperFirst(user.username) %></a>
+                  <ul class="dropdown-menu newsfeed-home">
+                    <li><a href="/settings/profile"><i class="far fa-user"></i> Edit Profile</a></li>
+                    <div class="line"></div>
+                    <li><a href="/logout">logout</a></li>
+                  </ul>
+              </li>
+               <img class="tweet__image chat-image logout-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
+            <!-- <span>Logout</span> -->
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+  
+  <%- include message.ejs %>
+  <div id="myModal2" class="new-tweet modal fade">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">New Notfication</h4>
+        </div>
+  
+        <div class="modal-body">
+          <li class="scrollable-container media-list" id="reload">
+                <% if(data.request.length > 0) { %>
+                  <% _.forEach(data.request, function(val) { %>
+                <div class="media tweet__form">
+                      <img class="tweets__comment-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
+                      <span class="tweet__username">
+                            <p><%= val.username %></p>
                         </span>
-                        <!-- cancel -->
-                        <span class="accept">
-                          <input type="hidden" name="user_Id" id="user_Id" value="<%= val.userId._id %>">
-                          <input type="submit" name="cancel" id="cancel_friend" class="btn btn-danger btn-sm" value="cancel">
-                        </span>
-                      </span>
-                    </div>
-                  <li class="dropdown-menu-footer">
-                    <a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a>
-                  </li>
-              <% }) %>
-                <% } else { %>
-                  <p class="text-center">No Friend Request</p>
-                  <li style="display:none;"  class="dropdown-menu-footer">
-                    <a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a>
-                  </li>
-                  <% } %>
-                </li>
-                
-              </ul>
-            </li>
-            <!-- Message -->
-            
-            <%- include message.ejs %>
-
-            <li class="dropdown dropdown-user nav-item">
-              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="avatar avatar-online">
-                  <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span>
-                <span class="user-name"><%= _.upperFirst(user.username) %></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="/settings/profile"><i class="ft-user"></i> Edit Profile</a>
-                <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout"><i class="ft-power"></i> Logout</a>
-              </div>
-            </li>
-          </ul>
+          
+                    <!-- accept -->
+                    <span class="accept tweet__form">
+                      <input type="hidden" name="senderId" id="senderId" value="<%= val.userId._id %>">
+                      <input type="hidden" name="senderName" id="senderName" value="<%= val.username%>">
+                      <input type="submit" name="accept" id="accept_friend" class="btn " value="accept">
+                    </span>
+                    <!-- cancel -->
+                    <span class="accept tweet__form">
+                      <input type="hidden" name="user_Id" id="user_Id" value="<%= val.userId._id %>">
+                      <input type="submit" name="cancel" id="cancel_friend" class="btn " value="cancel">
+                    </span>
+                  </span>
+                </div>
+                <% }) %>
+                  <% } else { %>
+              <div class="dropdown-menu-footer">
+                <p class="text-center" style="color: red;">No Friend Request</p>
+                 <a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a>
+             </div>
+              <% } %>
+          </li>
         </div>
       </div>
     </div>
-  </nav>
-   <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <!-- Horizontal navigation-->
-  <div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-light navbar-without-dd-arrow navbar-shadow menu-border"
-  role="navigation" data-menu="menu-wrapper">
-    <!-- Horizontal menu content-->
-    <div class="navbar-container main-menu-content container center-layout" data-menu="menu-container">
-      <!-- include ../../../includes/mixins-->
-      <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class="dropdown nav-item" data-menu="dropdown">
-          <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown"><i class="ft-home"></i>
-            <span>Dashboard</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li data-menu=""><a class="dropdown-item" href="dashboard-ecommerce.html" data-toggle="dropdown">News
-                  <submenu class="name"></submenu></a>
-            </li>
-            <li data-menu=""><a class="dropdown-item" href="dashboard-analytics.html" data-toggle="dropdown">Users
-                  <submenu class="name"></submenu></a>
-            </li>
-          </ul>
-        </li>
-          </ul>
-    </div>
-    <!-- /horizontal menu content-->
   </div>
-  <!-- Horizontal navigation-->
+  <div class="gr-rightsidebar">
+  
+
+   
+  </div>
+  <!--Header End-->
+
+
+  <div id="search" class="new-tweet modal fade">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+  
+        <div class="modal-body">
+          <form action="/results" method="post">
+          <div class="search">
+            <input name="country" id="search" type="search" class="search-box" placeholder="Search For Groups..." />
+            <button style="padding: 20px;" class="btn btn-primary btn-bg" id="search-form">search
+            </button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+background-color: #2A2E37;
+search-bg-color: #242628;
+icon-color: #00FEDE;
+transition: all .5s ease;
+
+
+.search {
+  width: 100px;
+  height: 100px;
+  margin: 40px auto 0;
+  background-color: #242628;
+  position: relative;
+  overflow: hidden;
+  transition: all .5s ease;
+  &:before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 100%;
+    position: relative;
+    background-color: #00FEDE;
+    transition: all .5s ease;
+  }
+  &.open {
+    width: 420px;
+    &:before {
+      height: 60px;
+      margin: 20px 0 20px 30px;
+      position: absolute;
+    }
+  }
+}
+
+.search-box {
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  color: #fff;
+  padding: 20px 100px 20px 45px;
+  font-size: 40px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-button {
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  border: 3px solid #00FEDE;
+  display: block;
+  position: relative;
+  margin-left: 5px;
+  transition: all .5s ease;
+  &:before {
+    content: '';
+    width: 3px;
+    height: 15px;
+    position: absolute;
+    right: -2px;
+    top: 30px;
+    display: block;
+    background-color: #00FEDE;
+    transform: rotate(-45deg);
+    transition: $transition;
+  }
+  &:after {
+    content: '';
+    width: 3px;
+    height: 15px;
+    position: absolute;
+    right: -12px;
+    top: 40px;
+    display: block;
+    background-color: #00FEDE;
+    transform: rotate(-45deg);
+    transition: $transition;
+  }
+  .open & {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    &:before {
+      transform: rotate(52deg);
+      right: 22px;
+      top: 23px;
+      height: 18px;
+    }
+    &:after {
+      transform: rotate(-230deg);
+      right: 22px;
+      top: 13px;
+      height: 18px;
+    }
+  }
+}
+  </style>
+
+  <script>
+  $('.search-button').click(function () {
+      $(this).parent().toggleClass('open');
+    });</script>

@@ -1,4 +1,9 @@
-module.exports = function(async, Users, Message, formidable, aws, FriendResult) {
+const express = require("express");
+const app = express();
+
+const upload = require("express-fileupload");
+app.use(upload());
+module.exports = function(async, Users, Message, formidable, upload, FriendResult,isEmpty ) {
     return {
         SetRouting: function(router) {
 			router.get('/settings/profile', this.getProfilePage);
@@ -75,7 +80,7 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 						})
 					},
 					function(result, callback) {
-						if(req.body.upload === null || req.body.upload === ''){
+						if (req.body.upload === null || req.body.upload === ''){
 								Users.update({
 									'_id':req.user._id
 								}, 
@@ -93,17 +98,20 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 									console.log(result);
 									res.redirect('/settings/profile');
 								})
-						}else if(req.body.upload !== null || req.body.upload !== ''){
+						} else if (req.body.upload !== null || req.body.upload !== ''){
 								Users.update({
 									'_id':req.user._id
 								}, 
 								{
+									
+
+
 									username: req.body.username,
 									fullname: req.body.fullname,
 									gender: req.body.gender,
 									country: req.body.country,
 									bio: req.body.bio,
-									userImage: req.body.upload
+									userImage: filename
 								},
 								{//if z field doesnt exist inside doc then add it
 									upsert: true
@@ -119,19 +127,19 @@ module.exports = function(async, Users, Message, formidable, aws, FriendResult) 
 			const form = new formidable.IncomingForm();
 			 form.uploadDir = path.join(__dirname, "../public/uploads"); //z path z file to save in | stored
 
-      //listen for event
+				let filename = 'default.jpg';
 
-      form.on("file", (field, file) => {
-        //to rename z file or stored orginal name
-        fs.rename(file.path, path.join(form.uploadDir, file.name), err => {
-          if (err) throw err;
-          console.log("File renamed successfully");
-        });
-      }); //call z file event rename z file if s (c)
-			// form.on('file', (field, file) => {});
-			form.on('error', (err) => {});
-			form.on('end', () => {});
-			form.parse(req);
+				// if (!isEmpty(req.files)) {
+				// Upload File
+
+				let upload = req.files.upload;
+				filename = Date.now() + '-' + file.name;
+
+				upload.mv('./public/uploads/' + filename, (err) => {
+					if (err) throw err;
+				});
+			 
+
 		},
 
 		//
