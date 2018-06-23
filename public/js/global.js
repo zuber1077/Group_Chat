@@ -35,7 +35,11 @@ $(document).ready(function() {
                 var userName = users[i].name.toLowerCase();
 
 
+<<<<<<< HEAD
                 var list = '<li><a href = "/chat/'+userName.replace(/ /g, "-")+'.'+name.replace(/ /g, "-") + '" title = "zuber" ><img src="http://placeholder.it/300x300" alt="" class="img-responsive profile-photo" /><span class="online-dot"><p>' + '@' + users[i].name +'</p></span></a></li>"';
+=======
+                var list = '<li><a href = "/chat/' + userName.replace(/ /g, "-") + '.' + name.replace(/ /g, "-") + '" title = "zuber" ><img src="http://placeholder.it/300x300" alt="" class="img-responsive profile-photo" /><span class="online-dot"><p>' + '@' + users[i].name +'</p></span></a></li>"';
+>>>>>>> MoreFuture
                 li.append(list);
             }
         }

@@ -13,7 +13,11 @@ module.exports = function (upload, gpNames, aws, isEmpty) {
 
     },
 
+<<<<<<< HEAD
     uploadFile: function(req, res) {
+=======
+    uploadFile: function (req, res) {
+>>>>>>> MoreFuture
 
       let filename = 'default.jpg';
 
