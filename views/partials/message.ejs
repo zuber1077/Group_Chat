@@ -17,16 +17,16 @@
                 <% if(chat.length > 0) { %>
                     <% _.forEach(chat, function(val) { %>
                         <% if(user.username !== val.body.senderName) { %>
-                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>">
+                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName.replace(/ /g, '-')) %>.<%= _.lowerCase(user.username.replace(/ /g, '-')) %>">
                     <img class="tweets__comment-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
                     <span class="tweet__username-date">
-                        <% if(user.username !== val.body.receiverName) { %>
+                        <% if(user.username !== val.body.receiverName.replace(/ /g, '-')) { %>
                         <span class="tweet__username">
-                            <a href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.receiverName %></a>
+                            <a href="/chat/<%= _.lowerCase(val.body.receiverName.replace(/ /g, '-'))%>.<%= _.lowerCase(user.username) %>"><%= val.body.receiverName.replace(/ /g, '-') %></a>
                         </span>
                         <% }else { %>
                         <span class="tweet__username">
-                            <a href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.senderName %></a>
+                            <a href="/chat/<%= _.lowerCase(val.body.senderName).replace(/ /g, '-') %>.<%= _.lowerCase(user.username.replace(/ /g, '-')) %>"><%= val.body.senderName.replace(/ /g, '-') %></a>
                         </span>
                         <% } %>
                         <span class="tweet__date"> • June 8, 2018</span>
@@ -34,17 +34,17 @@
                         <input type="hidden" name="chatId" id="chatId" value="<%= val.body._id %>">
                     </span>
                 </a>
-                <% }else if(user.username === val.body.senderName){ %>
-                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>">
+                <% }else if(user.username === val.body.senderName.replace(/ /g, '-')){ %>
+                <a data-value="<%= val.body._id %>" id="messageLink" href="/chat/<%= _.lowerCase(val.body.senderName.replace(/ /g, '-')) %>.<%= _.lowerCase(user.username.replace(/ /g, '-')) %>">
                     <img class="tweets__comment-image" src="https://avatars2.githubusercontent.com/u/36805164?v=4">
                     <span class="tweet__username-date">
                         <% if(user.username !== val.body.receiverName) { %>
                         <span class="tweet__username">
-                            <a data-value="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>" href="/chat/<%= _.lowerCase(val.body.receiverName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.receiverName %></a>
+                            <a data-value="/chat/<%= _.lowerCase(val.body.senderName.replace(/ /g, '-')) %>.<%= _.lowerCase(user.username.replace(/ /g, '-')) %>" href="/chat/<%= _.lowerCase(val.body.receiverName.replace(/ /g, '-')) %>.<%= _.lowerCase(user.username) %>"><%= val.body.receiverName.replace(/ /g, '-') %></a>
                         </span>
                         <% }else { %>
                         <span class="tweet__username">
-                            <a data-value="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username) %>"><%= val.body.senderName %></a>
+                            <a data-value="/chat/<%= _.lowerCase(val.body.senderName.replace(/ /g, '-')) %>.<%= _.lowerCase(user.username.replace(/ /g, '-')) %>" href="/chat/<%= _.lowerCase(val.body.senderName) %>.<%= _.lowerCase(user.username.replace(/ /g, '-')) %>"><%= val.body.senderName.replace(/ /g, '-') %></a>
                         </span>
                         <% } %>
                         <span class="tweet__date"> • June 8, 2018</span>

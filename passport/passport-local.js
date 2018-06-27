@@ -29,8 +29,8 @@ passport.use('local.signup',new LocalStrategy({
             return done(null,false,req.flash('error','User with email already exist')); //using flush
         }
         const newUser = new User();//
-        newUser.username = req.body.username; //match form name
-        newUser.fullname = req.body.username;
+        newUser.username = req.body.username.replace(/ /g, "-"); //match form name and replace
+        newUser.fullname = req.body.username.replace(/ /g, "-");
         newUser.email = req.body.email;
         newUser.password = newUser.encryptPassword(req.body.password); //saved as encrypted password insed z db
 
