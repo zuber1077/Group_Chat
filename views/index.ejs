@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>GPchat | - Mobile Application</title>
- <!-- HTML5 shim and Respond.js for < IE9 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for < IE9 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -13,29 +13,29 @@
 
     <!-- Vendors Styles -->
     <!-- v1.0.0 -->
-    <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css">
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="../assets/common/css/source/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/common/css/source/main.css">
 
     <!-- Vendors Scripts -->
     <!-- v1.0.0 -->
-    <script src="../assets/vendors/jquery/jquery.min.js"></script>
-    <script src="../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
-    <script src="../assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+    <script src="/assets/vendors/jquery/jquery.min.js"></script>
+    <script src="/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+    <script src="/assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 
     <!-- v1.0.1 -->
     <!-- v1.1.1 -->
-    <script src="../assets/vendors/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="/assets/vendors/gsap/src/minified/TweenMax.min.js"></script>
 
     <!-- Scripts -->
-    <script src="../assets/common/js/common.js"></script>
-    <script src="../assets/common/js/demo.temp.js"></script>
+    <script src="/assets/common/js/common.js"></script>
+    <script src="/assets/common/js/demo.temp.js"></script>
 </head>
-<body class="theme-default">
+<body>
 
 <section class="page-content">
-<div class="page-content-inner" style="background-image: url(../assets/common/img/temp/login/2.jpg)">
+<div class="page-content-inner" style="background-image: url(../assets/common/img/temp/login/6.jpg)">
 
     <!-- Register Page -->
     <div class="single-page-block-header">
@@ -53,7 +53,7 @@
                         <li><a href="javascript: history.back();">&larr; Back</a></li>
                         <li class="active"><a href="javascript: void(0);">Register</a></li>
                         <li><a href="/login">Login</a></li>
-                        <li><a href="javascript: void(0);">Support</a></li>
+                        <!-- <li><a href="javascript: void(0);">Support</a></li> -->
                     </ul>
                 </div>
             </div>
@@ -65,7 +65,7 @@
             <div class="single-page-block-form">
                 <h3 class="text-center">
                     <i class="icmn-users margin-right-10"></i>
-                    Register Form
+                    Register Account
                 </h3>
                 <br />
                 <% if(hasErrors) {%>
@@ -82,7 +82,6 @@
                 <form class="login-form" action="/" id="form-validation" name="form-validation" method="POST">
                     <div class="form-group">
                         <div class="form-input-icon form-input-icon-right">
-                            <i class="icmn-spinner11 util-spin"></i>
                             <input id="validation-email"
                                    class="form-control"
                                    placeholder="Username"
@@ -113,12 +112,29 @@
                     <!-- <div class="form-group">
                         <input type="password" class="form-control" placeholder="Repeat Password">
                     </div> -->
+                    <div class="field-wrapper">
+                        <a href="/auth/facebook" style="outline: 0; text-decoration: none;">
+                            <span class="icon-facebook left"></span>
+                            <!-- <i class="icmn-facebook2" ></i> -->
+                            <button class="btn btn-primary width-20" style="background-color:#3b5998 !important; border-color: #3b5998 !important; outline: 0; padding: 1px 16px !important; 1.3rem!important">
+                                <i class="icmn-facebook2"></i>
+                            </button>
+                            <!-- <span>Sign in with Facebook</span> -->
+                        </a>
+                        <a href="/auth/google" style="outline: 0; text-decoration: none;">
+                    
+                            <!-- <span> Sign in with Google</span> -->
+                            <button class="btn btn-primary width-20" style="background-color:  #d34836 !important; border-color:  #d34836 !important; padding: 1px 16px;">
+                                <i class="icmn-google-plus2"></i>
+                            </button>
+                        </a>
+                    </div>
                     <div class="form-actions">
                         <button type="submit" value="Login" class="btn btn-primary width-150">Sign Up</button>
                         <div class="checkbox margin-left-10">
                             <label>
                                 <input type="checkbox" name="example6" checked>
-                                Mail Subscription
+                                 Remember me
                             </label>
                         </div>
                     </div>
@@ -129,12 +145,13 @@
     <div class="single-page-block-footer text-center">
         <ul class="list-unstyled list-inline">
             <li><a href="javascript: void(0);">Terms of Use</a></li>
-            <li class="active"><a href="javascript: void(0);">Compliance</a></li>
-            <li><a href="javascript: void(0);">Confidential Information</a></li>
             <li><a href="javascript: void(0);">Support</a></li>
             <li><a href="javascript: void(0);">Contacts</a></li>
         </ul>
     </div>
+    <style>
+       .single-page-block-footer ul li a{color: #ebebef !important}
+    </style>
     <!-- End Register Page -->
 
 </div>

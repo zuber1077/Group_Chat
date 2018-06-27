@@ -14,29 +14,29 @@
 
     <!-- Vendors Styles -->
     <!-- v1.0.0 -->
-    <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/bootstrap/dist/css/bootstrap.min.css">
     <!--  Styles -->
-    <link rel="stylesheet" type="text/css" href="../assets/common/css/source/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/common/css/source/main.css">
 
     <!-- Vendors Scripts -->
     <!-- v1.0.0 -->
-    <script src="../assets/vendors/jquery/jquery.min.js"></script>
-    <script src="../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
-    <script src="../assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+    <script src="/assets/vendors/jquery/jquery.min.js"></script>
+    <script src="/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+    <script src="/assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
 
     <!-- v1.0.1 -->
     <!-- v1.1.1 -->
-    <script src="../assets/vendors/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="/assets/vendors/gsap/src/minified/TweenMax.min.js"></script>
 
     <!--  Scripts -->
-    <script src="../assets/common/js/common.js"></script>
-    <script src="../assets/common/js/demo.temp.js"></script>
+    <script src="/assets/common/js/common.js"></script>
+    <script src="/assets/common/js/demo.temp.js"></script>
 </head>
-<body class="theme-default">
+<body>
 
 <section class="page-content">
-<div class="page-content-inner" style="background-image: url(../assets/common/img/temp/login/4.jpg)">
+<div class="page-content-inner" style="background-image: url(../assets/common/img/temp/login/6.jpg)">
 
     <!-- Login Page -->
     <div class="single-page-block-header">
@@ -44,7 +44,7 @@
             <div class="col-lg-4">
                 <div class="logo">
                     <a href="javascript: history.back();">
-                        <img src="../assets/common/img/logo.png" alt="GPchat | - Mobile Application" />
+                        <img src="../assets/common/img/logo-inverse.png" alt="GPchat | - Mobile Application" />
                     </a>
                 </div>
             </div>
@@ -53,8 +53,8 @@
                     <ul class="list-unstyled list-inline">
                         <li><a href="javascript: history.back();">&larr; Back</a></li>
                         <li class="active"><a href="javascript: void(0);">Login</a></li>
-                        <li><a href="javascript: void(0);">About</a></li>
-                        <li><a href="javascript: void(0);">Support</a></li>
+                        <li><a href="/">Register</a></li>
+                        <!-- <li><a href="javascript: void(0);">Support</a></li> -->
                     </ul>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             <div class="single-page-block-form">
                 <h3 class="text-center">
                     <i class="icmn-enter margin-right-10"></i>
-                    Login Form
+                    Sign in to continue
                 </h3>
 				<br />
 				<% if(hasErrors) {%>
@@ -106,8 +106,22 @@
                             </label>
                         </div>
                     </div>
+                    <div class="field-wrapper">
+                        <a href="/auth/facebook" style="outline: 0; text-decoration: none;">
+                            <span class="icon-facebook left"></span>
+                            <!-- <i class="icmn-facebook2" ></i> -->
+                            <button class="btn btn-primary width-20" style="background-color:#3b5998 !important; border-color: #3b5998 !important; outline: 0; padding: 1px 16px !important; 1.3rem!important"><i class="icmn-facebook2"></i></button>
+                            <!-- <span>Sign in with Facebook</span> -->
+                        </a>
+                        <a href="/auth/google" style="outline: 0; text-decoration: none;">
+                            
+                            <!-- <span> Sign in with Google</span> -->
+                            <button class="btn btn-primary width-20" style="background-color:  #d34836 !important; border-color:  #d34836 !important; padding: 1px 16px;"><i class="icmn-google-plus2"></i></button>
+                        </a>
+                    </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary width-150">Sign In</button>
+                        
                     </div>
                 </form>
             </div>
@@ -125,7 +139,11 @@
     <!-- End Login Page -->
 
 </div>
-
+<style>
+    .single-page-block-footer ul li a {
+        color: #ebebef !important
+    }
+</style>
 <!-- Page Scripts -->
 <script>
     $(function() {
@@ -149,7 +167,7 @@
         });
 
         // Add class to body for change layout settings
-        $('body').addClass('single-page single-page-inverse');
+        $('body').addClass('single-page');
 
         // Set Background Image for Form Block
         function setImage() {
@@ -191,7 +209,6 @@
 </script>
 <!-- End Page Scripts -->
 </section>
-<img src="http://i.imgur.com/omgr8ZZ.jpg">
 <div class="main-backdrop"><!-- --></div>
 
 </body>
